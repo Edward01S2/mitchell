@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ],
+  "engines": {
+    "node": ">=12.14.0"
+  },
+  "scripts": {
+    "build": "mix",
+    "build:production": "mix --production",
+    "start": "mix watch",
+    "hot": "mix watch --hot",
+    "clean": "wp acorn optimize:clean",
+    "test": "npm run lint",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint resources/js",
+    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
+    "translate": "npm run translate:pot && npm run translate:js",
+    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
+    "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.4.0",
+    "@tinypixelco/laravel-mix-wp-blocks": "^1.1.0",
+    "@wordpress/babel-preset-default": "^4.20.0",
+    "@wordpress/browserslist-config": "^2.7.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^2.9.0",
+    "babel-eslint": "^10.1.0",
+    "browser-sync": "^2.26.13",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "eslint": "^7.18.0",
+    "eslint-plugin-import": "^2.22.1",
+    "laravel-mix": "^6.0.10",
+    "postcss": "^8.1",
+    "sass": "^1.32.4",
+    "sass-loader": "10.1.1",
+    "stylelint": "^13.8.0",
+    "stylelint-config-standard": "^20.0.0",
+    "tailwindcss": "^2.0.2"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
