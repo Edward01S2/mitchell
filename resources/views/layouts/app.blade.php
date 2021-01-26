@@ -1,7 +1,7 @@
-<div class="max-w-3xl mx-auto">
+<div class="relative">
   @include('partials.header')
 
-    <main class="py-8 prose main">
+    <main>
       @yield('content')
     </main>
 

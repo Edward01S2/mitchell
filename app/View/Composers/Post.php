@@ -26,6 +26,8 @@ class Post extends Composer
     {
         return [
             'title' => $this->title(),
+            'bg' => ($bg = get_the_post_thumbnail_url()) ? $bg : get_field('default bg', 'options')['url'],
+            'show_author' => get_field('show_author'),
         ];
     }
 

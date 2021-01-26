@@ -1,0 +1,14 @@
+.post-links {
+  a {
+    @apply no-underline #{!important};
+  }
+  a:nth-child(1) {
+    @apply bg-c-blue-300 text-white;
+  }
+  a:nth-child(2){
+    @apply bg-c-gray-200 text-white;
+  }
+  a:nth-child(3) {
+    @apply bg-c-gray-50;
+  }
+} 

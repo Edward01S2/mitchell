@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php wp_head(); ?>
+    <?php echo get_field('header_scripts', 'option'); ?>
   </head>
 
   <body <?php body_class(); ?>>
@@ -17,5 +18,6 @@
 
     <?php do_action('get_footer'); ?>
     <?php wp_footer(); ?>
+    <?php echo get_field('footer_scripts', 'option'); ?>
   </body>
 </html>

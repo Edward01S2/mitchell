@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Whyte';
+  src: url('../fonts/Whyte-Medium.eot');
+  src: local('Whyte Medium'), local('Whyte-Medium'),
+      url('../fonts/Whyte-Medium.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Whyte-Medium.woff2') format('woff2'),
+      url('../fonts/Whyte-Medium.woff') format('woff'),
+      url('../fonts/Whyte-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  vertical-align: middle;
+}
+
+@font-face {
+  font-family: 'Whyte';
+  src: url('../fonts/Whyte-Bold.eot');
+  src: local('Whyte Bold'), local('Whyte-Bold'),
+      url('../fonts/Whyte-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Whyte-Bold.woff2') format('woff2'),
+      url('../fonts/Whyte-Bold.woff') format('woff'),
+      url('../fonts/Whyte-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  vertical-align: middle;
+}
+
+@font-face {
+  font-family: 'Whyte';
+  src: url('../fonts/Whyte-Regular.eot');
+  src: local('Whyte Regular'), local('Whyte-Regular'),
+      url('../fonts/Whyte-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Whyte-Regular.woff2') format('woff2'),
+      url('../fonts/Whyte-Regular.woff') format('woff'),
+      url('../fonts/Whyte-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  vertical-align: middle;
+}
+
+@font-face {
+  font-family: 'Antiza';
+  src: url('../fonts/AntizaText-Regular.otf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Antiza';
+  src: url('../fonts/AntizaText-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Antiza';
+  src: url('../fonts/AntizaText-RegularItalic.otf');
+  font-weight: 400;
+  font-style: italic;
+}

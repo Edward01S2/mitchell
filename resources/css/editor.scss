@@ -9,3 +9,9 @@
     @apply font-sans #{!important};
   }
 }
+
+.block-editor {
+  .acf-field-post-show-author {
+    @apply pl-3 #{!important};
+  }
+}
