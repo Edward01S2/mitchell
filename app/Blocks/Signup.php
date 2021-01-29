@@ -5,28 +5,28 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class PostLinks extends Block
+class Signup extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Post Links';
+    public $name = 'Signup';
 
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple PostLinks block.';
+    public $description = 'A simple Signup block.';
 
     /**
      * The block category.
      *
      * @var string
      */
-    public $category = 'acf';
+    public $category = 'formatting';
 
     /**
      * The block icon.
@@ -47,7 +47,7 @@ class PostLinks extends Block
      *
      * @var array
      */
-    public $post_types = ['post', 'tribe_events'];
+    public $post_types = [];
 
     /**
      * The parent block type allow list.
@@ -61,7 +61,7 @@ class PostLinks extends Block
      *
      * @var string
      */
-    public $mode = 'edit';
+    public $mode = 'preview';
 
     /**
      * The default block alignment.
@@ -98,7 +98,18 @@ class PostLinks extends Block
         'jsx' => true,
     ];
 
-
+    /**
+     * The block preview example data.
+     *
+     * @var array
+     */
+    public $example = [
+        'items' => [
+            ['item' => 'Item one'],
+            ['item' => 'Item two'],
+            ['item' => 'Item three'],
+        ],
+    ];
 
     /**
      * Data to be passed to the block before rendering.
@@ -108,7 +119,7 @@ class PostLinks extends Block
     public function with()
     {
         return [
-            'links' => $this->items(),
+            'items' => $this->items(),
         ];
     }
 
@@ -119,29 +130,14 @@ class PostLinks extends Block
      */
     public function fields()
     {
-        $postLinks = new FieldsBuilder('post_links');
+        $signup = new FieldsBuilder('signup');
 
-        $postLinks
-            ->addRepeater('links', [
-                'max' => '3',
-            ])
-                ->addTrueFalse('true', [
-                    'label' => 'Link?',
-                    'default_value' => 1,
-                ])
-                    ->setWidth('16')
-                ->addLink('link')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '1')
-                ->addFile('file')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '0')
-                ->addText('title')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '0')
+        $signup
+            ->addRepeater('items')
+                ->addText('item')
             ->endRepeater();
 
-        return $postLinks->build();
+        return $signup->build();
     }
 
     /**
@@ -151,7 +147,7 @@ class PostLinks extends Block
      */
     public function items()
     {
-        return get_field('links') ?: $this->example['links'];
+        return get_field('items') ?: $this->example['items'];
     }
 
     /**

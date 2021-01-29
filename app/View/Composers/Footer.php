@@ -24,7 +24,7 @@ class Footer extends Composer
     public function with()
     {
         return [
-            'navigation' => $this->navigation('footer_navigation'),
+            'navigation' => array_values($this->navigation('footer_navigation')),
             'logo' => get_field('Logo', 'options'),
             'logo_text' => get_field('footer text', 'options'),
             'issues' => $this->getIssues(),

@@ -5,21 +5,21 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class PostLinks extends Block
+class Speaker extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Post Links';
+    public $name = 'Speaker';
 
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple PostLinks block.';
+    public $description = 'A simple Speaker block.';
 
     /**
      * The block category.
@@ -47,7 +47,7 @@ class PostLinks extends Block
      *
      * @var array
      */
-    public $post_types = ['post', 'tribe_events'];
+    public $post_types = ['tribe_events'];
 
     /**
      * The parent block type allow list.
@@ -98,7 +98,18 @@ class PostLinks extends Block
         'jsx' => true,
     ];
 
-
+    /**
+     * The block preview example data.
+     *
+     * @var array
+     */
+    public $example = [
+        'items' => [
+            ['item' => 'Item one'],
+            ['item' => 'Item two'],
+            ['item' => 'Item three'],
+        ],
+    ];
 
     /**
      * Data to be passed to the block before rendering.
@@ -108,7 +119,7 @@ class PostLinks extends Block
     public function with()
     {
         return [
-            'links' => $this->items(),
+            'speaker' => get_field('speaker'),
         ];
     }
 
@@ -119,40 +130,16 @@ class PostLinks extends Block
      */
     public function fields()
     {
-        $postLinks = new FieldsBuilder('post_links');
+        $speaker = new FieldsBuilder('speaker');
 
-        $postLinks
-            ->addRepeater('links', [
-                'max' => '3',
-            ])
-                ->addTrueFalse('true', [
-                    'label' => 'Link?',
-                    'default_value' => 1,
-                ])
-                    ->setWidth('16')
-                ->addLink('link')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '1')
-                ->addFile('file')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '0')
-                ->addText('title')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '0')
-            ->endRepeater();
+        $speaker
+            ->addTextarea('speaker', [
+                'rows' => 4,
+            ]);
 
-        return $postLinks->build();
+        return $speaker->build();
     }
 
-    /**
-     * Return the items field.
-     *
-     * @return array
-     */
-    public function items()
-    {
-        return get_field('links') ?: $this->example['links'];
-    }
 
     /**
      * Assets to be enqueued when rendering the block.

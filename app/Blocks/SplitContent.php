@@ -5,21 +5,21 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class PostLinks extends Block
+class SplitContent extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Post Links';
+    public $name = 'SplitContent';
 
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple PostLinks block.';
+    public $description = 'A simple SplitContent block.';
 
     /**
      * The block category.
@@ -47,7 +47,7 @@ class PostLinks extends Block
      *
      * @var array
      */
-    public $post_types = ['post', 'tribe_events'];
+    public $post_types = [];
 
     /**
      * The parent block type allow list.
@@ -68,7 +68,7 @@ class PostLinks extends Block
      *
      * @var string
      */
-    public $align = '';
+    public $align = 'wide';
 
     /**
      * The default block text alignment.
@@ -98,7 +98,18 @@ class PostLinks extends Block
         'jsx' => true,
     ];
 
-
+    /**
+     * The block preview example data.
+     *
+     * @var array
+     */
+    public $example = [
+        'items' => [
+            ['item' => 'Item one'],
+            ['item' => 'Item two'],
+            ['item' => 'Item three'],
+        ],
+    ];
 
     /**
      * Data to be passed to the block before rendering.
@@ -108,7 +119,10 @@ class PostLinks extends Block
     public function with()
     {
         return [
-            'links' => $this->items(),
+            'title' => get_field('title'),
+            'content' => get_field('content'),
+            'link' => get_field('link'),
+            'img' => get_field('image'),
         ];
     }
 
@@ -119,48 +133,15 @@ class PostLinks extends Block
      */
     public function fields()
     {
-        $postLinks = new FieldsBuilder('post_links');
+        $splitContent = new FieldsBuilder('split_content');
 
-        $postLinks
-            ->addRepeater('links', [
-                'max' => '3',
-            ])
-                ->addTrueFalse('true', [
-                    'label' => 'Link?',
-                    'default_value' => 1,
-                ])
-                    ->setWidth('16')
-                ->addLink('link')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '1')
-                ->addFile('file')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '0')
-                ->addText('title')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '0')
-            ->endRepeater();
+        $splitContent
+            ->addText('title')
+            ->addWysiwyg('content')
+            ->addLink('link')
+            ->addImage('image');
 
-        return $postLinks->build();
+        return $splitContent->build();
     }
 
-    /**
-     * Return the items field.
-     *
-     * @return array
-     */
-    public function items()
-    {
-        return get_field('links') ?: $this->example['links'];
-    }
-
-    /**
-     * Assets to be enqueued when rendering the block.
-     *
-     * @return void
-     */
-    public function enqueue()
-    {
-        //
-    }
 }

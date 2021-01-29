@@ -5,21 +5,21 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class PostLinks extends Block
+class IssuesBlock extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Post Links';
+    public $name = 'Issues Block';
 
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple PostLinks block.';
+    public $description = 'A simple Issues block.';
 
     /**
      * The block category.
@@ -47,7 +47,7 @@ class PostLinks extends Block
      *
      * @var array
      */
-    public $post_types = ['post', 'tribe_events'];
+    public $post_types = [];
 
     /**
      * The parent block type allow list.
@@ -68,7 +68,7 @@ class PostLinks extends Block
      *
      * @var string
      */
-    public $align = '';
+    public $align = 'wide';
 
     /**
      * The default block text alignment.
@@ -98,7 +98,18 @@ class PostLinks extends Block
         'jsx' => true,
     ];
 
-
+    /**
+     * The block preview example data.
+     *
+     * @var array
+     */
+    public $example = [
+        'items' => [
+            ['item' => 'Item one'],
+            ['item' => 'Item two'],
+            ['item' => 'Item three'],
+        ],
+    ];
 
     /**
      * Data to be passed to the block before rendering.
@@ -108,7 +119,9 @@ class PostLinks extends Block
     public function with()
     {
         return [
-            'links' => $this->items(),
+            'title' => get_field('title'),
+            'show' => get_field('images'),
+            'issues' => $this->getIssues(),
         ];
     }
 
@@ -119,48 +132,32 @@ class PostLinks extends Block
      */
     public function fields()
     {
-        $postLinks = new FieldsBuilder('post_links');
+        $issues = new FieldsBuilder('issues_block');
 
-        $postLinks
-            ->addRepeater('links', [
-                'max' => '3',
-            ])
-                ->addTrueFalse('true', [
-                    'label' => 'Link?',
-                    'default_value' => 1,
-                ])
-                    ->setWidth('16')
-                ->addLink('link')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '1')
-                ->addFile('file')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '0')
-                ->addText('title')
-                    ->setWidth('42')
-                    ->conditional('true', '==', '0')
-            ->endRepeater();
+        $issues
+            ->addText('title')
+            ->addTrueFalse('images');
 
-        return $postLinks->build();
+        return $issues->build();
     }
 
-    /**
-     * Return the items field.
-     *
-     * @return array
-     */
-    public function items()
-    {
-        return get_field('links') ?: $this->example['links'];
-    }
 
-    /**
-     * Assets to be enqueued when rendering the block.
-     *
-     * @return void
-     */
-    public function enqueue()
-    {
-        //
+    public function getIssues() {
+        $terms = get_terms('issue', [
+            'hide_empty' => false,
+        ]);
+
+        $data = [];
+        foreach($terms as $term)
+        $data[] = [
+            'name' => $term->name,
+            'slug' => $term->slug,
+            'desc' => $term->description,
+            'img' => get_field('featured image', $term),
+            'color' => get_field('color', $term),
+            'font' => get_field('font', $term),
+        ];
+
+        return $data;
     }
 }

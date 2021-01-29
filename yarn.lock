@@ -4996,7 +4996,7 @@
     "merge-stream" "^2.0.0"
     "supports-color" "^7.0.0"
 
-"jquery@^3.5.1":
+"jquery@^3.5.1", "jquery@>=1.7":
   "integrity" "sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg=="
   "resolved" "https://registry.npmjs.org/jquery/-/jquery-3.5.1.tgz"
   "version" "3.5.1"
@@ -5225,6 +5225,11 @@
   "integrity" "sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA="
   "resolved" "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.1.6.tgz"
   "version" "1.1.6"
+
+"lity@^2.4.1":
+  "integrity" "sha512-SVCYf+urp9tgGITi8RIJlzl6cMH6/gl16vkwOscLzN+5I1+/vxYbypbWMeHmbYCwGflq35bcvtzh6RxROWjSTw=="
+  "resolved" "https://registry.npmjs.org/lity/-/lity-2.4.1.tgz"
+  "version" "2.4.1"
 
 "load-json-file@^2.0.0":
   "integrity" "sha1-eUfkIUmvgNaWy/eXvKq8/h/inKg="

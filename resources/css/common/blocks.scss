@@ -12,3 +12,71 @@
     @apply bg-c-gray-50;
   }
 } 
+
+.event-calendar {
+  .tribe-events-header {
+    @apply bg-c-blue-300 m-0 p-0;
+    .tribe-common-h3 {
+      @apply font-bold font-whyte uppercase text-white inline-flex;
+    }
+    .tribe-common-c-svgicon__svg-fill {
+      @apply fill-current text-white;
+    }
+    .tribe-events-header__top-bar {
+      @apply mb-0 py-6 justify-center flex-1 flex-nowrap;
+    }
+    .tribe-events-c-top-bar__datepicker {
+      @apply flex justify-center;
+    }
+    .datepicker .month.active.focused {
+      background: #6DA4F0;
+    }
+  }
+  .tribe-events-calendar-month {
+    @apply bg-c-gray-100;
+    .tribe-events-calendar-month__header-column-title {
+      @apply font-bold text-gray-600 font-whyte normal-case md:text-center;
+    }
+    .tribe-events-calendar-month__header-column {
+      @apply py-2;
+    }
+    .tribe-events-calendar-month__header {
+      @apply border-b border-gray-200 border-solid;
+    }
+    .tribe-events-calendar-month__week {
+      @apply divide-x divide-gray-200 divide-solid;
+    }
+    .tribe-events-calendar-month__body {
+      @apply divide-y divide-gray-200 divide-solid;
+    }
+    .tribe-events-calendar-month__day-date-daynum {
+      @apply font-whyte font-bold text-black opacity-100;
+    }
+    .tribe-events-calendar-month__day-cell {
+      h3 {
+        @apply font-whyte font-bold text-black opacity-100;
+      }
+    }
+    .tribe-events-calendar-month__day-cell--selected {
+      @apply bg-c-blue-50;
+    }
+    .tribe-events-calendar-month__mobile-events-icon--event {
+      @apply bg-c-blue-100;
+    }
+    .tribe-events-calendar-month__multiday-event-bar-title {
+      @apply underline overflow-clip;
+    }
+    .tribe-events-calendar-month__multiday-event-bar-inner {
+      @apply pr-1 bg-transparent;
+    }
+    .tribe-events-calendar-month__multiday-event-bar-inner--hover {
+      @apply bg-transparent;
+    }
+    .tribe-events-calendar-month__multiday-event-bar {
+      @apply bg-transparent rounded-none;
+    }
+  }
+  .calendar-day-has-events {
+    @apply bg-c-blue-50;
+  }
+}

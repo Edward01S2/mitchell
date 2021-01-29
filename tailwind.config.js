@@ -28,9 +28,15 @@ module.exports = {
           200: '#939598',
         }
       },
+      spacing: {
+        108: '28rem',
+      },
       fontFamily: {
         'whyte' : ['Whyte', 'sans-serif'],
         'antiza' : ['Antiza', 'serif'],
+      },
+      boxShadow: {
+        article: '0 10px 50px 0 rgba(0, 0, 0, 0.08)',
       }
     },
   },

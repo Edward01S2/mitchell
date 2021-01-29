@@ -7,15 +7,13 @@
       </h1>
     </div>
 
-    <div class="px-6 py-4 text-sm bg-white border-b border-gray-100 md:flex md:justify-end md:items-center md:space-x-6 md:px-8 xl:py-6 lg:space-x-8 xl:px-12">
-      @if($show_author)      
+    <div class="px-6 py-4 text-sm bg-white border-b border-gray-100 md:flex md:justify-end md:items-center md:space-x-6 md:px-8 xl:py-6 lg:space-x-8 xl:px-12">     
         <p class="text-gray-600 byline author vcard font-whyte">
-          <span>{{ __('Author:', 'sage') }}</span>
-          <span class="uppercase">{{ get_the_author() }}</span>
+          <span>{{ __('Speaker(s):', 'sage') }}</span>
+          <span class="">{!! $speaker !!}</span>
         </p>
-      @endif
-      <time class="text-gray-600 uppercase updated font-whyte" datetime="{{ get_post_time('c', true) }}">
-        {{ get_the_date() }}
+      <time class="text-gray-600 uppercase updated font-whyte" datetime="{{ date('c', strtotime($event->EventStartDate)) }}">
+        {{ date('F j, Y', strtotime($event->EventStartDate)) }}
       </time>  
     </div>
   </header>
@@ -25,7 +23,9 @@
       @php(the_content())
     </div>
   </div>
-
+{{-- 
+  @dump($event) --}}
+  
   <div class="pb-12 text-center text-gray-600 lg:pb-20 xl:pb-24">
     <div class="mb-4 lg:text-lg">Share Article</div>
     <div class="flex justify-center space-x-4 a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-title="{!! $title  !!}">

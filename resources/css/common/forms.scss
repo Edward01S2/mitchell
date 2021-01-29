@@ -1,0 +1,77 @@
+.gfield {
+  @apply mb-4 md:flex md:items-center md:w-full;
+  input, select, textarea {
+    @apply w-full bg-white focus:outline-none;
+  }
+  &.gfield_error {
+    input, select, textarea {
+      @apply border-2 border-red-500;
+    }
+  }
+  textarea {
+    @apply h-40;
+  }
+}
+
+.hidden_label label{
+  @apply hidden;
+}
+
+.gfield_visibility_hidden {
+  @apply hidden;
+}
+.validation_message {
+  @apply hidden;
+}
+.validation_error {
+  @apply text-red-500 px-0 mb-4 md:mb-4 md:w-4/5 md:mx-auto md:text-center;
+}
+.gform_footer {
+  @apply md:flex md:justify-end;
+  .gform_button {
+    @apply text-white py-4 uppercase font-extrabold tracking-widest w-full cursor-pointer transition duration-150;
+  }
+}
+.gfield_required {
+  @apply hidden;
+}
+
+.gform_validation_container {
+  @apply hidden;
+}
+
+.gform_ajax_spinner {
+  @apply hidden;
+}
+
+.footer-form {
+  #gform_1 {
+    @apply flex flex-wrap;
+  }
+  .validation_error {
+    @apply w-full;
+  }
+  .gform_body {
+    @apply flex-grow;
+  }
+  .gform_button {
+    @apply my-auto bg-c-blue-300 h-full w-10 px-1 py-1 transition duration-300;
+    &:hover {
+    }
+  }
+  .gform_footer {
+    @apply flex items-center bg-c-blue-300;
+  }
+  .gfield {
+    @apply mb-0;
+    .ginput_container {
+      @apply w-full;
+    }
+    input {
+      @apply py-2 px-4 w-full font-whyte;
+    } 
+  }
+  .gform_confirmation_message_1 {
+    @apply text-gray-600;
+  }
+}

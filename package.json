@@ -42,6 +42,7 @@
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "alpinejs": "^2.8.0",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "lity": "^2.4.1"
   }
 }

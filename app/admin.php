@@ -74,3 +74,19 @@ add_action( 'init', function() {
     ) );
 
 } );
+
+add_filter( 'tribe_events_editor_default_template', function( $template ) {
+    if(class_exists('acf')) {
+        $template = [
+            [ 'tribe/event-datetime' ],
+            [ 'acf/speaker' ],
+            [ 'core/paragraph', [
+                'placeholder' => __( 'Add Description...', 'the-events-calendar' ),
+                ], 
+            ],
+            [ 'acf/post-links' ],
+        ];
+    }
+    return $template;
+}, 11, 1 );
+  

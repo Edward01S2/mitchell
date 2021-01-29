@@ -6,6 +6,10 @@ h1, h2, h3, h4, h5, h6 {
   @apply font-whyte font-bold;
 }
 
+[x-cloak] {
+  @apply hidden;
+}
+
 figure.wp-block-embed.is-type-video {
   position: relative;
   width: 100%;
@@ -22,4 +26,17 @@ figure.wp-block-embed.is-type-video iframe {
 
 .nav-home {
   @apply md:hidden lg:block;
+}
+
+footer {
+  .nav-head {
+    @apply font-bold font-whyte text-black;
+  }
+  .nav-sub {
+    @apply font-whyte text-gray-600;
+  }
+}
+
+.font-whyte {
+  @apply align-baseline;
 }

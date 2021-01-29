@@ -5,11 +5,11 @@
       @yield('content')
     </main>
 
-    @hasSection('sidebar')
+    {{-- @hasSection('sidebar')
       <aside class="sidebar">
         @yield('sidebar')
       </aside>
-    @endif
+    @endif --}}
 
   @include('partials.footer')
 </div>

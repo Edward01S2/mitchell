@@ -4,8 +4,8 @@
 
       <div class="lg:flex-shrink-0">
         <div class="flex items-center flex-shrink-0 md:justify-center">
-          <a href="{!! home_url('/') !!}" class="hover:opacity-50" target="_blank">
-            <img id="logo-main" class="w-auto h-16" src="{!! $logo['url'] !!}" alt="{{ $siteName }}" />
+          <a href="{!! home_url('/') !!}" class="hover:opacity-50">
+            <img id="logo-main" class="w-auto h-16 md:h-20" src="{!! $logo['url'] !!}" alt="{{ $siteName }}" />
           </a>
         </div>
       </div>

@@ -14,6 +14,8 @@ return [
 
     'paths' => [
         get_theme_file_path('/resources/views'),
+        get_theme_file_path('/tribe'),
+        get_theme_file_path('/tribe-events'),
         get_parent_theme_file_path('/resources/views'),
     ],
 

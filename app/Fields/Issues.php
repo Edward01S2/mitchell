@@ -24,7 +24,9 @@ class Issues extends Field
             ->setLocation('taxonomy', '==', 'issue');
 
         $issues
-            ->addImage('featured image');
+            ->addImage('featured image')
+            ->addColorPicker('color')
+            ->addColorPicker('font');
 
         return $issues->build();
     }
