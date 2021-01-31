@@ -198,3 +198,11 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer'
     ] + $config);
 });
+
+add_action('init', function() {
+    register_taxonomy('post_tag', array());
+});
+
+add_action( 'admin_menu', function() {
+    remove_menu_page('edit-tags.php?taxonomy=post_tag'); // Post tags
+});

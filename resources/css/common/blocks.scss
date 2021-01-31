@@ -80,3 +80,16 @@
     @apply bg-c-blue-50;
   }
 }
+
+.stats-container {
+  .stat:nth-child(1), .stat:nth-child(3) {
+    .stat-inner-container {
+      @apply md:ml-auto md:mr-0 md:pr-12 lg:pr-16 xl:pr-20 2xl:pr-24;
+    }
+  }
+  .stat:nth-child(2), .stat:nth-child(4) {
+    .stat-inner-container {
+      @apply md:mr-auto md:ml-0 md:pl-12 lg:pl-16 xl:pl-20 2xl:pl-24;
+    }
+  }
+}

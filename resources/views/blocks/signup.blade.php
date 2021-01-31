@@ -1,15 +1,15 @@
 <div class="{{ $block->classes }}">
-  @if ($items)
-    <ul>
-      @foreach ($items as $item)
-        <li>{{ $item['item'] }}</li>
-      @endforeach
-    </ul>
-  @else
-    <p>{{ $block->preview ? 'Add an item...' : 'No items found!' }}</p>
-  @endif
-
-  <div>
-    <InnerBlocks />
+  <div class="bg-gray-900 bg-center bg-cover" style="background-image:url({!! $bg['url'] !!});">
+    <div class="container px-6 mx-auto lg:px-8">
+      <div class="py-12 text-center text-white md:py-16 lg:py-24 xl:py-32">
+        <h3 class="mb-8 text-2xl md:text-3xl lg:text-4xl xl:text-5xl">{!! $title !!}</h3>
+        <div class="max-w-xs mx-auto md:max-w-sm xl:max-w-md">
+          <div class="mb-4 text-black signup-form">
+            @include('partials.form', ['form' => $form])
+          </div>
+          <div class="lg:px-8 xl:px-12">{!! $consent !!}</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

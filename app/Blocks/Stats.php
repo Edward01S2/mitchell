@@ -5,23 +5,21 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-use App\Fields\Partials\GForm;
-
-class Signup extends Block
+class Stats extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Signup';
+    public $name = 'Stats';
 
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple Signup block.';
+    public $description = 'A simple Stats block.';
 
     /**
      * The block category.
@@ -121,10 +119,7 @@ class Signup extends Block
     public function with()
     {
         return [
-            'title' => get_field('title'),
-            'form' => get_field('gravity'),
-            'consent' => get_field('consent'),
-            'bg' => get_field('bg'),
+            'stats' => get_field('stats'),
         ];
     }
 
@@ -135,14 +130,23 @@ class Signup extends Block
      */
     public function fields()
     {
-        $signup = new FieldsBuilder('signup');
+        $stats = new FieldsBuilder('stats');
 
-        $signup
-            ->addText('title')
-            ->addFields($this->get(GForm::class))
-            ->addTextarea('consent')
-            ->addImage('bg');
+        $stats
+            ->addRepeater('stats', [
+                'collapsed' => 'title'
+            ])
+                ->addText('number')
+                    ->setWidth('25')
+                ->addText('description')
+                    ->setWidth('75')
+                ->addText('title')
+                ->addTextarea('content')
+                ->addLink('link')
+                ->addImage('bg')
+            ->endRepeater();
 
-        return $signup->build();
+        return $stats->build();
     }
+
 }

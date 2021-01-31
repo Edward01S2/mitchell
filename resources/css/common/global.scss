@@ -40,3 +40,7 @@ footer {
 .font-whyte {
   @apply align-baseline;
 }
+
+.grayscale {
+  filter:grayscale(1);
+}

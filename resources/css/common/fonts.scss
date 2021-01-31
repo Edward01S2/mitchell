@@ -23,6 +23,18 @@
 
 @font-face {
   font-family: 'Whyte';
+  src: local('Whyte Black'), local('Whyte-Black'),
+      url('../fonts/Whyte-Black.woff2') format('woff2'),
+      url('../fonts/Whyte-Black.woff') format('woff'),
+      url('../fonts/Whyte-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  vertical-align: middle;
+}
+
+
+@font-face {
+  font-family: 'Whyte';
   src: local('Whyte Regular'), local('Whyte-Regular'),
       url('../fonts/Whyte-Regular-New.woff2') format('woff2'),
       url('../fonts/Whyte-Regular-New.woff') format('woff'),

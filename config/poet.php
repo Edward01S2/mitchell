@@ -57,6 +57,10 @@ return [
             'links' => ['post'],
             'meta_box' => 'radio',
         ],
+        'tag' => [
+            'links' => ['post', 'tribe_events'],
+            'meta_box' => 'simple'
+        ]
     ],
 
     /*
