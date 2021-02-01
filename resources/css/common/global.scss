@@ -44,3 +44,9 @@ footer {
 .grayscale {
   filter:grayscale(1);
 }
+
+.prose {
+  .aligncenter {
+    @apply mx-auto;
+  }
+}
