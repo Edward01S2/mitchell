@@ -7,9 +7,7 @@ module.exports = {
       './resources/**/*.json',
     ],
     options: {
-      safelist: {
-        greedy: '/wp-embed-responsive',
-      }
+
     },
   },
   darkMode: false, // or 'media' or 'class'
