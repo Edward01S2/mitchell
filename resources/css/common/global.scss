@@ -46,9 +46,22 @@ footer {
 }
 
 .prose {
+  .alignleft {
+    display: inline;
+    float: left;
+    margin-right: 1.5em;
+  }
+  
+  .alignright {
+    display: inline;
+    float: right;
+    margin-left: 1.5em;
+  }
+  
   .aligncenter {
-    img {
-      @apply mx-auto;
-    }
+    clear: both;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
