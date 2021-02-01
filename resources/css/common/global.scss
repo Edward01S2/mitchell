@@ -47,6 +47,8 @@ footer {
 
 .prose {
   .aligncenter {
-    @apply mx-auto;
+    img {
+      @apply mx-auto;
+    }
   }
 }
