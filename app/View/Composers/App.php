@@ -99,9 +99,9 @@ class App extends Composer
             'hide_empty' => false,
         ]);
 
-        if($top = get_field('tax', $term)) {
-            $check_ids = wp_list_pluck($top, 'term_id');
-        }
+        // if($top = get_field('tax', $term)) {
+        //     $check_ids = wp_list_pluck($top, 'term_id');
+        // }
           
         //return $tags;
         
