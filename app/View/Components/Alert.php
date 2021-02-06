@@ -29,7 +29,7 @@ class Alert extends Component
         'default' => 'text-indigo-50 bg-indigo-400',
         'success' => 'text-green-50 bg-green-400',
         'caution' => 'text-yellow-50 bg-yellow-400',
-        'warning' => 'text-red-50 bg-red-400',
+        'warning' => 'text-red-50 bg-red-500 rounded-md',
     ];
 
     /**

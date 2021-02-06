@@ -4,6 +4,7 @@
 import 'jquery';
 import 'alpinejs';
 import 'lity';
+import { debounce } from 'underscore';
 import Swiper, { Navigation } from 'swiper';
 
 Swiper.use([Navigation]);
@@ -32,5 +33,53 @@ $(document).ready(() => {
       }
     }
   });
+
+  $('.tag-filters').on('change', 'input[type="checkbox"]', debounce(tagFilters, 1250));
+
+  function tagFilters() {
+    var url = location.protocol + '//' + location.host + location.pathname,
+    args = {},
+    vals = [];
+  
+    // loop over filters
+    $('.tag-filters .filter').each(function(){
+      
+      // vars
+      var filter = $(this).data('filter');
+        
+      // find checked inputs
+      $(this).find('input:checked').each(function(){
+        
+        //console.log($(this).val())
+        vals.push( $(this).val() );
+
+      });
+      
+      //console.log(vals)
+      
+      // append to args
+      args[ filter ] = vals.join(',');
+      //console.log(args)
+    });
+
+    //console.log(args)
+
+    if(args['label'] !== "") {
+      // update url
+      url += '?';
+
+      // loop over args
+      $.each(args, function( name, value ){
+        url += name + '=' + value + '&';
+      });
+
+      // remove last &
+      url = url.slice(0, -1);
+    }
+
+    //console.log(url)
+    // reload page
+    window.location.replace( url );
+  }
 
 });

@@ -49,7 +49,7 @@ class App extends Composer
         
         $issue_filters = [];
         foreach($issues as $tax) {
-        $issue_filters[$tax->slug] = $tax->name;
+          $issue_filters[$tax->slug] = $tax->name;
         };
         
         return $issue_filters;
@@ -72,50 +72,71 @@ class App extends Composer
 
     public function tagFilters() {
         
-        // if($term = get_queried_object()) {
+        if(is_archive()) {
 
-        //   $objects = get_posts([
-        //       'post_type' => 'post',
-        //       'numberposts' => -1,
-        //       'tax_query' => [
-        //         [
-        //           'taxonomy' => $term->taxonomy,
-        //           'field' => 'term_id',
-        //           'terms' => $term->term_id,
-        //         ]
-        //       ],
-        //   ]);
+          $term = get_queried_object();
+
+          //return $term;
+
+          $top = get_field('tax', $term);
+          if(isset($top) && $top) {
+            //Array of terms IDs for the top tags set for the taxonomy
+            $check_ids = wp_list_pluck($top, 'term_id');
+          }
+
+          //return $check_ids;
+
+          if($term) :
+            $objects = get_posts([
+              'post_type' => 'post',
+              'numberposts' => -1,
+              'tax_query' => [
+                [
+                  'taxonomy' => $term->taxonomy,
+                  'field' => 'term_id',
+                  'terms' => $term->term_id,
+                ]
+              ],
+              'fields' => 'ids',
+            ]);
+
+            $tags = wp_get_object_terms( $objects, 'label' );
+
+          endif;
           
-        //   foreach ($objects as $object) {
-        //     $object_ids[] = $object->ID;
-        //   }
 
-        //   $collections = wp_get_object_terms( $object_ids, 'tag' );
+          //return $objects;
 
-        //   return $collections;
-        // }
+         
 
-        $tags = get_terms('tag', [
-            'hide_empty' => false,
-        ]);
+          //return $tags;
 
-        // if($top = get_field('tax', $term)) {
-        //     $check_ids = wp_list_pluck($top, 'term_id');
-        // }
+          $tag_filters = [];
+          if($tags) :
+            foreach($tags as $tax) {
+                if(isset($check_ids) && in_array($tax->term_id, $check_ids)) {
+                    $tag_filters['top'][$tax->slug] = $tax->name;
+                }
+                else {
+                    $tag_filters['tags'][$tax->slug] = $tax->name;
+                }
+            };
+          endif;
+          
+          return $tag_filters;
+        }
+
+
+        // $tags = get_terms([
+        //     'taxonomy' => 'tag',
+        //     'hide_empty' => true,
+        // ]);
+
+
           
         //return $tags;
         
-        $tag_filters = [];
-        foreach($tags as $tax) {
-            if(isset($check_ids) && in_array($tax->term_id, $check_ids)) {
-                $tag_filters['top'][$tax->slug] = $tax->name;
-            }
-            else {
-                $tag_filters['tags'][$tax->slug] = $tax->name;
-            }
-        };
-        
-        return $tag_filters;
+      
     }
 
     public function authorFilters() {

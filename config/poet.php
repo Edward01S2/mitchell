@@ -14,19 +14,25 @@ return [
 
     'post' => [
         'post' => [
-            // 'labels' => [
-            //     'singular' => 'Article',
-            //     'plural' => 'Articles',
-            // ],
             // 'admin_cols' => [
             //     'issue' => [
             //         'taxonomy' => 'issue'
             //     ],
             // ],
+            // 'admin_cols' => [
+            //     'post_tag' => [
+            //         'taxonomy' => 'post_tag'
+            //     ],
+            // ],
             // 'admin_filters' => [
             //     'issue' => [
+            //         'title' => 'Issue',
             //         'taxonomy' => 'issue'
             //     ],
+            //     'tag' => [
+            //         'title' => 'Tag',
+            //         'taxonomy' => 'tag'
+            //     ]
             // ],
         ],
         // 'book' => [
@@ -60,10 +66,11 @@ return [
                 'slug' => 'issue'
             ],
         ],
-        'tag' => [
-            'links' => ['post', 'tribe_events'],
-            'meta_box' => 'simple'
-        ]
+        // 'post_tag' => false,
+        // 'post_tag' => [
+        //     'links' => ['post', 'tribe_events'],
+        //     'meta_box' => 'simple'
+        // ]
     ],
 
     /*

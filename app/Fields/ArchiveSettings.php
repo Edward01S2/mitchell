@@ -34,7 +34,7 @@ class ArchiveSettings extends Field
             ])
             ->addTaxonomy('tax', [
                 'label' => 'Top Tags',
-                'taxonomy' => 'tag',
+                'taxonomy' => 'label',
                 'field_type' => 'multi_select',
                 'multiple' => 1,
                 'add_term' => 0,

@@ -4,7 +4,6 @@
 
   @include('blocks.hero', ['bg' => $bg, 'title' => $title, 'content' => $content])
   
-  
   @if (! have_posts())
     <div class="container px-6 py-12 mx-auto lg:px-8">
       <x-alert type="warning">
@@ -13,15 +12,19 @@
     </div>
   @endif
 
-  <div class="container px-6 pb-12 mx-auto lg:px-8 md:pt-8 lg:pt-12 xl:pb-16">
-    <div class="flex flex-col divide-y divide-gray-200 posts-wrapper lg:max-w-4xl lg:mx-auto xl:max-w-5xl 2xl:max-w-6xl">
-      @while(have_posts()) @php(the_post())
-        @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
-      @endwhile
-    </div>
+  @if(have_posts())
+    @include('partials.filters')
 
-    {!! $pagi !!}
-  </div>
+    <div class="container px-6 pb-12 mx-auto lg:px-8 md:pt-8 lg:pt-12 xl:pb-16">
+      <div class="flex flex-col divide-y divide-gray-200 posts-wrapper lg:max-w-4xl lg:mx-auto xl:max-w-5xl 2xl:max-w-6xl">
+        @while(have_posts()) @php(the_post())
+          @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+        @endwhile
+      </div>
+
+      {!! $pagi !!}
+    </div>
+  @endif
 
   @if($terms)
     <div class="overflow-hidden bg-gray-800 bg-center bg-cover" style="background-image:url({!! $more_bg['url'] !!});">
@@ -70,6 +73,7 @@
     </div>
   @endif
 
+  {{-- @dump($top) --}}
   
   {{-- @dump($more_tax) --}}
 

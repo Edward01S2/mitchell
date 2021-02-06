@@ -202,8 +202,60 @@ add_action('widgets_init', function () {
 
 add_action('init', function() {
     register_taxonomy('post_tag', array());
+
+    register_extended_taxonomy( 'label', ['post', 'tribe_events'], array(
+
+        # Use radio buttons in the meta box for this taxonomy on the post editing screen:
+        'meta_box' => 'simple',
+        'hierarachical' => true,
+
+        # Show this taxonomy in the 'At a Glance' dashboard widget:
+
+        # Add a custom column to the admin screen:
+
+        ), array(
+
+        # Override the base names used for labels:
+        'singular' => 'Tag',
+        'plural'   => 'Tags',
+        'slug'     => 'tag'
+
+    ) );
+
+    // //register_post_type('post', array());
+    register_extended_post_type( 'post', array(
+
+        'admin_cols' => array(
+            // 'label' => array(
+            //     'taxonomy' => 'label',
+            //     'title' => 'Tag'
+            // ),
+        //     // 'label' => array(
+        //     //     'taxonomy' => 'label',
+        //     //     'title' => 'Tag'
+        //     // ),
+        //     //The default Title column:
+        //     'title',
+        //    // A meta field column:
+        //     //A taxonomy terms column:
+
+        //     'date'
+        ),
+        'admin_filters' => array(
+			'label' => array(
+				'taxonomy' => 'label'
+			)
+		)
+
+    ) );
+
+
 });
 
-add_action( 'admin_menu', function() {
-    remove_menu_page('edit-tags.php?taxonomy=post_tag'); // Post tags
+add_action('admin_head', function() {
+  echo '<style>
+    #posts-filter #filter_tags {
+        display:none;
+    }
+  </style>';
 });
