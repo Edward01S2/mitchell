@@ -72,28 +72,28 @@ class App extends Composer
 
     public function tagFilters() {
         
-        if($term = get_queried_object()) {
+        // if($term = get_queried_object()) {
 
-          $objects = get_posts([
-              'post_type' => 'post',
-              'numberposts' => -1,
-              'tax_query' => [
-                [
-                  'taxonomy' => $term->taxonomy,
-                  'field' => 'term_id',
-                  'terms' => $term->term_id,
-                ]
-              ],
-          ]);
+        //   $objects = get_posts([
+        //       'post_type' => 'post',
+        //       'numberposts' => -1,
+        //       'tax_query' => [
+        //         [
+        //           'taxonomy' => $term->taxonomy,
+        //           'field' => 'term_id',
+        //           'terms' => $term->term_id,
+        //         ]
+        //       ],
+        //   ]);
           
-          foreach ($objects as $object) {
-            $object_ids[] = $object->ID;
-          }
+        //   foreach ($objects as $object) {
+        //     $object_ids[] = $object->ID;
+        //   }
 
-          $collections = wp_get_object_terms( $object_ids, 'tag' );
+        //   $collections = wp_get_object_terms( $object_ids, 'tag' );
 
-          return $collections;
-        }
+        //   return $collections;
+        // }
 
         $tags = get_terms('tag', [
             'hide_empty' => false,
