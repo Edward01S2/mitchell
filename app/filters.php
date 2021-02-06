@@ -12,10 +12,15 @@ namespace App;
  * @return string
  */
 add_filter('excerpt_more', function () {
-    return sprintf(' &hellip; <a href="%s">%s</a>', get_permalink(), __('Continued', 'sage'));
+    return '';
 });
 
 add_filter( 'tribe_events_views_v2_use_wp_template_hierarchy', '__return_true' );
+
+
+add_filter( 'excerpt_length', function() {
+    return 75;
+}, 999 );
 
 // add_filter( 'tribe_events_views_v2_use_wp_template_hierarchy', function( $hijack, $template, $context, $query ) {
 //     if ( is_singular() ) {

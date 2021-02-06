@@ -25,7 +25,7 @@ class EventArchive extends Composer
     public function override()
     {
         return [
-            'bg' => get_field('event bg', 'options'),
+            'bg' => get_field('event bg', 'options')['url'],
             'title' => get_field('event title', 'options'),
             'content' => get_field('event content', 'options'),
             'pagi' => $this->pagination(),
@@ -35,7 +35,7 @@ class EventArchive extends Composer
     public function pagination() {
       $pagination = Pagi::build();
 
-      return $pagination->links();
+      return $pagination->links('components.pagination');
     }
 
 }

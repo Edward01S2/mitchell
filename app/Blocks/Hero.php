@@ -122,7 +122,7 @@ class Hero extends Block
             'pretitle' => get_field('pretitle'),
             'title' => get_field('title'),
             'content' => get_field('content'),
-            'bg' => get_field('bg'),
+            'bg' => ($bg = get_field('bg')) ? $bg['url'] : '',
             'video' => get_field('video'),
             'video_url' => get_field('video url'),
         ];

@@ -107,3 +107,27 @@
     @apply text-gray-600;
   }
 }
+
+.contact-form {
+  .validation_error {
+    @apply lg:text-lg xl:text-xl;
+  }
+  .gfield {
+    @apply lg:mb-6;
+    input, textarea {
+      @apply py-3 placeholder-gray-400 lg:text-lg lg:py-4 xl:text-xl;
+    }
+    textarea {
+      @apply lg:h-56;
+    }
+  }
+  .ginput_container {
+    @apply w-full;
+  }
+  .gform_footer {
+    @apply flex items-center justify-center;
+  }
+  .gform_button {
+    @apply font-whyte font-bold text-white bg-transparent w-auto normal-case px-12 py-3 tracking-wide border border-white md:px-16 hover:bg-white hover:text-c-blue-300 lg:text-lg xl:text-xl;
+  }
+}

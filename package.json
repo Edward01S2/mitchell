@@ -21,6 +21,8 @@
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.2.1",
+    "@tailwindcss/line-clamp": "^0.2.0",
     "@tailwindcss/typography": "^0.4.0",
     "@tinypixelco/laravel-mix-wp-blocks": "^1.1.0",
     "@wordpress/babel-preset-default": "^4.20.0",
@@ -43,6 +45,7 @@
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "alpinejs": "^2.8.0",
     "jquery": "^3.5.1",
-    "lity": "^2.4.1"
+    "lity": "^2.4.1",
+    "swiper": "^6.4.10"
   }
 }

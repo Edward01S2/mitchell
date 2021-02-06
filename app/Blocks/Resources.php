@@ -5,21 +5,21 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class IssuesBlock extends Block
+class Resources extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Issues Block';
+    public $name = 'Resources';
 
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple Issues block.';
+    public $description = 'A simple Resources block.';
 
     /**
      * The block category.
@@ -119,10 +119,7 @@ class IssuesBlock extends Block
     public function with()
     {
         return [
-            'title' => get_field('title'),
-            'bg' => get_field('bg'),
-            'images' => get_field('images'),
-            'issues' => $this->getIssues(),
+            'cats' => $this->getCats(),
         ];
     }
 
@@ -133,19 +130,30 @@ class IssuesBlock extends Block
      */
     public function fields()
     {
-        $issues = new FieldsBuilder('issues_block');
+        $resources = new FieldsBuilder('resources');
 
-        $issues
-            ->addText('title')
-            ->addTrueFalse('images')
-            ->addImage('bg');
+        $resources
+            ->addTextarea('resources', [
+                'readonly' => '1',
+                'default_value' => 'Resources block',
+                'rows' => '3',
+            ]);
 
-        return $issues->build();
+        return $resources->build();
     }
 
+    /**
+     * Assets to be enqueued when rendering the block.
+     *
+     * @return void
+     */
+    public function enqueue()
+    {
+        //
+    }
 
-    public function getIssues() {
-        $terms = get_terms('issue', [
+    public function getCats() {
+        $terms = get_terms('category', [
             'hide_empty' => false,
         ]);
 

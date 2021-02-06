@@ -20,11 +20,13 @@ module.exports = {
           150: '#1847F7',
           200: '#0065F2',
           300: '#07202D',
+          400: '#124159',
         },
         'c-gray': {
           50: '#F1F1F1',
           100: '#F3F5F8',
           200: '#939598',
+          300: '#999999',
         }
       },
       spacing: {
@@ -52,6 +54,8 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
   ],
   
 };

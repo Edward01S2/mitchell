@@ -26,7 +26,7 @@ class About extends Block
      *
      * @var string
      */
-    public $category = 'formatting';
+    public $category = 'acf';
 
     /**
      * The block icon.
@@ -61,14 +61,14 @@ class About extends Block
      *
      * @var string
      */
-    public $mode = 'preview';
+    public $mode = 'edit';
 
     /**
      * The default block alignment.
      *
      * @var string
      */
-    public $align = '';
+    public $align = 'wide';
 
     /**
      * The default block text alignment.
@@ -119,7 +119,14 @@ class About extends Block
     public function with()
     {
         return [
-            'items' => $this->items(),
+            'content' => get_field('content'),
+            'items' => get_field('items'),
+            'content2' => get_field('content 2'),
+            'staff' => get_field('staff'),
+            'fellows' => get_field('fellows'),
+            'careers' => get_field('careers'),
+            'issues' => $this->getIssues(),
+            'issues_bg' => get_field('issues bg'),
         ];
     }
 
@@ -133,30 +140,82 @@ class About extends Block
         $about = new FieldsBuilder('about');
 
         $about
-            ->addRepeater('items')
-                ->addText('item')
-            ->endRepeater();
+            ->addTab('Mission')
+                ->addWysiwyg('content')
+                ->addRepeater('items', [
+                    'collapsed' => 'title',
+                ])
+                    ->addText('title')
+                    ->addTextarea('content', [
+                        'rows' => '2',
+                    ])
+                    ->addImage('image')
+                ->endRepeater()
+                ->addWysiwyg('content 2', [
+                    'label' => 'Content'
+                ])
+                ->addImage('issues bg')
+            ->addTab('Staff')
+                ->addRepeater('staff', [
+                    'collapsed' => 'name'
+                ])
+                    ->addText('name')
+                    ->addText('title')
+                        ->setWidth('50')
+                    ->addText('email')
+                        ->setWidth('50')
+                    ->addWysiwyg('bio')
+                    ->addImage('image')
+                    ->addFile('download')
+                ->endRepeater()
+            ->addTab('Fellows')
+                ->addRepeater('fellows', [
+                    'collapsed' => 'name'
+                ])
+                    ->addText('name')
+                    ->addText('title')
+                        ->setWidth('50')
+                    ->addText('email')
+                        ->setWidth('50')
+                    ->addWysiwyg('bio')
+                    ->addImage('image')
+                    ->addFile('download')
+                ->endRepeater()
+            ->addTab('Careers')
+                ->addRepeater('careers', [
+                    'collapsed' => 'title'
+                ])
+                    ->addText('title')
+                        ->setWidth('50')
+                    ->addDatePicker('date', [
+                        'display_format' => 'm/d/Y',
+                        'return_format' => 'F j, Y'
+                    ])
+                        ->setWidth('50')
+                    ->addWysiwyg('description')
+                ->endRepeater()
+            ;
 
         return $about->build();
     }
 
-    /**
-     * Return the items field.
-     *
-     * @return array
-     */
-    public function items()
-    {
-        return get_field('items') ?: $this->example['items'];
+    public function getIssues() {
+        $terms = get_terms('issue', [
+            'hide_empty' => false,
+        ]);
+
+        $data = [];
+        foreach($terms as $term)
+        $data[] = [
+            'name' => $term->name,
+            'slug' => $term->slug,
+            'desc' => $term->description,
+            'img' => get_field('featured image', $term),
+            'color' => get_field('color', $term),
+            'font' => get_field('font', $term),
+        ];
+
+        return $data;
     }
 
-    /**
-     * Assets to be enqueued when rendering the block.
-     *
-     * @return void
-     */
-    public function enqueue()
-    {
-        //
-    }
 }

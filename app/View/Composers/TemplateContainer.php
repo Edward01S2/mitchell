@@ -4,7 +4,7 @@ namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
 
-class Post extends Composer
+class TemplateContainer extends Composer
 {
     /**
      * List of views served by this composer.
@@ -12,9 +12,7 @@ class Post extends Composer
      * @var array
      */
     protected static $views = [
-        'partials.page-header',
-        'partials.content',
-        'partials.content-*',
+        'template-container',
     ];
 
     /**
@@ -27,10 +25,6 @@ class Post extends Composer
         return [
             'title' => $this->title(),
             'bg' => ($bg = get_the_post_thumbnail_url()) ? $bg : get_field('default bg', 'options')['url'],
-            'feat' => $this->getImage(),
-            'show_author' => get_field('show_author'),
-            'link' => $this->getLink(),
-            'external' => $this->external(),
         ];
     }
 
@@ -70,32 +64,5 @@ class Post extends Composer
         }
 
         return get_the_title();
-    }
-
-    public function getImage() {
-        if($feat = get_the_post_thumbnail_url()) {
-            return $feat;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public function getLink() {
-        if('link' == get_post_format()) {
-            return get_field('external link');
-        }
-        else {
-            return get_permalink();
-        }
-    }
-
-    public function external() {
-        if('link' == get_post_format()) {
-            return true;
-        }
-        else {
-            return false;
-        }
     }
 }

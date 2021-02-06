@@ -93,3 +93,70 @@
     }
   }
 }
+
+.career-container {
+  > :first-child {
+    @apply pt-0;
+  }
+}
+
+.split-gradient {
+  background: -webkit-linear-gradient(90deg, #07202D 50%, white 0%);
+  background: -moz-linear-gradient(left, #07202D 50%, white 0%);
+  background: -ms-linear-gradient(left, #07202D 50%, white 0%);
+  background: linear-gradient(90deg, #07202D 50%, white 0%);
+}
+
+.about-issues {
+  h2 {
+    @apply text-white;
+  }
+  .container > div {
+    @apply xl:py-24;
+  }
+}
+
+.has-text-align-center {
+  @apply text-center;
+}
+
+.page-template-template-container {
+  h2 {
+    @apply underline leading-loose text-3xl lg:text-4xl #{!important};
+    text-underline-offset: 0.5em;
+  }
+}
+
+.wp-block-button {
+  @apply py-4 md:py-8;
+  .button {
+    @apply bg-c-blue-300 text-white px-12 py-3 no-underline font-whyte;
+  }
+}
+
+.posts-wrapper {
+  > :nth-child(odd) .border-container {
+    @apply border border-gray-200;
+  }
+}
+
+.tax-slider {
+  @apply overflow-visible;
+  .swiper-slide {
+    @apply h-auto w-10/12 sm:w-1/2;
+  }
+}
+
+.tax-btns {
+  @apply cursor-pointer absolute z-10;
+  top: calc(50% - .75rem);
+  .swiper-button-disabled {
+    @apply invisible;
+  }
+}
+
+.top-tag {
+  &:checked + div {
+    @apply bg-c-blue-200;
+  }
+}

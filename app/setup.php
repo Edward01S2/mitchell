@@ -24,6 +24,7 @@ add_action('wp_enqueue_scripts', function () {
     }
 
     wp_enqueue_style('sage/app.css', asset('css/app.css')->uri(), false, null);
+    wp_enqueue_style('wp/blocks.css', '/wp-includes/css/dist/block-library/style.min.css', false, null);
 }, 100);
 
 /**

@@ -5,21 +5,23 @@ namespace App\Blocks;
 use Log1x\AcfComposer\Block;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class IssuesBlock extends Block
+use App\Fields\Partials\GForm;
+
+class Contact extends Block
 {
     /**
      * The block name.
      *
      * @var string
      */
-    public $name = 'Issues Block';
+    public $name = 'Contact';
 
     /**
      * The block description.
      *
      * @var string
      */
-    public $description = 'A simple Issues block.';
+    public $description = 'A simple Contact block.';
 
     /**
      * The block category.
@@ -119,10 +121,15 @@ class IssuesBlock extends Block
     public function with()
     {
         return [
-            'title' => get_field('title'),
-            'bg' => get_field('bg'),
-            'images' => get_field('images'),
-            'issues' => $this->getIssues(),
+            'form_title' => get_field('form title'),
+            'form' => get_field('gravity'),
+            'form_bg' => get_field('form bg'),
+            'phone' => get_field('phone'),
+            'email' => get_field('email'),
+            'address_1' => get_field('address 1'),
+            'address_2' => get_field('address 2'),
+            'address_link' => get_field('address link'),
+            'map' => get_field('map'),
         ];
     }
 
@@ -133,33 +140,33 @@ class IssuesBlock extends Block
      */
     public function fields()
     {
-        $issues = new FieldsBuilder('issues_block');
+        $contact = new FieldsBuilder('contact');
 
-        $issues
-            ->addText('title')
-            ->addTrueFalse('images')
-            ->addImage('bg');
+        $contact
+            ->addText('form title')
+            ->addFields($this->get(GForm::class))
+            ->addImage('form bg')
+            ->addText('phone')
+            ->addText('email')
+            ->addText('address 1')
+                ->setWidth('50')
+            ->addText('address 2')
+                ->setWidth('50')
+            ->addUrl('address link')
+            ->addImage('map');
+            
 
-        return $issues->build();
+        return $contact->build();
     }
 
 
-    public function getIssues() {
-        $terms = get_terms('issue', [
-            'hide_empty' => false,
-        ]);
-
-        $data = [];
-        foreach($terms as $term)
-        $data[] = [
-            'name' => $term->name,
-            'slug' => $term->slug,
-            'desc' => $term->description,
-            'img' => get_field('featured image', $term),
-            'color' => get_field('color', $term),
-            'font' => get_field('font', $term),
-        ];
-
-        return $data;
+    /**
+     * Assets to be enqueued when rendering the block.
+     *
+     * @return void
+     */
+    public function enqueue()
+    {
+        //
     }
 }

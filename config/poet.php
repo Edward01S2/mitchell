@@ -56,6 +56,9 @@ return [
         'issue' => [
             'links' => ['post'],
             'meta_box' => 'radio',
+            'labels' => [
+                'slug' => 'issue'
+            ],
         ],
         'tag' => [
             'links' => ['post', 'tribe_events'],
