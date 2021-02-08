@@ -1,0 +1,45 @@
+{
+  "name": "log1x/poet",
+  "type": "package",
+  "license": "MIT",
+  "description": "Configuration-based post type, taxonomy, editor color palette, block category, and block registration for Sage 10.",
+  "authors": [
+    {
+      "name": "Brandon Nifong",
+      "email": "brandon@tendency.me"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "gutenberg",
+    "cpt"
+  ],
+  "support": {
+    "issues": "https://github.com/log1x/poet/issues"
+  },
+  "autoload": {
+    "psr-4": {
+      "Log1x\\Poet\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.2.5",
+    "johnbillion/extended-cpts": "^4.3",
+    "caseyamcl/toc": "^2.2"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.5"
+  },
+  "extra": {
+    "acorn": {
+      "providers": [
+        "Log1x\\Poet\\PoetServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "lint": [
+      "phpcs --ignore=vendor --extensions=php --standard=PSR12 ."
+    ]
+  }
+}
