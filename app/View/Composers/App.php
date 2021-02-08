@@ -72,7 +72,7 @@ class App extends Composer
 
     public function tagFilters() {
         
-        if(is_archive()) {
+        if(is_archive() && !is_post_type_archive('tribe_events')) {
 
           $term = get_queried_object();
 
