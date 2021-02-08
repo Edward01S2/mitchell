@@ -108,7 +108,7 @@ class PostLinks extends Block
     public function with()
     {
         return [
-            'links' => $this->items(),
+            'links' => get_field('links'),
         ];
     }
 
@@ -142,16 +142,6 @@ class PostLinks extends Block
             ->endRepeater();
 
         return $postLinks->build();
-    }
-
-    /**
-     * Return the items field.
-     *
-     * @return array
-     */
-    public function items()
-    {
-        return get_field('links') ?: $this->example['links'];
     }
 
     /**
