@@ -84,7 +84,6 @@ add_filter( 'tribe_events_editor_default_template', function( $template ) {
                 'placeholder' => __( 'Add Description...', 'the-events-calendar' ),
                 ], 
             ],
-            [ 'acf/post-links' ],
         ];
     }
     return $template;
