@@ -60,8 +60,8 @@ return [
 
     'taxonomy' => [
         'issue' => [
-            'links' => ['post'],
-            'meta_box' => 'radio',
+            'links' => ['post', 'tribe_events'],
+            'meta_box' => 'simple',
             'labels' => [
                 'slug' => 'issue'
             ],

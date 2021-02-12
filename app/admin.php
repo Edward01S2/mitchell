@@ -88,4 +88,8 @@ add_filter( 'tribe_events_editor_default_template', function( $template ) {
     }
     return $template;
 }, 11, 1 );
+
+add_action( 'admin_init', function() {
+    wp_deregister_script( 'autosave' );
+});
   

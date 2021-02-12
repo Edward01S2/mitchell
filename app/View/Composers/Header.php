@@ -40,9 +40,23 @@ class Header extends Composer
     }
 
     public function getIssues() {
-      return $terms = get_terms('issue', [
+
+      $terms = get_terms('issue', [
         'hide_empty' => false,
       ]);
+
+      $data = [];
+        foreach($terms as $term)
+        $data[] = [
+            'name' => $term->name,
+            'slug' => $term->slug,
+            'desc' => $term->description,
+            //'img' => get_field('featured image', $term),
+            'color' => get_field('color', $term),
+            'font' => get_field('font', $term),
+        ];
+
+        return $data;
     }
 
 }
