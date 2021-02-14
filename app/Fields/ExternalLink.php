@@ -14,7 +14,9 @@ class ExternalLink extends Field
      */
     public function fields()
     {
-        $externalLink = new FieldsBuilder('external_link');
+        $externalLink = new FieldsBuilder('external_link' ,[
+            'position' => 'normal',
+        ]);
 
         $externalLink
             ->setLocation('post_format', '==', 'link');

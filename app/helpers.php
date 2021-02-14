@@ -58,21 +58,50 @@ add_action('pre_get_posts', function($query) {
 		//print_r($value);
 		// append meta query
 
+    if(isset($value) && $value) :
+
+      if(isset($_GET['label'])):
+        $query->set('tax_query', array(
+          array(
+            'taxonomy'		=> 'label',
+            'field'		=> 'slug',
+            'terms'	=> $value,
+          )
+        ));
+      endif;
+  
+      if(isset($_GET['issue'])):
+        $query->set('tax_query', array(
+          array(
+            'taxonomy'		=> 'issue',
+            'field'		=> 'slug',
+            'terms'	=> $value,
+          )
+        ));
+      endif;
+
+      if(isset($_GET['author'])):
+        $query->set('author__in', $value);
+      endif;
+  
+  
+  
+    endif;
+
         
 	} 
 	
 	
   // update meta query
-  if(isset($value) && $value) :
-    $query->set('tax_query', array(
-      array(
-        'taxonomy'		=> 'label',
-        'field'		=> 'slug',
-        'terms'	=> $value,
-      )
-    ));
-  endif;
-  
+
+  //Check if taxonomy page and add both post types
+  if(is_tax() || is_category()) {
+    $query->set('post_type', ['post', 'tribe_events']);
+  }
+
+  // if(is_post_type_archive('tribe_events')) {
+  //   $query->set('post_type', ['post', 'tribe_events']);
+  // }
   //print_r($query);
 
 });

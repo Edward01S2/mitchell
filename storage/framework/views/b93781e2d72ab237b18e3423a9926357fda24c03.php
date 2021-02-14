@@ -22,6 +22,7 @@
   <?php endif; ?>
 
   <?php if(have_posts()): ?>
+    
     <?php echo $__env->make('partials.filters', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     
     <div class="container px-6 pb-12 mx-auto lg:px-8 md:pt-8 lg:pt-12 xl:pb-16">

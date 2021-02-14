@@ -13,7 +13,8 @@
   @endif
 
   @if(have_posts())
-    @include('partials.filters')
+    {{-- @dump($tag_filters) --}}
+    @include('partials.filters', ['bg' => 'bg-c-gray-50', 'search' => 'false'])
     
     <div class="container px-6 pb-12 mx-auto lg:px-8 md:pt-8 lg:pt-12 xl:pb-16">
       <div class="flex flex-col divide-y divide-gray-200 posts-wrapper lg:max-w-4xl lg:mx-auto xl:max-w-5xl 2xl:max-w-6xl">

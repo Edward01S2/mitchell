@@ -39,6 +39,7 @@ class Category extends Composer
           'more_bg' => get_field($cat->taxonomy . ' bg', 'options'),
           'more_tax' => $cat,
           'top' => $this->getTopTags(),
+          'tag_filters' => $this->tagFilters(),
       ];
     }
 
@@ -91,6 +92,76 @@ class Category extends Composer
       return $top;
       
     }
+
+    public function tagFilters() {
+        
+      if(is_archive()) {
+
+      
+        $term = get_queried_object();
+
+       //var_dump($term);
+        //return $term;
+
+        $top = get_field('tax', $term);
+        if(isset($top) && $top) {
+          //Array of terms IDs for the top tags set for the taxonomy
+          $check_ids = wp_list_pluck($top, 'term_id');
+        }
+
+        //return $check_ids;
+
+        if($term) :
+          $objects = get_posts([
+            'post_type' => ['post', 'tribe_events'],
+            'numberposts' => -1,
+            'order' => 'DESC',
+            'tax_query' => [
+              [
+                'taxonomy' => $term->taxonomy,
+                'field' => 'term_id',
+                'terms' => $term->term_id,
+              ]
+            ],
+            'fields' => 'ids',
+          ]);
+
+          
+
+          //return $options;
+          $tags = wp_get_object_terms( $objects, 'label' );
+
+        endif;
+      
+        //return $tags;
+
+        $tag_filters = [];
+        if(isset($tags) && !empty($tags)) :
+          foreach($tags as $tax) {
+              if(isset($check_ids) && in_array($tax->term_id, $check_ids)) {
+                  $tag_filters['top'][$tax->slug] = $tax->name;
+              }
+              else {
+                  $tag_filters['tags'][$tax->slug] = $tax->name;
+              }
+          };
+        endif;
+        
+        return $tag_filters;
+      }
+
+
+      // $tags = get_terms([
+      //     'taxonomy' => 'tag',
+      //     'hide_empty' => true,
+      // ]);
+
+
+        
+      //return $tags;
+      
+    
+  }
     
 
 

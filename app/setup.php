@@ -248,6 +248,8 @@ add_action('init', function() {
 		)
 
     ) );
+    unregister_taxonomy_for_object_type( 'tribe_events_cat', 'tribe_events' );
+    register_taxonomy_for_object_type( 'category', 'tribe_events' );
 
 
 });

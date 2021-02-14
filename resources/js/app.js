@@ -34,25 +34,27 @@ $(document).ready(() => {
     }
   });
 
-  $('.tag-filters').on('change', 'input[type="checkbox"]', debounce(tagFilters, 1250));
+  $('.query-filters .filters').on('change', 'input[type="checkbox"]', debounce(tagFilters, 1250));
 
   function tagFilters() {
     var url = location.protocol + '//' + location.host + location.pathname,
-    args = {},
-    vals = [];
+    args = {};
+    
   
     // loop over filters
-    $('.tag-filters .filter').each(function(){
+    $('.query-filters .filters').each(function(){
       
       // vars
       var filter = $(this).data('filter');
+      var vals = [];
+
+      //console.log(filter)
         
       // find checked inputs
       $(this).find('input:checked').each(function(){
         
         //console.log($(this).val())
         vals.push( $(this).val() );
-
       });
       
       //console.log(vals)
@@ -64,22 +66,25 @@ $(document).ready(() => {
 
     //console.log(args)
 
-    if(args['label'] !== "") {
+    //if(args[ filter ] !== "") {
       // update url
       url += '?';
 
       // loop over args
       $.each(args, function( name, value ){
-        url += name + '=' + value + '&';
+        if(value) {
+          url += name + '=' + value + '&';
+        }
       });
 
       // remove last &
       url = url.slice(0, -1);
-    }
+    
 
     //console.log(url)
     // reload page
-    window.location.replace( url );
+   window.location.replace( url );
   }
 
-});
+
+ });
