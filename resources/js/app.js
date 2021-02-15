@@ -39,6 +39,8 @@ $(document).ready(() => {
   function tagFilters() {
     var url = location.protocol + '//' + location.host + location.pathname,
     args = {};
+
+    url = url.split('page/')[0];
     
   
     // loop over filters

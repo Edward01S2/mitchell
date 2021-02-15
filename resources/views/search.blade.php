@@ -3,15 +3,6 @@
 @section('content')
   <?php $search = get_search_query(); ?>  
   <div class="py-12 pt-28 md:pb-16 md:pt-32 bg-c-blue-300">
-    <div class="container px-6 mx-auto lg:px-8">
-      @if (! have_posts())
-        <x-alert type="warning">
-          {!! __('Sorry, no results were found.', 'sage') !!}
-        </x-alert>
-
-        {!! get_search_form(false) !!}
-      @endif
-    </div>
 
     <div class="container px-6 mx-auto lg:px-8">
       <div id="search-container" class="flex items-center w-full max-w-lg mx-auto mb-6 lg:max-w-xl xl:max-w-2xl">
@@ -41,6 +32,16 @@
 
       {!! $pagi !!}
     </div>
+
+    @if (! have_posts())
+    <div class="container px-6 mx-auto mt-4 lg:px-8 md:mt-8 lg:mt-12">
+      
+      <x-alert type="warning" class="">
+        {!! __('Sorry, no results were found.', 'sage') !!}
+      </x-alert>
+      
+    </div>
+    @endif
 
       
     
