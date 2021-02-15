@@ -80,6 +80,16 @@ add_action('pre_get_posts', function($query) {
         ));
       endif;
 
+      if(isset($_GET['resource'])):
+        $query->set('tax_query', array(
+          array(
+            'taxonomy'		=> 'category',
+            'field'		=> 'slug',
+            'terms'	=> $value,
+          )
+        ));
+      endif;
+
       if(isset($_GET['author'])):
         $query->set('author__in', $value);
       endif;

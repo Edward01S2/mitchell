@@ -38,6 +38,7 @@ class Search extends Composer
           // 'more_bg' => get_field($cat->taxonomy . ' bg', 'options'),
           // 'more_tax' => $cat,
           //'top' => $this->getTopTags(),
+          'resource_filters' => $this->resourceFilters(),
           'author_filters' => $this->authorFilters(),
           'tag_filters' => $this->tagFilters(),
       ];
@@ -71,29 +72,20 @@ class Search extends Composer
       return $user_list;
   }
 
-    // public function getTerms() {
-    //   $term = get_queried_object();
-
-    //   $terms = get_terms($term->taxonomy, [
-    //     'hide_empty' => false,
-    //   ]);
-
-    //   $data = [];
-    //   foreach($terms as $term) {
-    //     if($term->name !== 'Uncategorized') {
-    //       $data[] = [
-    //           'name' => $term->name,
-    //           'slug' => $term->slug,
-    //           // 'desc' => $term->description,
-    //           // 'img' => get_field('featured image', $term),
-    //           // 'color' => get_field('color', $term),
-    //           // 'font' => get_field('font', $term),
-    //       ];
-    //     }
-    //   }
-
-    //   return $data;
-    // }
+  public function resourceFilters() {
+    $resources = get_terms('category', [
+        'hide_empty' => false,
+    ]);
+      
+    $resource_filters = [];
+    foreach($resources as $tax) {
+        if($tax->name !== 'Uncategorized') {
+            $resource_filters[$tax->slug] = $tax->name;
+        }
+    };
+      
+    return $resource_filters;
+}
     
     // public function getTopTags() {
     //   $term = get_queried_object();

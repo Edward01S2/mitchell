@@ -68,7 +68,7 @@
             <?php if($resources): ?>
               <?php $__currentLoopData = $resources; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <?php if($item->name !== 'Uncategorized'): ?>
-                  <a href="/<?php echo $item->slug; ?>" class="nav-sub"><?php echo $item->name; ?></a>
+                  <a href="/category/<?php echo $item->slug; ?>" class="nav-sub"><?php echo $item->name; ?></a>
                 <?php endif; ?>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
@@ -78,7 +78,7 @@
             <a href="<?php echo $navigation[4]->url; ?>" class="mb-2 nav-head"><?php echo $navigation[4]->label; ?></a>
             <?php if($issues): ?>
               <?php $__currentLoopData = $issues; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <a href="/<?php echo $item->slug; ?>" class="nav-sub"><?php echo $item->name; ?></a>
+                <a href="/issue/<?php echo $item->slug; ?>" class="nav-sub"><?php echo $item->name; ?></a>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
           </div>

@@ -34,7 +34,7 @@
 
     @include('partials.filters', ['bg' => 'bg-c-blue-300', 'search' => 'true'])
       
-    <div class="container px-6 mx-auto lg:px-8">
+    <div class="container px-6 mx-auto lg:px-8 xl:max-w-7xl">
       @while(have_posts()) @php(the_post())
         @include('partials.content-search')
       @endwhile

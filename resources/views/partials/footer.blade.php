@@ -68,7 +68,7 @@
             @if($resources)
               @foreach($resources as $item)
                 @if($item->name !== 'Uncategorized')
-                  <a href="/{!! $item->slug !!}" class="nav-sub">{!! $item->name !!}</a>
+                  <a href="/category/{!! $item->slug !!}" class="nav-sub">{!! $item->name !!}</a>
                 @endif
               @endforeach
             @endif
@@ -78,7 +78,7 @@
             <a href="{!! $navigation[4]->url !!}" class="mb-2 nav-head">{!! $navigation[4]->label !!}</a>
             @if($issues)
               @foreach($issues as $item)
-                <a href="/{!! $item->slug !!}" class="nav-sub">{!! $item->name !!}</a>
+                <a href="/issue/{!! $item->slug !!}" class="nav-sub">{!! $item->name !!}</a>
               @endforeach
             @endif
           </div>

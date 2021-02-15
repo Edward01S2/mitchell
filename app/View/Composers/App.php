@@ -25,7 +25,7 @@ class App extends Composer
         return [
             'siteName' => $this->siteName(),
             'issue_filters' => $this->issueFilters(),
-            'resource_filters' => $this->resourceFilters(),
+            //'resource_filters' => $this->resourceFilters(),
             //'tag_filters' => $this->tagFilters(),
             //'author_filters' => $this->authorFilters(),
         ];
@@ -55,19 +55,19 @@ class App extends Composer
         return $issue_filters;
     }
 
-    public function resourceFilters() {
-        $resources = get_terms('category', [
-            'hide_empty' => false,
-        ]);
+    // public function resourceFilters() {
+    //     $resources = get_terms('category', [
+    //         'hide_empty' => false,
+    //     ]);
           
-        $resource_filters = [];
-        foreach($resources as $tax) {
-            if($tax->name !== 'Uncategorized') {
-                $resource_filters[$tax->slug] = $tax->name;
-            }
-        };
+    //     $resource_filters = [];
+    //     foreach($resources as $tax) {
+    //         if($tax->name !== 'Uncategorized') {
+    //             $resource_filters[$tax->slug] = $tax->name;
+    //         }
+    //     };
           
-        return $resource_filters;
-    }
+    //     return $resource_filters;
+    // }
 
 }
