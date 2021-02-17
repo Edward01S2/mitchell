@@ -162,7 +162,7 @@ class News extends Block
         $post_data[$id] = [
             'title' => get_the_title(),
             'excerpt' => get_the_excerpt(),
-            'image' => get_the_post_thumbnail_url(),
+            'image' => ($img = get_the_post_thumbnail_url()) ? $img : $this->noImage(),
             'url' => ('link' === get_post_format()) ? get_field('external link', $id) : get_the_permalink(),
             'external' => ('link' === get_post_format()) ? true : false,
         ];
@@ -171,6 +171,15 @@ class News extends Block
         wp_reset_query();
 
         return $post_data;
+    }
+
+    public function noImage() {
+        $gallery = get_field('random feat', 'option');
+
+        $index = array_rand($gallery, 1);
+
+        return $gallery[$index]['url'];
+
     }
 
 }

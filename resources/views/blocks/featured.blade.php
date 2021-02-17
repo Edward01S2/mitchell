@@ -27,7 +27,7 @@
             <div class="pb-6 border-b border-gray-200 feat-item md:flex md:space-x-6">
               <div class="hidden md:block md:flex-shrink-0">
                 <a href="{!! $post['url'] !!}" {{ $post['external'] ? 'target=_blank' : ''  }}>
-                  <img class="object-cover object-center w-24 h-24" src="{!! $post['image'] !!}" alt="">
+                  <img class="object-cover object-center w-24 h-24" src="{!! ($post['image']) ? $post['image'] : $random !!}" alt="">
                 </a>
               </div>
               <div>

@@ -6,13 +6,11 @@
         @foreach($posts as $post)
           <div class="md:flex">
             <div>
-              @if($post['image'])
-                <div class="hidden md:block md:flex-shrink-0">
-                  <a href="{!! $post['url'] !!}" {{ $post['external'] ? 'target=_blank' : ''  }}>
-                    <img class="object-cover object-center w-full h-40 mb-4" src="{!! $post['image'] !!}" alt="">
-                  </a>
-                </div>
-              @endif
+              <div class="hidden md:block md:flex-shrink-0">
+                <a href="{!! $post['url'] !!}" {{ $post['external'] ? 'target=_blank' : ''  }}>
+                  <img class="object-cover object-center w-full h-40 mb-4" src="{!! $post['image'] !!}" alt="">
+                </a>
+              </div>
               <div>
                 <a href="{!! $post['url'] !!}" {{ $post['external'] ? 'target=_blank' : ''  }}>
                   <h3 class="mb-3 text-xl md:mb-2 md:mt-0">{!! $post['title'] !!}</h3>
