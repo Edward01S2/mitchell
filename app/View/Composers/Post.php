@@ -15,6 +15,7 @@ class Post extends Composer
         'partials.page-header',
         'partials.content',
         'partials.content-*',
+        'single-tribe_events',
     ];
 
     /**
@@ -31,6 +32,7 @@ class Post extends Composer
             'show_author' => get_field('show_author'),
             'link' => $this->getLink(),
             'external' => $this->external(),
+            'random' => $this->noImage(),
         ];
     }
 
@@ -97,5 +99,14 @@ class Post extends Composer
         else {
             return false;
         }
+    }
+
+    public function noImage() {
+        $gallery = get_field('random feat', 'option');
+
+        $index = array_rand($gallery, 1);
+
+        return $gallery[$index]['url'];
+
     }
 }

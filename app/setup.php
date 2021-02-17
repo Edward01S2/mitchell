@@ -16,6 +16,7 @@ use function Roots\asset;
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/vendor.js', asset('js/vendor.js')->uri(), ['jquery'], null, true);
     wp_enqueue_script('sage/app.js', asset('js/app.js')->uri(), ['sage/vendor.js'], null, true);
+    wp_localize_script( 'sage/app.js', 'ajax_url', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
     wp_add_inline_script('sage/vendor.js', asset('js/manifest.js')->contents(), 'before');
 

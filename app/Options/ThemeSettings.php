@@ -48,6 +48,7 @@ class ThemeSettings extends Field
         ->addTab('Header')
         ->addTab('Post')
             ->addImage('default bg')
+            ->addGallery('random feat')
         ->addTab('Footer')
             ->addText('footer text')
             ->addText('form text')

@@ -6,6 +6,8 @@
 
 namespace App;
 
+use function Roots\view;
+
 $GLOBALS['query_filters'] = array( 
 	'label'	=> 'label', 
   'issue'	=> 'issue',
@@ -110,8 +112,105 @@ add_action('pre_get_posts', function($query) {
   }
 
   // if(is_post_type_archive('tribe_events')) {
-  //   $query->set('post_type', ['post', 'tribe_events']);
+  //   $query->set('post_type', 'tribe_events');
+
   // }
   //print_r($query);
 
 });
+
+function noImage() {
+  $gallery = get_field('random feat', 'option');
+
+  $index = array_rand($gallery, 1);
+
+  return $gallery[$index]['url'];
+
+}
+
+function load_events() {
+  $page = (isset($_POST['page'])) ? $_POST['page'] : 0;
+
+  $args = [
+    'post_type' => 'tribe_events',
+    'post_status' => 'publish',
+    'posts_per_page' => '6',
+    'orderby' => 'meta_value',
+    'meta_key' => '_EventStartDate',
+    'order' => 'DESC',
+    'paged' => $page,
+  ];
+
+  $loop = new \WP_Query($args);
+
+  //echo json_encode($loop);
+  $data = [];
+  //$data['posts'] = $loop;
+
+  //return wp_send_json_success($data);
+
+  foreach($loop->posts as $post) {
+    setup_postdata($post);
+
+    //echo json_encode($terms);
+    if('link' == get_post_format($post->ID)) {
+      $link = get_field('external link', $post->ID);
+      $external = 'target="_blank"';
+    }
+    else {
+      $link = get_permalink($post->ID);
+      $external = '';
+    }
+
+    if($feat = get_the_post_thumbnail_url($post->ID)) {
+      $feat = 'true';
+    }
+    else {
+      $feat = 'false';
+    }
+
+
+    $data[] = [
+        'title' => get_the_title($post->ID),
+        'feat' => $feat,
+        'link' => $link,
+        'img' => ($img = get_the_post_thumbnail_url($post->ID)) ? $img : noImage(),
+        'excerpt' => get_the_excerpt($post->ID),
+        'external' => $external,
+
+    ];
+    wp_reset_postdata();
+  }
+
+  //echo json_encode($data);
+  //echo json_encode($data);
+
+  $format = [];
+
+  if($page == $loop->max_num_pages) {
+    $format['page'] = 9999;
+  }
+  else {
+    $format['page'] = $page;
+  }
+  
+  $format['response'] = '';
+
+  foreach($data as $post) {
+    ob_start();
+    include(locate_template('resources/views/partials/content-ajax.blade.php'));
+    $format['response'] .= ob_get_clean();
+    //$response = view('partials.content', $post)->render();
+  }
+
+  return wp_send_json_success($format);
+
+
+  wp_reset_query();
+
+  die();
+
+}
+
+add_action('wp_ajax_load_events', __NAMESPACE__ . '\\load_events');
+add_action('wp_ajax_nopriv_load_events', __NAMESPACE__ . '\\load_events');

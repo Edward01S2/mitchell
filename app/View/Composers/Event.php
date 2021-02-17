@@ -13,6 +13,7 @@ class Event extends Composer
      */
     protected static $views = [
         'partials.content-single-tribe_events',
+        'single-tribe_events',
     ];
 
     /**

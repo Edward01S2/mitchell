@@ -3,7 +3,7 @@
   <header>
     <div class="bg-c-gray-50">
       <h1 class="p-6 text-2xl font-medium entry-title md:text-center md:text-3xl md:p-8 lg:text-4xl lg:max-w-3xl lg:leading-tight lg:mx-auto lg:py-12 xl:text-6xl xl:max-w-4xl">
-        {!! $title !!}
+        {!! $title !!} title
       </h1>
     </div>
 

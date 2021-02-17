@@ -134,7 +134,7 @@
   }
 }
 
-.posts-wrapper {
+.posts-wrapper, .posts-ajax-wrapper {
   > :nth-child(odd) .border-container {
     @apply border border-gray-200;
   }
@@ -190,6 +190,14 @@
     }
     #ctf-more {
       @apply w-auto block text-center min-h-0 px-8 py-2 text-c-blue-200 hover:underline bg-transparent font-medium mx-auto;
+    }
+  }
+}
+
+.event-calendar {
+  .tribe-events {
+    .tribe-common-l-container {
+      @apply py-6 min-h-0;
     }
   }
 }
