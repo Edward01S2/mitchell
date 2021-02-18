@@ -115,6 +115,14 @@ class EventSettings extends Field
             ])
             ->addImage('event bg', [
                 'label' => 'Background Image'
+            ])
+            ->addTaxonomy('event tax', [
+                'label' => 'Top Tags',
+                'taxonomy' => 'label',
+                'field_type' => 'multi_select',
+                'multiple' => 1,
+                'add_term' => 0,
+                'return_format' => 'object',
             ]);
 
         return $eventSettings->build();

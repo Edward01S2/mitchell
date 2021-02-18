@@ -1,7 +1,7 @@
 .gfield {
   @apply mb-4 md:flex md:items-center md:w-full;
   input, select, textarea {
-    @apply w-full bg-white focus:outline-none;
+    @apply w-full bg-white focus:outline-none border-0;
   }
   &.gfield_error {
     input, select, textarea {

@@ -131,6 +131,8 @@ function noImage() {
 function load_events() {
   $page = (isset($_POST['page'])) ? $_POST['page'] : 0;
 
+  //return wp_send_json_success($_POST['time']);
+
   $args = [
     'post_type' => 'tribe_events',
     'post_status' => 'publish',
@@ -141,8 +143,75 @@ function load_events() {
     'paged' => $page,
   ];
 
+  if(isset($_POST['time'])):
+    $time = $_POST['time'];
+    if($time == 'future') {
+      $args['meta_query'] = [
+        'key' => '_EventStartDate',
+        'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+        'compare' => '>'
+      ];
+    }
+    if($time == 'past') {
+      $args['meta_query'] = [
+        'key' => '_EventStartDate',
+        'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+        'compare' => '<'
+      ];
+    }
+
+  endif;
+
+  $query_filters = array( 
+    'evlabel'	=> 'evlabel', 
+    'evissue'	=> 'evissue',
+  );
+
+  foreach( $query_filters as $key => $name ) {
+		
+    // continue if not found in url
+		if( empty($_POST[ $name ]) ) {
+			continue;	
+		}
+		
+		
+		// POST the value for this filter
+		// eg: http://www.website.com/events?city=melbourne,sydney
+		$value = explode(',', $_POST[ $name ]);
+		
+		//print_r($value);
+		// append meta query
+
+    if(isset($value) && $value) :
+
+      if(isset($_POST['evlabel'])):
+      
+        $query->set('tax_query', array(
+          'relation' => 'AND',
+          array(
+            'taxonomy'		=> 'label',
+            'field'		=> 'slug',
+            'terms'	=> $value,
+          ),
+        ));
+      endif;
+  
+      if(isset($_POST['evissue'])):
+        $query->set('tax_query', array(
+          array(
+            'taxonomy'		=> 'issue',
+            'field'		=> 'slug',
+            'terms'	=> $value,
+          )
+        ));
+      endif;
+    endif;
+    
+  }
+
   $loop = new \WP_Query($args);
 
+  //return wp_send_json_success($loop);
   //echo json_encode($loop);
   $data = [];
   //$data['posts'] = $loop;

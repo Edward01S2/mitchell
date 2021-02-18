@@ -1,7 +1,7 @@
 <div class="{{ $block->classes }}">
   <div class="grid grid-cols-1 stats-container md:grid-cols-2">
     @foreach($stats as $stat)
-      <div class="relative stat group">
+      <div class="relative transition duration-300 stat group">
 
         <div class="absolute inset-0 z-10 w-full h-full transition bg-white opacity-90 group-hover:bg-c-blue-150"></div>
         <img src="{!! $stat['bg']['url'] !!}" alt="" class="absolute inset-0 z-0 object-cover w-full h-full grayscale">

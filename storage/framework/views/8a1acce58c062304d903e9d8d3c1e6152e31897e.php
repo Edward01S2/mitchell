@@ -3,7 +3,7 @@
     <div class="py-8">
 
       
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:grid-cols-4 query-filters">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:grid-cols-5 query-filters">
 
         <?php
           $issue_get = [];
@@ -211,6 +211,13 @@
           </div>
         </div>
 
+        <?php endif; ?>
+
+        
+
+        <?php if(is_post_type_archive('tribe_events')): ?>
+          <a href="/events/?time=future" class="inline-flex items-center justify-center px-3 py-3 font-medium text-white font-whyte bg-c-blue-300 xl:col-start-4">Upcoming Events</a>
+          <a href="/events/?time=past" class="inline-flex items-center justify-center px-3 py-3 font-medium text-white font-whyte bg-c-blue-300">Past Events</a>
         <?php endif; ?>
 
       </div> <!--- END GRID --->

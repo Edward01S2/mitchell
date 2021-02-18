@@ -1,7 +1,7 @@
 <div class="<?php echo e($block->classes); ?>">
   <div class="grid grid-cols-1 stats-container md:grid-cols-2">
     <?php $__currentLoopData = $stats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $stat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-      <div class="relative stat group">
+      <div class="relative transition duration-300 stat group">
 
         <div class="absolute inset-0 z-10 w-full h-full transition bg-white opacity-90 group-hover:bg-c-blue-150"></div>
         <img src="<?php echo $stat['bg']['url']; ?>" alt="" class="absolute inset-0 z-0 object-cover w-full h-full grayscale">

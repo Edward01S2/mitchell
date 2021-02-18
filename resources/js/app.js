@@ -92,7 +92,59 @@ $(document).ready(() => {
    window.location.replace( url );
   }
 
-  var ajaxPage = 1;
+  $('.event-filters .filters').on('change', 'input[type="checkbox"]', debounce(eventFilters, 1250));
+
+  function eventFilters() {
+    var url = location.protocol + '//' + location.host + location.pathname,
+    args = {};
+  
+    // loop over filters
+    $('.event-filters .filters').each(function(){
+      
+      // vars
+      var filter = $(this).data('filter');
+      var vals = [];
+
+      //console.log(filter)
+        
+      // find checked inputs
+      $(this).find('input:checked').each(function(){
+        
+        //console.log($(this).val())
+        vals.push( $(this).val() );
+      });
+      
+      //console.log(vals)
+      
+      // append to args
+      args[ filter ] = vals.join(',');
+      //console.log(args)
+    });
+
+    //console.log(args)
+
+    //if(args[ filter ] !== "") {
+      // update url
+
+      url += '?';
+
+      // loop over args
+      $.each(args, function( name, value ){
+        if(value) {
+          url += name + '=' + value + '&';
+        }
+      });
+
+      // remove last &
+      url = url.slice(0, -1);
+    
+
+    //console.log(url)
+    // reload page
+    window.location.replace( url );
+  }
+
+  
 
   $(document).on( 'click', '.pagination-container button', function( event ) {
 		event.preventDefault();
@@ -103,27 +155,14 @@ $(document).ready(() => {
     load_posts(page);
 	})
 
-  // $(document).on( 'click', '.pagination-container #event-next', function( event ) {
-	// 	event.preventDefault();
-	// 	console.log( 'Clicked Link' );
-
-  //   var page = $('.pagination-container #event-next').attr("data-page");
-  //   console.log('Data page:' + page);
-  //   load_posts(page);
-	// })
-
   
   function load_posts(page) {
 
-    // var url = location.protocol + '//' + location.host + location.pathname;
 
-    // url += '?';
-    // url += 'page' + '=' + page + '&';
-
-    // url = url.slice(0, -1);
-
-    // window.location.replace( url );
-
+    var time = getUrlParameter('time');
+    var label = getUrlParameter('evlabel');
+    var issue = getUrlParameter('evissue');
+    //console.log(time);
 
     $.ajax({
       type: "POST",
@@ -131,6 +170,9 @@ $(document).ready(() => {
       data: {
         action: "load_events",
         page: page,
+        time: time,
+        label: label,
+        issue: issue,
         //cat: $(this).val()
       },
       beforeSend: function() {
@@ -143,6 +185,7 @@ $(document).ready(() => {
       success: function(response) {
         //console.log(JSON.stringify(response));
         if(response) { 
+          
           $('.posts-ajax-wrapper').html(response.data['response']);
 
           var page = parseInt(response.data['page']);
@@ -160,11 +203,11 @@ $(document).ready(() => {
           }
 
           $('html,body').animate({scrollTop: $("#event-title").offset().top},'slow');
-          //console.log(page)
-          // $('#event-prev').data("page", window.ajaxPage);
+          console.log(page)
+          $('#event-prev').data("page", window.ajaxPage);
+
         }
-        // $("#course-grid-cat").show();
-        // $("#course-grid-container").append(data);
+
       },
       error: function(req, e) {
         console.log(JSON.stringify(req));
@@ -172,5 +215,45 @@ $(document).ready(() => {
     })
   }
 
+  var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
- });
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+    }
+    return false;
+  };
+
+  $(document).on( 'click', '.event-filters .event-time-btn', function( event ) {
+		event.preventDefault();
+		console.log( 'Clicked event-time' );
+
+    var filter = $(this).attr("data-filter");
+    var searchParams = new URLSearchParams(window.location.search);
+    //console.log(params);
+
+    searchParams.set('time', filter);
+
+    //console.log(searchParams.toString());
+    // if(searchParams) {
+    //   var url = window.location.href + '&' + searchParams.toString();
+    // }
+    // else {
+    //   var url = location.protocol + '//' + location.host + location.pathname + '?' + searchParams.toString();
+    // }
+
+    var url = location.protocol + '//' + location.host + location.pathname + '?' + searchParams.toString();
+
+    
+    //console.log(url)
+    window.location.replace( url );
+  });
+
+});

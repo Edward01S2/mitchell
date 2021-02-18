@@ -29,17 +29,20 @@ class EventArchive extends Composer
             'bg' => get_field('event bg', 'options')['url'],
             'title' => get_field('event title', 'options'),
             'content' => get_field('event content', 'options'),
-            'pagi' => $this->pagination(),
+            //'pagi' => $this->pagination(),
             'posts' => $this->getPosts(),
+            //'top' => $this->getTopTags(),
+            'tag_filters' => $this->tagFilters(),
+            'events_title' => $this->getTitle(),
             //'calendar' => $this->calendar(),
         ];
     }
 
-    public function pagination() {
-      $pagination = Pagi::build();
+    // public function pagination() {
+    //   $pagination = Pagi::build();
 
-      return $pagination->links('components.pagination');
-    }
+    //   return $pagination->links('components.pagination');
+    // }
 
     public function getPosts() {
 
@@ -55,46 +58,170 @@ class EventArchive extends Composer
             'paged' => $page,
         );
 
-        
+        if(isset($_GET['time'])):
+          $time = $_GET['time'];
+          if($time === 'future') {
+            $args['meta_query'] = [
+              'key' => '_EventStartDate',
+              'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+              'compare' => '>'
+            ];
+          }
+          if($time === 'past') {
+            $args['meta_query'] = [
+              'key' => '_EventStartDate',
+              'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+              'compare' => '<'
+            ];
+          }
 
-        // $query->set('orderby', 'meta_value');
-        // $query->set('meta_key', '_EventStartDate');
-        // $query->set( 'order', 'DESC' );
+        endif;
+
+        //Check for tag url params
+        $query_filters = array( 
+          'evlabel'	=> 'evlabel', 
+          'evissue'	=> 'evissue',
+        );
+
+        foreach( $query_filters as $key => $name ) {
+		
+          // continue if not found in url
+          if( empty($_GET[ $name ]) ) {
+            
+            continue;
+            
+          }
+
+          // get the value for this filter
+          // eg: http://www.website.com/events?city=melbourne,sydney
+          $value = explode(',', $_GET[ $name ]);
+          
+      
+          if(isset($_GET['evlabel'])):
+            $args['tax_query'] = [
+              'relation' => 'AND',
+              [
+                'taxonomy'		=> 'label',
+                'field'		=> 'slug',
+                'terms'	=> $value,
+              ]
+            ];
+          endif;
+      
+          if(isset($_GET['evissue'])):
+            $args['tax_query'] = [
+              array(
+                'taxonomy'		=> 'issue',
+                'field'		=> 'slug',
+                'terms'	=> $value,
+              )
+            ];
+          endif;
+              
+        }
 
         $posts = new \WP_Query($args);
 
+        //return $posts;
+
         $data['posts'] = $posts;
-        // $data['page'] = [
-        //     'prev' => $page + 1,
-        //     'next' => $page - 1,
-        // ];
 
         return $data;
 
-        // $post_data = [];
-        // while($posts->have_posts()): $posts->the_post();
-        
-        // $id = get_the_ID();
-
-        // //return $term;
-
-        
-
-        // $post_data[$id] = [
-        //     'title' => get_the_title(),
-        //     'excerpt' => get_the_excerpt(),
-        //     'image' => get_the_post_thumbnail_url(),
-        //     'url' => ('link' === get_post_format()) ? get_field('external link', $id) : get_the_permalink(),
-        //     'external' => ('link' === get_post_format()) ? true : false,
-        // ];
-
-        // endwhile;
-        // wp_reset_query();
-
-        // return $post_data;
     }
-    
-    // public function calendar() {
-    //     return tribe( Template_Bootstrap::class )->get_view_html();
-    // }
+
+    public function getTitle() {
+      if(isset($_GET['time'])):
+        $time = $_GET['time'];
+        if($time === 'future') {
+          return 'Upcoming Events';
+        }
+        if($time === 'past') {
+          return 'Past Events';
+        }
+      endif;
+
+      return 'All Events';
+    }
+
+    public function getTerms() {
+        $term = get_queried_object();
+  
+        $terms = get_terms($term->taxonomy, [
+          'hide_empty' => false,
+        ]);
+  
+        $data = [];
+        foreach($terms as $term) {
+          if($term->name !== 'Uncategorized') {
+            $data[] = [
+                'name' => $term->name,
+                'slug' => $term->slug,
+                'desc' => $term->description,
+                // 'img' => get_field('featured image', $term),
+                // 'color' => get_field('color', $term),
+                // 'font' => get_field('font', $term),
+            ];
+          }
+        }
+  
+        return $data;
+      }
+      
+      // public function getTopTags() {
+      //   $term = get_queried_object();
+  
+      //   $top = get_field('tax', $term);
+  
+      //   return $top;
+        
+      // }
+  
+      public function tagFilters() {
+          
+        if(is_archive()) {
+  
+        
+          //$term = get_queried_object();
+  
+         //var_dump($term);
+          //return $term;
+  
+          $top = get_field('event tax', 'options');
+          if(isset($top) && $top) {
+            //Array of terms IDs for the top tags set for the taxonomy
+            $check_ids = wp_list_pluck($top, 'term_id');
+          }
+  
+          
+          $objects = get_posts([
+            'post_type' => ['tribe_events'],
+            'numberposts' => -1,
+            'order' => 'DESC',
+            'fields' => 'ids',
+          ]);
+
+          //return $options;
+          $tags = wp_get_object_terms( $objects, 'label' );
+  
+         
+        
+          //return $tags;
+  
+        $tag_filters = [];
+        if(isset($tags) && !empty($tags)) :
+          foreach($tags as $tax) {
+            if(isset($check_ids) && in_array($tax->term_id, $check_ids)) {
+                $tag_filters['top'][$tax->slug] = $tax->name;
+            }
+            else {
+                $tag_filters['tags'][$tax->slug] = $tax->name;
+            }
+          };
+        endif;
+          
+        return $tag_filters;
+      }
+    }
+
 }

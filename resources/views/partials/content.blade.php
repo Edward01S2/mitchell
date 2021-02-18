@@ -2,7 +2,7 @@
   <div class="flex flex-col p-6 border-container md:flex-row md:space-x-12 xl:p-8"> <!-- :class="{ 'bg-c-blue-300' : !img }" -->
     <div class="md:w-1/3 lg:w-1/4">
       <a href="{{ $link }}" {{ $external ? 'target="_blank"' : '' }}>
-        <img class="object-cover object-center w-full h-48 mb-6 md:mb-0" 
+        <img class="object-cover object-center w-full h-48 mb-6 md:h-36 md:mb-0 lg:h-40 xl:h-48" 
           src="{!! ($feat) ? $feat : $random !!}" 
           alt="">
       </a>
