@@ -67,10 +67,10 @@
           </svg>
         </button>
         <?php $__currentLoopData = $issues; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $issue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-          <a href="/issue/<?php echo $issue['slug']; ?>" class="flex flex-col border border-gray-300 hover:shadow-issue">
+          <a href="/issue/<?php echo $issue['slug']; ?>" class="flex flex-col border border-gray-300 hover:shadow-issue" style="background-color: <?php echo $issue['color']; ?>;">
             <div class="p-6 py-4 lg:p-8 xl:p-10" style="background-color: <?php echo $issue['color']; ?>; color: <?php echo $issue['font']; ?>;">
               <h4 class="mb-0 text-xl text-center lg:text-left lg:mb-2 xl:text-2xl"><?php echo $issue['name']; ?></h4>
-              <p class="hidden text-sm leading-tight lg:block lg:line-clamp-2 xl:text-base"><?php echo $issue['desc']; ?></p>
+              <p class="hidden text-sm leading-tight lg:block lg:line-clamp-3 xl:text-base"><?php echo $issue['desc']; ?></p>
             </div>
           </a>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

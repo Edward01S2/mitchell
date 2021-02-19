@@ -4,7 +4,7 @@
     <div class="container relative z-20 px-6 pt-32 pb-16 mx-auto md:pt-32 lg:px-8 lg:pt-36 lg:pb-20">
       <div class="text-white md:w-3/5 lg:w-1/2">
         @if(isset($pretitle) && $pretitle)
-          <div class="mb-2 text-xl tracking-widest uppercase font-whyte md:text-2xl">{!! $pretitle !!}</div>
+          <div class="mb-2 text-xl tracking-widest uppercase font-whyte md:text-2xl xl:max-w-lg 2xl:max-w-xl">{!! $pretitle !!}</div>
         @endif
         <h1 class="mb-2 text-4xl md:text-5xl lg:text-6xl xl:text-7xl">{!! $title !!}</h1>
         @if(isset($content) && $content)

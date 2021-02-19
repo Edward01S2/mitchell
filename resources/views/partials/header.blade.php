@@ -67,10 +67,10 @@
           </svg>
         </button>
         @foreach($issues as $issue)
-          <a href="/issue/{!! $issue['slug'] !!}" class="flex flex-col border border-gray-300 hover:shadow-issue">
+          <a href="/issue/{!! $issue['slug'] !!}" class="flex flex-col border border-gray-300 hover:shadow-issue" style="background-color: {!! $issue['color'] !!};">
             <div class="p-6 py-4 lg:p-8 xl:p-10" style="background-color: {!! $issue['color'] !!}; color: {!! $issue['font'] !!};">
               <h4 class="mb-0 text-xl text-center lg:text-left lg:mb-2 xl:text-2xl">{!! $issue['name'] !!}</h4>
-              <p class="hidden text-sm leading-tight lg:block lg:line-clamp-2 xl:text-base">{!! $issue['desc'] !!}</p>
+              <p class="hidden text-sm leading-tight lg:block lg:line-clamp-3 xl:text-base">{!! $issue['desc'] !!}</p>
             </div>
           </a>
         @endforeach

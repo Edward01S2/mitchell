@@ -40,7 +40,7 @@
   <?php if($terms): ?>
     <div class="overflow-hidden bg-gray-800 bg-center bg-cover" style="background-image:url(<?php echo $more_bg['url']; ?>);">
       <div class="">
-        <div class="py-12 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-32">
+        <div class="py-12 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-32 xl:pt-28">
           <div class="container px-6 mx-auto lg:px-8">
             <h2 class="mb-8 text-3xl text-white md:text-3xl md:mb-12 lg:text-4xl lg:mb-16"><?php echo $more_title; ?></h2>
           </div>
