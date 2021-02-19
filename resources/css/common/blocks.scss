@@ -1,6 +1,9 @@
 .post-links {
   a {
     @apply no-underline #{!important};
+    &:hover {
+      @apply shadow-issue;
+    }
   }
   a:nth-child(1) {
     @apply bg-c-blue-300 text-white;
@@ -30,6 +33,39 @@
     }
     .datepicker .month.active.focused {
       background: #6DA4F0;
+    }
+    .tribe-events-c-top-bar__today-button {
+      @apply hidden #{!important};
+    }
+    .tribe-events-c-top-bar__nav {
+      @apply absolute w-full hidden xl:flex xl:justify-between #{!important};
+      top: 50%;
+      .tribe-events-c-top-bar__nav-list {
+        @apply relative w-full flex justify-between;
+      }
+      .tribe-events-c-top-bar__nav-list-item {
+        @apply w-10 h-10 p-2 border border-c-blue-100 border-solid rounded-full;
+        &:nth-child(1) {
+          @apply absolute left-0 -ml-16 top-0 mt-96;
+        }
+        &:nth-child(2) {
+          @apply absolute right-0 -mr-16 top-0 mt-96;
+        }
+      }
+      .tribe-events-c-top-bar__nav-link {
+        
+        &.tribe-events-c-top-bar__nav-link--prev {
+          svg {
+            @apply mx-auto mt-px;
+          }
+        }
+        &.tribe-events-c-top-bar__nav-link--next {
+          @apply w-full;
+          svg {
+            @apply mx-auto mt-px;
+          }
+        }
+      }
     }
   }
   .tribe-events-calendar-month {
@@ -130,7 +166,7 @@
 .wp-block-button {
   @apply py-4 md:py-8;
   .button {
-    @apply bg-c-blue-300 text-white px-12 py-3 no-underline font-whyte;
+    @apply bg-c-blue-300 text-white px-12 py-3 no-underline font-whyte border-2 border-c-blue-300;
   }
 }
 
@@ -197,7 +233,43 @@
 .event-calendar {
   .tribe-events {
     .tribe-common-l-container {
-      @apply py-6 min-h-0 px-6 container lg:px-8;
+      @apply py-6 min-h-0 px-6 container lg:px-8 relative;
+    }
+  }
+}
+
+.issue-item {
+  .issue-image {
+    @apply duration-300 ease-in-out;
+    transition-property: filter, -webkit-filter;
+    filter:grayscale(1);
+  }
+  &:hover {
+    .issue-image {
+      @apply cursor-pointer;
+      filter: grayscale(0);
+    }
+  }
+}
+
+.contact-map {
+  img {
+    @apply duration-300 ease-in-out;
+    transition-property: filter, -webkit-filter;
+    filter:grayscale(1);
+  }
+  &:hover {
+    img {
+      @apply cursor-pointer;
+      filter: grayscale(0);
+    }
+  }
+}
+
+.donate {
+  .wp-block-button {
+    .button {
+      @apply hover:border-c-blue-300 hover:text-c-blue-300 hover:bg-white;
     }
   }
 }

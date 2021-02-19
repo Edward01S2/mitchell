@@ -5,8 +5,8 @@
         <?php if($cats): ?>
           <?php $__currentLoopData = $cats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $issue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <?php if($issue['name'] !== 'Uncategorized'): ?>
-              <a href="/category/<?php echo $issue['slug']; ?>" class="flex flex-col shadow-md md:shadow-lg" style="background-color: <?php echo $issue['color']; ?>;">
-                <div>
+              <a href="/category/<?php echo $issue['slug']; ?>" class="flex flex-col hover:shadow-issue issue-item" style="background-color: <?php echo $issue['color']; ?>;">
+                <div class="issue-image">
                   <img class="object-cover w-full h-48 xl:h-56" src="<?php echo $issue['img']['url']; ?>" alt="">
                 </div>
                 <div class="p-6 sm:p-8 xl:p-10" style="background-color: <?php echo $issue['color']; ?>; color: <?php echo $issue['font']; ?>;">

@@ -3,7 +3,7 @@
     <div class="py-8">
 
       
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:grid-cols-5 query-filters">
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:grid-cols-4 query-filters">
 
         <?php
           $issue_get = [];
@@ -72,7 +72,7 @@
               </button>
             </div>
           
-            <div class="absolute left-0 z-30 w-full origin-top-left shadow-lg" x-show="open" x-on:click.away="open = false" :class="{ 'bg-c-gray-50' : search, 'bg-c-blue-300' : !search }"
+            <div class="absolute left-0 z-30 w-full origin-top-left shadow-lg md:w-200% md:origin-top-right md:right-0 md:left-auto lg:left-0 lg:right-auto xl:w-300%" x-show="open" x-on:click.away="open = false" :class="{ 'bg-c-gray-50' : search, 'bg-c-blue-300' : !search }"
               x-transition:enter="transition ease-out duration-100"
               x-transition:enter-start="transform opacity-0 scale-95"
               x-transition:enter-end="transform opacity-100 scale-100"
@@ -80,17 +80,17 @@
               x-transition:leave-start="transform opacity-100 scale-100"
               x-transition:leave-end="transform opacity-0 scale-95"
               x-cloak>
-              <div class="p-6" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+              <div class="p-6 lg:p-8" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <div class="flex flex-col mt-2 space-y-6 filters font-whyte" data-filter="label" :class="{ 'text-c-blue-300' : search, 'text-white' : !search }">
                   <?php if(isset($tag_filters['top'])): ?>
                     <div>
                       <div class="mb-4 text-lg font-bold">Top Tags</div>
-                      <div class="flex flex-col space-y-4">
+                      <div class="flex flex-col space-y-4 md:grid md:grid-cols-2 md:space-y-0 md:gap-6 md:gap-x-12 xl:grid-cols-3">
                         <?php $__currentLoopData = $tag_filters['top']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                          <div class="filter">
-                            <label class="">
+                          <div class="border filter md:flex md:items-center md:w-full md:h-full border-c-blue-200 bg-c-blue-400">
+                            <label class="md:w-full md:h-full md:flex md:items-center">
                               <input type="checkbox" value="<?php echo $key; ?>" class="hidden w-5 h-5 border rounded-sm top-tag bg-c-blue-400 border-c-blue-200" <?php echo e(in_array($key, $tag_get) ? 'checked' : ""); ?>/>
-                              <div class="w-3/4 px-6 py-2 text-lg text-center border cursor-pointer bg-c-blue-400 border-c-blue-200"><?php echo e($value); ?></div>
+                              <div class="px-6 py-3 text-lg text-center cursor-pointer md:w-full md:py-4 md:leading-tight md:flex md:items-center md:h-full md:justify-center"><?php echo $value; ?></div>
                             </label>
                           </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -101,14 +101,16 @@
                   <?php if(isset($tag_filters['tags'])): ?>
                     <div>
                       <div class="mb-4 text-lg font-bold">All Tags</div>
-                        <?php $__currentLoopData = $tag_filters['tags']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                          <div class="filter">
-                            <label class="inline-flex items-center">
-                              <input type="checkbox" value="<?php echo $key; ?>" class="w-5 h-5 border rounded-sm bg-c-blue-400 border-c-blue-200" <?php echo e(in_array($key, $tag_get) ? 'checked' : ""); ?> />
-                              <span class="ml-8 text-lg"><?php echo e($value); ?></span>
-                            </label>
-                          </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <div class="md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-12 lg:gap-y-1.5 xl:gap-y-1 xl:grid-cols-3 2xl:gap-y-1.5">
+                          <?php $__currentLoopData = $tag_filters['tags']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="mb-1 filter md:flex md:items-center md:mb-0">
+                              <label class="inline-flex items-center">
+                                <input type="checkbox" value="<?php echo $key; ?>" class="w-5 h-5 border rounded-sm bg-c-blue-400 border-c-blue-200" <?php echo e(in_array($key, $tag_get) ? 'checked' : ""); ?> />
+                                <span class="ml-8 text-lg leading-tight"><?php echo $value; ?></span>
+                              </label>
+                            </div>
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
                       </div>
                     </div>
                   <?php endif; ?>

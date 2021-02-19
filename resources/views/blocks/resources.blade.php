@@ -5,8 +5,8 @@
         @if($cats)
           @foreach($cats as $issue)
             @if($issue['name'] !== 'Uncategorized')
-              <a href="/category/{!! $issue['slug'] !!}" class="flex flex-col shadow-md md:shadow-lg" style="background-color: {!! $issue['color'] !!};">
-                <div>
+              <a href="/category/{!! $issue['slug'] !!}" class="flex flex-col hover:shadow-issue issue-item" style="background-color: {!! $issue['color'] !!};">
+                <div class="issue-image">
                   <img class="object-cover w-full h-48 xl:h-56" src="{!! $issue['img']['url'] !!}" alt="">
                 </div>
                 <div class="p-6 sm:p-8 xl:p-10" style="background-color: {!! $issue['color'] !!}; color: {!! $issue['font'] !!};">

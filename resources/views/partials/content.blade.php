@@ -9,7 +9,7 @@
     </div>
     <div class="md:w-2/3 lg:w-3/4"> <!-- :class="{ 'text-white' : !img }" -->
       <header class="mb-2">
-        <h2 class="text-xl leading-snug entry-title font-whyte line-clamp-3 md:line-clamp-2 lg:text-2xl">
+        <h2 class="text-xl leading-snug entry-title font-whyte line-clamp-3 md:line-clamp-2 lg:text-2xl hover:text-gray-500">
           <a href="{{ $link }}" {{ $external ? 'target="_blank"' : '' }}>
             {!! $title !!}
           </a>

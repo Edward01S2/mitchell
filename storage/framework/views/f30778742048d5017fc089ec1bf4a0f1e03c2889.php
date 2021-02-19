@@ -50,9 +50,9 @@
               <div class="px-6 lg:px-8 swiper-wrapper">
 
                 <?php $__currentLoopData = $terms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $issue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <a href="/<?php echo $more_tax->taxonomy; ?>/<?php echo $issue['slug']; ?>" class="flex flex-col shadow-md md:shadow-lg swiper-slide md:max-w-xs lg:max-w-sm" style="background-color: <?php echo $issue['color']; ?>;">
+                  <a href="/<?php echo $more_tax->taxonomy; ?>/<?php echo $issue['slug']; ?>" class="flex flex-col issue-item swiper-slide md:max-w-xs lg:max-w-sm" style="background-color: <?php echo $issue['color']; ?>;">
                     <div>
-                      <img class="object-cover w-full h-48 xl:h-56" src="<?php echo $issue['img']['url']; ?>" alt="">
+                      <img class="object-cover w-full h-48 xl:h-56 issue-image" src="<?php echo $issue['img']['url']; ?>" alt="">
                     </div>
                     <div class="p-6 sm:p-8 xl:p-10" style="background-color: <?php echo $issue['color']; ?>; color: <?php echo $issue['font']; ?>;">
                       <h4 class="mb-2 text-xl md:text-2xl"><?php echo $issue['name']; ?></h4>

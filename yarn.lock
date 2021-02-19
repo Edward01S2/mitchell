@@ -4161,6 +4161,11 @@
   "resolved" "https://registry.npmjs.org/growly/-/growly-1.3.0.tgz"
   "version" "1.3.0"
 
+"gsap@file:gsap-bonus.tgz":
+  "integrity" "sha512-h4T2l63ppKGVEiYZB17jMHH5BRMVzC5CRzKHqk5ti4+Lby8lmMafzm1qa1IeUOETkzVmPU7Kz7Ls28A1ZPC9CQ=="
+  "resolved" "file:gsap-bonus.tgz"
+  "version" "3.4.2"
+
 "handle-thing@^2.0.0":
   "integrity" "sha512-9Qn4yBxelxoh2Ow62nP+Ka/kMnOXRi8BXnRaUwezLNhqelnN49xKz4F/dPP8OYLxLxq6JDtZb2i9XznUQbNPTg=="
   "resolved" "https://registry.npmjs.org/handle-thing/-/handle-thing-2.0.1.tgz"

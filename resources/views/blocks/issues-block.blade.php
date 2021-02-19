@@ -5,10 +5,10 @@
         <h2 class="mb-8 text-2xl md:text-3xl md:mb-12 lg:text-4xl xl:text-5xl">{!! $title !!}</h2>
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:gap-16">
           @foreach($issues as $issue)
-            <a href="/issue/{!! $issue['slug'] !!}" class="flex flex-col shadow-md md:shadow-lg">
+            <a href="/issue/{!! $issue['slug'] !!}" class="flex flex-col border border-gray-300 issue-item hover:shadow-issue">
               @if($images)
                 <div>
-                  <img class="object-cover w-full h-48 xl:h-56" src="{!! $issue['img']['url'] !!}" alt="">
+                  <img class="object-cover w-full h-48 issue-image xl:h-56" src="{!! $issue['img']['url'] !!}" alt="">
                 </div>
               @endif
               <div class="p-6 sm:p-8 xl:p-10" style="background-color: {!! $issue['color'] !!}; color: {!! $issue['font'] !!};">

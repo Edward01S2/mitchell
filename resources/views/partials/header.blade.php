@@ -29,13 +29,15 @@
               </a>
             @endif
         @endforeach
+        @if(!is_search())
         <button class="z-30 focus:outline-none" @click="search = !search, open = true">
           <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{'text-black': drop || search, 'text-white': !open, 'text-white' : !drop && !search }">
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
           </svg>
         </button>
+        @endif
       </div>
-
+      
       <div class="flex items-center md:hidden">
         <!-- Mobile menu button -->
         <button @click="open = !open" class="inline-flex items-center justify-center p-1 mr-auto text-white transition duration-150 ease-in-out rounded-md bg-c-blue-100 focus:outline-none hover:text-c-red-100" aria-label="Main menu" aria-expanded="false">
@@ -65,7 +67,7 @@
           </svg>
         </button>
         @foreach($issues as $issue)
-          <a href="/issue/{!! $issue['slug'] !!}" class="flex flex-col shadow-md md:shadow-lg">
+          <a href="/issue/{!! $issue['slug'] !!}" class="flex flex-col border border-gray-300 hover:shadow-issue">
             <div class="p-6 py-4 lg:p-8 xl:p-10" style="background-color: {!! $issue['color'] !!}; color: {!! $issue['font'] !!};">
               <h4 class="mb-0 text-xl text-center lg:text-left lg:mb-2 xl:text-2xl">{!! $issue['name'] !!}</h4>
               <p class="hidden text-sm leading-tight lg:block lg:line-clamp-2 xl:text-base">{!! $issue['desc'] !!}</p>

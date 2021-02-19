@@ -10,7 +10,7 @@
         <?php if($social): ?>
           <div class="flex items-center justify-center mt-6 space-x-4 md:mt-0">
             <?php $__currentLoopData = $social; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-              <a href="<?php echo $item['url']; ?>" target="_blank">
+              <a href="<?php echo $item['url']; ?>" target="_blank" class="hover:opacity-75">
                 <?php echo e(get_svg($item['icon']['url'], 'w-6 h-6 fill-current')); ?>
               </a>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -98,7 +98,7 @@
           </div>
           <div class="flex justify-center space-x-4 md:space-x-6">
             <?php $__currentLoopData = $links; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $link): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-              <a href="<?php echo $link['link']['url']; ?>" class="text-gray-600"><?php echo $link['link']['title']; ?></a>
+              <a href="<?php echo $link['link']['url']; ?>" class="text-gray-600 hover:underline"><?php echo $link['link']['title']; ?></a>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </div>
         </div>

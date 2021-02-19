@@ -44,6 +44,7 @@
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "alpinejs": "^2.8.0",
+    "gsap": "file:gsap-bonus.tgz",
     "jquery": "^3.5.1",
     "lity": "^2.4.1",
     "swiper": "^6.4.10",

@@ -30,7 +30,7 @@
   @if($terms)
     <div class="overflow-hidden bg-gray-800 bg-center bg-cover" style="background-image:url({!! $more_bg['url'] !!});">
       <div class="">
-        <div class="py-12 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-32">
+        <div class="py-12 pb-16 md:pt-16 md:pb-24 lg:pt-20 lg:pb-32 xl:pt-28">
           <div class="container px-6 mx-auto lg:px-8">
             <h2 class="mb-8 text-3xl text-white md:text-3xl md:mb-12 lg:text-4xl lg:mb-16">{!! $more_title !!}</h2>
           </div>
@@ -40,9 +40,9 @@
               <div class="px-6 lg:px-8 swiper-wrapper">
 
                 @foreach($terms as $issue)
-                  <a href="/{!! $more_tax->taxonomy !!}/{!! $issue['slug'] !!}" class="flex flex-col shadow-md md:shadow-lg swiper-slide md:max-w-xs lg:max-w-sm" style="background-color: {!! $issue['color'] !!};">
+                  <a href="/{!! $more_tax->taxonomy !!}/{!! $issue['slug'] !!}" class="flex flex-col issue-item swiper-slide md:max-w-xs lg:max-w-sm" style="background-color: {!! $issue['color'] !!};">
                     <div>
-                      <img class="object-cover w-full h-48 xl:h-56" src="{!! $issue['img']['url'] !!}" alt="">
+                      <img class="object-cover w-full h-48 xl:h-56 issue-image" src="{!! $issue['img']['url'] !!}" alt="">
                     </div>
                     <div class="p-6 sm:p-8 xl:p-10" style="background-color: {!! $issue['color'] !!}; color: {!! $issue['font'] !!};">
                       <h4 class="mb-2 text-xl md:text-2xl">{!! $issue['name'] !!}</h4>

@@ -10,7 +10,7 @@
         @if($social)
           <div class="flex items-center justify-center mt-6 space-x-4 md:mt-0">
             @foreach($social as $item)
-              <a href="{!! $item['url'] !!}" target="_blank">
+              <a href="{!! $item['url'] !!}" target="_blank" class="hover:opacity-75">
                 @svg($item['icon']['url'], 'w-6 h-6 fill-current')
               </a>
             @endforeach
@@ -97,7 +97,7 @@
           </div>
           <div class="flex justify-center space-x-4 md:space-x-6">
             @foreach($links as $link)
-              <a href="{!! $link['link']['url'] !!}" class="text-gray-600">{!! $link['link']['title'] !!}</a>
+              <a href="{!! $link['link']['url'] !!}" class="text-gray-600 hover:underline">{!! $link['link']['title'] !!}</a>
             @endforeach
           </div>
         </div>

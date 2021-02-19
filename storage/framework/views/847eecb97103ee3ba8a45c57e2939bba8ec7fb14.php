@@ -3,14 +3,17 @@
   <?php echo $__env->make('blocks.hero', ['bg' => $bg, 'title' => $title, 'content' => $content], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
   <?php echo $__env->make('partials.event-filters', ['bg' => 'bg-c-gray-50', 'search' => 'false'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-  <div class="pb-6 event-calendar lg:pt-12">
+  <div class="relative pb-6 event-calendar lg:pt-12">
+    <div class="xl:max-w-6xl xl:mx-auto 2xl:max-w-7xl">
     <?php 
-      echo do_shortcode('[tribe_events]')
+      //echo do_shortcode('[tribe_events]')
+      use Tribe\Events\Views\V2\Template_Bootstrap;
+      echo tribe( Template_Bootstrap::class )->get_view_html();
     ?>
-
+    </div>
   </div>
 
-  <div class="container px-6 pt-4 pb-12 mx-auto lg:px-8 md:pt-8 xl:pb-16 xl:max-w-7xl">
+  <div class="container px-6 pt-4 pb-12 mx-auto lg:px-8 md:pt-8 xl:pb-16 xl:max-w-6xl 2xl:max-w-7xl">
 
     <h2 id="event-title" class="mb-0 text-3xl md:text-3xl lg:text-4xl xl:text-5xl lg:max-w-none"><?php echo $events_title; ?></h2>
     <div class="flex flex-col divide-y divide-gray-200 posts-ajax-wrapper lg:max-w-none lg:mx-auto">

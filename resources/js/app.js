@@ -5,7 +5,14 @@ import 'jquery';
 import 'alpinejs';
 import 'lity';
 import { debounce } from 'underscore';
+
 import Swiper, { Navigation } from 'swiper';
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 Swiper.use([Navigation]);
 
@@ -254,6 +261,40 @@ $(document).ready(() => {
     
     //console.log(url)
     window.location.replace( url );
+  });
+
+  
+
+  gsap.config({
+    nullTargetWarn: false,
+  });
+
+  gsap.fromTo(".fade-up", {
+    autoAlpha: 0,
+      y: 25,
+    }, {
+    scrollTrigger: {
+      trigger: '.wp-block-split-content',
+      start: "0 75%",
+      //markers: true,
+    },
+    autoAlpha: 1,
+    y: 0,
+    duration: 2,
+  });
+
+  gsap.fromTo(".fade-up-contrib", {
+    autoAlpha: 0,
+      y: 25,
+    }, {
+    scrollTrigger: {
+      trigger: '.fade-up-contrib',
+      start: "0 50%",
+      //markers: true,
+    },
+    autoAlpha: 1,
+    y: 0,
+    duration: 2,
   });
 
 });

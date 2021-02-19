@@ -34,6 +34,9 @@ module.exports = {
       },
       spacing: {
         108: '28rem',
+        '200%' : '200%',
+        '300%' : '300%',
+        '400%' : '400%',
       },
       fontFamily: {
         'whyte' : ['Whyte', 'sans-serif'],
@@ -41,6 +44,7 @@ module.exports = {
       },
       boxShadow: {
         article: '0 10px 50px 0 rgba(0, 0, 0, 0.08)',
+        issue: '0 14px 24px 0 rgba(0, 0, 0, 0.25)',
       },
       maxWidth: {
         'md/2' : '384px',
@@ -48,6 +52,9 @@ module.exports = {
         'xl/2' : '640px',
       },
       minHeight: {
+        '20': '20rem',
+        '24': '24rem',
+        '30': '30rem',
         '36': '36rem',
       }
     },
@@ -55,7 +62,6 @@ module.exports = {
   variants: {
     borderWidth: ({after}) => after(['group-hover']),
     borderColor: ({after}) => after(['group-hover']),
-    extend: {},
   },
   plugins: [
     require('@tailwindcss/typography'),

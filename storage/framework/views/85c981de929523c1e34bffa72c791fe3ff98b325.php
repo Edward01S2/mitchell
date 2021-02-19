@@ -11,25 +11,25 @@
       </div>
       <div class="hidden lg:block">
         <div class="flex flex-col items-start -ml-8 text-lg font-medium text-white font-whyte">
-          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none" x-on:click="tab = 'mission'" :class="{ 'bg-white text-c-blue-300': tab === 'mission' }">
+          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none hover:bg-white hover:text-c-blue-300 hover:bg-opacity-75" x-on:click="tab = 'mission'" :class="{ 'bg-white text-c-blue-300 hover:bg-opacity-100': tab === 'mission' }">
             <span>Mission</span>
             <svg class="w-5 h-5 transform fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{ 'rotate-90': tab === 'mission' }">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>
           </button>
-          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none" x-on:click="tab = 'staff'" :class="{ 'bg-white text-c-blue-300': tab === 'staff' }">
+          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none hover:bg-white hover:text-c-blue-300 hover:bg-opacity-75" x-on:click="tab = 'staff'" :class="{ 'bg-white text-c-blue-300 hover:bg-opacity-100': tab === 'staff' }">
             <span>Staff</span>
             <svg class="w-5 h-5 transform fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{ 'rotate-90': tab === 'staff' }">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>
           </button>
-          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none" x-on:click="tab = 'fellows'" :class="{ 'bg-white text-c-blue-300': tab === 'fellows' }">
+          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none hover:bg-white hover:text-c-blue-300 hover:bg-opacity-75" x-on:click="tab = 'fellows'" :class="{ 'bg-white text-c-blue-300 hover:bg-opacity-100': tab === 'fellows' }">
             <span>Fellows</span>
             <svg class="w-5 h-5 transform fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{ 'rotate-90': tab === 'fellows' }">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>
           </button>
-          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none" x-on:click="tab = 'careers'" :class="{ 'bg-white text-c-blue-300': tab === 'careers' }">
+          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none hover:bg-white hover:text-c-blue-300 hover:bg-opacity-75" x-on:click="tab = 'careers'" :class="{ 'bg-white text-c-blue-300 hover:bg-opacity-100': tab === 'careers' }">
             <span>Careers</span>
             <svg class="w-5 h-5 transform fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{ 'rotate-90': tab === 'careers' }">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />

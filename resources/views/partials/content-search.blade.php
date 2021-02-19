@@ -1,15 +1,15 @@
-<article @php(post_class('py-6 xl:py-8')) x-data="{img: {!! (!$feat) ? 'false' : 'true'; !!}}">
+<article @php(post_class()) x-data="{img: {!! (!$feat) ? 'false' : 'true'; !!}}">
   <div class="flex flex-col p-6 px-0 border-container md:flex-row md:space-x-12 xl:p-8 bg-c-blue-300" > {{--  :class="{ 'md:py-12 xl:py-16' : !img }" --}}
     <div class="md:w-1/3 lg:w-1/4">
-      @if(isset($feat) && $feat)
-        <a href="{{ $link }}" {{ $external ? 'target="_blank"' : '' }}>
-          <img class="object-cover object-center w-full h-48 mb-6 md:mb-0" src="{!! $feat !!}" alt="">
-        </a>
-      @endif
+
+      <a href="{{ $link }}" {{ $external ? 'target="_blank"' : '' }}>
+        <img class="object-cover object-center w-full h-48 mb-6 md:mb-0" src="{!! ($feat) ? $feat : $random !!}" alt="">
+      </a>
+ 
     </div>
     <div class="text-white md:w-2/3 lg:w-3/4">
       <header class="mb-2">
-        <h2 class="text-xl leading-snug text-white entry-title font-whyte line-clamp-3 md:line-clamp-2 lg:text-2xl">
+        <h2 class="text-xl leading-snug text-white entry-title font-whyte line-clamp-3 md:line-clamp-2 lg:text-2xl hover:text-gray-500">
           <a href="{{ $link }}" {{ $external ? 'target="_blank"' : '' }}>
             {!! $title !!}
           </a>

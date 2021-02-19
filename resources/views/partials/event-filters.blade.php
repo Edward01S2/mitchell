@@ -40,7 +40,7 @@
                   <div class="issue-filter">
                     <label class="inline-flex items-center">
                       <input type="checkbox" value="{!! $key !!}" class="w-5 h-5 border rounded-sm bg-c-blue-400 border-c-blue-200" {{ in_array($key, $issue_get) ? 'checked' : "" }} />
-                      <span class="ml-8 text-lg">{{ $value }}</span>
+                      <span class="ml-8 text-lg">{!! $value !!}</span>
                     </label>
                   </div>
                 @endforeach
@@ -72,7 +72,7 @@
               </button>
             </div>
           
-            <div class="absolute left-0 z-30 w-full origin-top-left shadow-lg" x-show="open" x-on:click.away="open = false" :class="{ 'bg-c-gray-50' : search, 'bg-c-blue-300' : !search }"
+            <div class="absolute left-0 z-30 w-full origin-top-left shadow-lg md:w-200% md:origin-top-right md:right-0 md:left-auto xl:left-0 xl:right-auto xl:w-400%" x-show="open" x-on:click.away="open = false" :class="{ 'bg-c-gray-50' : search, 'bg-c-blue-300' : !search }"
               x-transition:enter="transition ease-out duration-100"
               x-transition:enter-start="transform opacity-0 scale-95"
               x-transition:enter-end="transform opacity-100 scale-100"
@@ -80,17 +80,17 @@
               x-transition:leave-start="transform opacity-100 scale-100"
               x-transition:leave-end="transform opacity-0 scale-95"
               x-cloak>
-              <div class="p-6" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+              <div class="p-6 lg:p-8" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <div class="flex flex-col mt-2 space-y-6 filters font-whyte" data-filter="evlabel" :class="{ 'text-c-blue-300' : search, 'text-white' : !search }">
                   @isset($tag_filters['top'])
                     <div>
                       <div class="mb-4 text-lg font-bold">Top Tags</div>
-                      <div class="flex flex-col space-y-4">
+                      <div class="flex flex-col space-y-4 md:grid md:grid-cols-2 md:space-y-0 md:gap-6 md:gap-x-12 xl:grid-cols-3">
                         @foreach($tag_filters['top'] as $key => $value)
-                          <div class="filter">
-                            <label class="">
+                          <div class="w-3/4 border filter md:flex md:items-center md:w-full md:h-full border-c-blue-200 bg-c-blue-400">
+                            <label class="md:w-full md:h-full md:flex md:items-center">
                               <input type="checkbox" value="{!! $key !!}" class="hidden w-5 h-5 border rounded-sm top-tag bg-c-blue-400 border-c-blue-200" {{ in_array($key, $tag_get) ? 'checked' : "" }}/>
-                              <div class="w-3/4 px-6 py-2 text-lg text-center border cursor-pointer bg-c-blue-400 border-c-blue-200">{{ $value }}</div>
+                              <div class="px-6 py-4 text-lg text-center cursor-pointer md:w-full md:leading-tight md:flex md:items-center md:h-full md:justify-center">{!! $value !!}</div>
                             </label>
                           </div>
                         @endforeach
@@ -101,14 +101,16 @@
                   @isset($tag_filters['tags'])
                     <div>
                       <div class="mb-4 text-lg font-bold">All Tags</div>
-                        @foreach($tag_filters['tags'] as $key => $value)
-                          <div class="filter">
-                            <label class="inline-flex items-center">
-                              <input type="checkbox" value="{!! $key !!}" class="w-5 h-5 border rounded-sm bg-c-blue-400 border-c-blue-200" {{ in_array($key, $tag_get) ? 'checked' : "" }} />
-                              <span class="ml-8 text-lg">{{ $value }}</span>
-                            </label>
-                          </div>
-                        @endforeach
+                        <div class="md:grid md:grid-cols-2 md:gap-y-2 md:gap-x-12 lg:gap-y-1.5 xl:gap-y-1 xl:grid-cols-3">
+                          @foreach($tag_filters['tags'] as $key => $value)
+                            <div class="flex items-center filter">
+                              <label class="inline-flex items-center">
+                                <input type="checkbox" value="{!! $key !!}" class="w-5 h-5 border rounded-sm bg-c-blue-400 border-c-blue-200" {{ in_array($key, $tag_get) ? 'checked' : "" }} />
+                                <span class="ml-8 text-lg">{!! $value !!}</span>
+                              </label>
+                            </div>
+                          @endforeach
+                        </div>
                       </div>
                     </div>
                   @endisset
@@ -122,8 +124,8 @@
         {{-- Event Buttons --}}
 
 
-        <a href="" class="inline-flex items-center justify-center px-3 py-3 font-medium text-white event-time-btn font-whyte bg-c-blue-300 xl:col-start-4" data-filter="future">Upcoming Events</a>
-        <a href="" class="inline-flex items-center justify-center px-3 py-3 font-medium text-white event-time-btn font-whyte bg-c-blue-300" data-filter="past">Past Events</a>
+        <a href="" class="inline-flex items-center justify-center px-3 py-4 font-medium text-white event-time-btn font-whyte bg-c-blue-300 xl:col-start-4" data-filter="future">Upcoming Events</a>
+        <a href="" class="inline-flex items-center justify-center px-3 py-4 font-medium text-white event-time-btn font-whyte bg-c-blue-300" data-filter="past">Past Events</a>
 
 
       </div> <!--- END GRID --->

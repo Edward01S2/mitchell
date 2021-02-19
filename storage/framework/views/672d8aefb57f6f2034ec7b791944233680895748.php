@@ -31,7 +31,7 @@
             </a>
           </div>
         </div>
-        <a class="aspect-h-4 aspect-w-4 sm:w-1/2 sm:aspect-none" href="<?php echo $address_link; ?>" target="_blank">
+        <a class="aspect-h-4 aspect-w-4 sm:w-1/2 sm:aspect-none contact-map" href="<?php echo $address_link; ?>" target="_blank">
           <img class="object-cover object-center sm:w-full sm:h-full" src="<?php echo $map['url']; ?>" alt="">
         </a>
       </div>
