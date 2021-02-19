@@ -3,6 +3,7 @@
   <?php echo $__env->make('blocks.hero', ['bg' => $bg, 'title' => $title, 'content' => $content], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
   <?php echo $__env->make('partials.event-filters', ['bg' => 'bg-c-gray-50', 'search' => 'false'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
+
   <div class="relative pb-6 event-calendar lg:pt-12">
     <div class="xl:max-w-6xl xl:mx-auto 2xl:max-w-7xl">
     <?php 

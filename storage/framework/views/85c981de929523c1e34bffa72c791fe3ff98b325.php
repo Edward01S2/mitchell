@@ -1,4 +1,4 @@
-<div class="<?php echo e($block->classes); ?> split-gradient" x-data="{ tab: 'mission' }">
+<div class="<?php echo e($block->classes); ?> split-gradient" x-data="{ tab: '<?php echo (isset($_GET['tab'])) ? $_GET['tab'] : 'mission'; ?>' }">
   <div class="lg:flex lg:container lg:mx-auto lg:px-8">
     <div class="bg-c-blue-300 lg:w-1/4">
       <div class="container px-6 py-4 mx-auto lg:hidden">

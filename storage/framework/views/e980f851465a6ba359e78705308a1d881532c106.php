@@ -1,4 +1,4 @@
-<nav id="nav" x-data="{open: false, drop: false, search: false, state: '0'}" class="absolute top-0 left-0 right-0 z-50 w-full bg-transparent" :class="{'bg-transparent': !open, 'bg-white': search || drop}">
+<nav id="nav" x-data="{open: false, drop: false, search: false, resource: false, events: false, about: false}" class="absolute top-0 left-0 right-0 z-50 w-full bg-transparent" :class="{'bg-transparent': !open, 'bg-white': search || drop || resource || events || about}">
   <div class="container z-40 px-6 py-2 mx-auto lg:px-8">
     <div class="flex items-center justify-between">
 
@@ -10,28 +10,40 @@
         </div>
       </div>
 
-      <div class="items-center hidden nav-container md:flex md:space-x-6 xl:space-x-8">
+      <div class="items-center hidden nav-container md:flex md:space-x-6 lg:space-x-8">
         <?php $__currentLoopData = $navigation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <?php if($item->classes === 'nav-issues'): ?>
 
-              <div class="group bg-c-blue-100 px-4 pr-2 py-1 transition duration-150 ease-in-out z-30 <?php echo e($item->classes ?? ''); ?> <?php echo e($item->active ? 'active' : ''); ?>">
+              <div class="group bg-c-blue-100 px-4 pr-2 py-1 transition duration-150 ease-in-out z-30 hover:bg-c-blue-200 <?php echo e($item->classes ?? ''); ?> <?php echo e($item->active ? 'active' : ''); ?>">
                 <button class="flex items-center focus:outline-none" @click="drop = !drop, open = true">
-                  <div class="text-sm text-white nav-text group-hover:font-bold font-whyte"><?php echo e($item->label); ?></div>
+                  <div class="text-sm text-white nav-text group-hover:font-bold font-whyte lg:text-base"><?php echo e($item->label); ?></div>
                   <svg class="w-6 h-6 ml-2 text-white transform fill-current" :class="{'rotate-180': drop }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
                 </button>
               </div>
 
-            <?php else: ?>
-              <a class="nav-link text-sm tracking-widest focus:outline-none font-whyte group relative z-30 transition duration-150 ease-in-out border-transparent border-b-3 hover:border-white <?php echo e($item->classes ?? ''); ?> <?php echo e($item->active ? 'active' : ''); ?>" href="<?php echo e($item->url); ?>" target="<?php echo $item->target; ?>">
-                <div :class="{'text-black': drop || search, 'text-white': !open, 'text-white' : !drop && !search }" class="nav-text group-hover:font-bold"><?php echo e($item->label); ?></div>
-              </a>
-            <?php endif; ?>
+          <?php elseif($item->classes === 'nav-about'): ?>
+            <button class="focus:outline-none" @click="about = !about, open = true">
+              <div class="text-sm tracking-widest text-white nav-text group-hover:font-bold font-whyte lg:text-base hover:text-c-blue-100" :class="{'text-black': search || drop || resource || events || about, 'text-white': !open, 'text-white' : !drop && !search && !resource && !events && !about }"><?php echo e($item->label); ?></div>
+            </button>
+          <?php elseif($item->classes === 'nav-events'): ?>
+            <button class="focus:outline-none" @click="events = !events, open = true">
+              <div class="text-sm tracking-widest text-white nav-text group-hover:font-bold font-whyte lg:text-base hover:text-c-blue-100" :class="{'text-black': search || drop || resource || events || about, 'text-white': !open, 'text-white' : !drop && !search && !resource && !events && !about }"><?php echo e($item->label); ?></div>
+            </button>
+          <?php elseif($item->classes === 'nav-resources'): ?>
+            <button class="focus:outline-none" @click="resource = !resource, open = true">
+              <div class="text-sm tracking-widest text-white nav-text group-hover:font-bold font-whyte lg:text-base hover:text-c-blue-100" :class="{'text-black': search || drop || resource || events || about, 'text-white': !open, 'text-white' : !drop && !search && !resource && !events && !about }"><?php echo e($item->label); ?></div>
+            </button>
+          <?php else: ?>
+            <a class="nav-link text-sm tracking-widest focus:outline-none font-whyte group relative z-30 transition duration-150 ease-in-out border-transparent border-b-3 hover:border-white lg:text-base <?php echo e($item->classes ?? ''); ?> <?php echo e($item->active ? 'active' : ''); ?>" href="<?php echo e($item->url); ?>" target="<?php echo $item->target; ?>">
+              <div :class="{'text-black': search || drop || resource || events || about, 'text-white': !open, 'text-white' : !drop && !search && !resource && !events && !about }" class="nav-text group-hover:font-bold hover:text-c-blue-100"><?php echo e($item->label); ?></div>
+            </a>
+          <?php endif; ?>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         <?php if(!is_search()): ?>
         <button class="z-30 focus:outline-none" @click="search = !search, open = true">
-          <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{'text-black': drop || search, 'text-white': !open, 'text-white' : !drop && !search }">
+          <svg class="w-5 h-5 fill-current hover:text-c-blue-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{'text-black': search || drop || resource || events || about, 'text-white': !open, 'text-white' : !drop && !search && !resource && !events && !about }">
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
           </svg>
         </button>
@@ -57,8 +69,101 @@
 
   
 
+    
+    <div :class="{'block': about, 'hidden': !about }" class="absolute top-0 left-0 right-0 z-20 w-full mt-24 bg-white border-t border-b border-gray-200" x-cloak>
+      <div class="container px-6 mx-auto lg:px-8">
+        <div @click.away="about = false" class="relative grid grid-cols-2 gap-6 px-10 py-8 xl:px-16 xl:py-12">
+          <button class="absolute top-0 right-0 mt-4 -mr-1 text-black focus:outline-none xl:-mr-2 hover:text-c-blue-200" @click="about = false, open = false">
+            <svg class="w-8 h-8 xl:w-10 xl:h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+ 
+          <div class="aspect-h-9 aspect-w-16">
+            <img class="object-cover object-center w-full h-full" src="<?php echo $about_img['url']; ?>" alt="">
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="flex flex-col space-y-1 lg:space-y-1.5 xl:space-y-2 xl:space-y-3">
+              <?php $__currentLoopData = $navigation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php if($item->classes === 'nav-about'): ?>
+                  <a class="nav-link text-xl tracking-widest font-medium focus:outline-none font-whyte group relative z-30 transition duration-150 text-black hover:text-c-blue-200 lg:text-2xl xl:text-3xl <?php echo e($item->classes ?? ''); ?> <?php echo e($item->active ? 'active' : ''); ?>" href="<?php echo e($item->url); ?>" target="<?php echo $item->target; ?>">
+                    <div class="nav-text group-hover:font-bold"><?php echo e($item->label); ?></div>
+                  </a>
+                  <?php if($item->children): ?>
+                    <?php $__currentLoopData = $item->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <a class="nav-link text-lg tracking-widest focus:outline-none font-whyte group relative z-30 transition duration-150 text-gray-600 hover:underline lg:text-xl xl:text-2xl <?php echo e($child->classes ?? ''); ?> <?php echo e($child->active ? 'active' : ''); ?>" href="<?php echo e($child->url); ?>" target="<?php echo $child->target; ?>">
+                        <div class="nav-text group-hover:font-bold"><?php echo e($child->label); ?></div>
+                      </a>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  <?php endif; ?>
+                <?php endif; ?>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div :class="{'block': events, 'hidden': !events }" class="absolute top-0 left-0 right-0 z-20 w-full mt-24 bg-white border-t border-b border-gray-200" x-cloak>
+      <div class="container px-6 mx-auto lg:px-8">
+        <div @click.away="events = false" class="relative grid grid-cols-2 gap-6 px-10 py-8 xl:px-16 xl:py-12">
+          <button class="absolute top-0 right-0 mt-4 -mr-1 text-black focus:outline-none xl:-mr-2 hover:text-c-blue-200" @click="events = false, open = false">
+            <svg class="w-8 h-8 xl:w-10 xl:h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
   
-  <div :class="{'block': drop, 'hidden': !drop }" class="absolute top-0 left-0 right-0 z-20 w-full mt-24 bg-white border-t border-gray-200" x-cloak>
+          <div class="aspect-h-9 aspect-w-16">
+            <img class="object-cover object-center w-full h-full" src="<?php echo $event_img['url']; ?>" alt="">
+          </div>
+          <div class="flex items-center justify-center">
+            <div class="flex flex-col space-y-1 lg:space-y-1.5 xl:space-y-2 xl:space-y-3">
+              <?php $__currentLoopData = $navigation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <?php if($item->classes === 'nav-events'): ?>
+                  <a class="nav-link text-xl tracking-widest font-medium focus:outline-none font-whyte group relative z-30 transition duration-150 text-black hover:text-c-blue-200 lg:text-2xl xl:text-3xl <?php echo e($item->classes ?? ''); ?> <?php echo e($item->active ? 'active' : ''); ?>" href="<?php echo e($item->url); ?>" target="<?php echo $item->target; ?>">
+                    <div class="nav-text group-hover:font-bold"><?php echo e($item->label); ?></div>
+                  </a>
+                  <?php if($item->children): ?>
+                    <?php $__currentLoopData = $item->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                      <a class="nav-link text-lg tracking-widest focus:outline-none font-whyte group relative z-30 transition duration-150 text-gray-600 hover:underline lg:text-xl xl:text-2xl <?php echo e($child->classes ?? ''); ?> <?php echo e($child->active ? 'active' : ''); ?>" href="<?php echo e($child->url); ?>" target="<?php echo $child->target; ?>">
+                        <div class="nav-text group-hover:font-bold"><?php echo e($child->label); ?></div>
+                      </a>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                  <?php endif; ?>
+                <?php endif; ?>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  
+  <div :class="{'block': resource, 'hidden': !resource }" class="absolute top-0 left-0 right-0 z-20 w-full mt-24 bg-white border-t border-b border-gray-200" x-cloak>
+    <div class="container px-6 mx-auto lg:px-8">
+      <div @click.away="resource = false" class="relative grid grid-cols-2 gap-8 px-10 py-8 xl:px-32 xl:py-12 2xl:px-56">
+        <button class="absolute top-0 right-0 mt-4 -mr-1 text-black focus:outline-none xl:-mr-2 hover:text-c-blue-200" @click="resource = false, open = false">
+          <svg class="w-8 h-8 xl:w-10 xl:h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+          <?php $__currentLoopData = $resources; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $issue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <a href="/category/<?php echo $issue['slug']; ?>" class="flex flex-col border border-gray-300 hover:shadow-issue" style="background-color: <?php echo $issue['color']; ?>;">
+              <div class="p-6 py-4 lg:p-8 xl:p-10" style="background-color: <?php echo $issue['color']; ?>; color: <?php echo $issue['font']; ?>;">
+                <h4 class="mb-0 text-xl text-center lg:text-left lg:mb-2 xl:text-2xl"><?php echo $issue['name']; ?></h4>
+                <p class="hidden text-sm leading-tight lg:block lg:line-clamp-3 xl:text-base"><?php echo $issue['desc']; ?></p>
+              </div>
+            </a>
+          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </div>
+    </div>
+  </div>
+
+  
+  <div :class="{'block': drop, 'hidden': !drop }" class="absolute top-0 left-0 right-0 z-20 w-full mt-24 bg-white border-t border-b border-gray-200" x-cloak>
     <div class="container px-6 mx-auto lg:px-8">
       <ul @click.away="drop = false" class="relative grid grid-cols-3 gap-8 px-10 py-8 xl:px-16 xl:py-12">
         <button class="absolute top-0 right-0 mt-4 -mr-1 text-black focus:outline-none xl:-mr-2 hover:text-c-blue-200" @click="drop = false, open = false">

@@ -179,14 +179,6 @@ class EventArchive extends Composer
   
       public function tagFilters() {
           
-        if(is_archive()) {
-  
-        
-          //$term = get_queried_object();
-  
-         //var_dump($term);
-          //return $term;
-  
           $top = get_field('event tax', 'options');
           if(isset($top) && $top) {
             //Array of terms IDs for the top tags set for the taxonomy
@@ -195,7 +187,7 @@ class EventArchive extends Composer
   
           
           $objects = get_posts([
-            'post_type' => ['tribe_events'],
+            'post_type' => 'tribe_events',
             'numberposts' => -1,
             'order' => 'DESC',
             'fields' => 'ids',
@@ -206,7 +198,7 @@ class EventArchive extends Composer
   
          
         
-          //return $tags;
+          //return $objects;
   
         $tag_filters = [];
         if(isset($tags) && !empty($tags)) :
@@ -222,6 +214,6 @@ class EventArchive extends Composer
           
         return $tag_filters;
       }
-    }
+    
 
 }

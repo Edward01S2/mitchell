@@ -5,6 +5,7 @@
   @include('blocks.hero', ['bg' => $bg, 'title' => $title, 'content' => $content])
   @include('partials.event-filters', ['bg' => 'bg-c-gray-50', 'search' => 'false'])
 
+
   <div class="relative pb-6 event-calendar lg:pt-12">
     <div class="xl:max-w-6xl xl:mx-auto 2xl:max-w-7xl">
     <?php 

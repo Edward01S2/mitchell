@@ -46,6 +46,8 @@ class ThemeSettings extends Field
                 'rows' => '15'
             ])
         ->addTab('Header')
+            ->addImage('about nav')
+            ->addImage('event nav')
         ->addTab('Post')
             ->addImage('default bg')
             ->addGallery('random feat')
