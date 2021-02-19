@@ -3,7 +3,7 @@
     <div class="container px-6 mx-auto lg:px-8">
       <div class="py-12 md:pb-24">
         <h2 class="mb-8 text-2xl md:text-3xl md:mb-12 lg:text-4xl xl:text-5xl"><?php echo $title; ?></h2>
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:gap-16">
+        <div class="grid grid-cols-1 gap-6 issue-grid sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:gap-16">
           <?php $__currentLoopData = $issues; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $issue): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <a href="/issue/<?php echo $issue['slug']; ?>" class="flex flex-col border border-gray-300 issue-item hover:shadow-issue" style="background-color: <?php echo $issue['color']; ?>;">
               <?php if($images): ?>

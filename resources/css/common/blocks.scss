@@ -273,3 +273,17 @@
     }
   }
 }
+
+.consent {
+  a {
+    @apply underline hover:text-c-blue-100;
+  }
+}
+
+.about-issues {
+  .issue-grid {
+    a {
+      @apply border-0 border-none;
+    }
+  }
+}

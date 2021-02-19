@@ -130,4 +130,7 @@
   .gform_button {
     @apply font-whyte font-bold text-white bg-transparent w-auto normal-case px-12 py-3 tracking-wide border border-white md:px-16 hover:bg-white hover:text-c-blue-300 lg:text-lg xl:text-xl;
   }
+  .gform_confirmation_message {
+    @apply text-white;
+  }
 }

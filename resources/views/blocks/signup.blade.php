@@ -7,7 +7,7 @@
           <div class="mb-4 text-black signup-form">
             @include('partials.form', ['form' => $form])
           </div>
-          <div class="lg:px-8 xl:px-12">{!! $consent !!}</div>
+          <div class="lg:px-8 xl:px-12 consent">{!! $consent !!}</div>
         </div>
       </div>
     </div>

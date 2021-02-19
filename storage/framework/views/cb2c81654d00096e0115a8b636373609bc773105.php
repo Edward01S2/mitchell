@@ -7,7 +7,7 @@
           <div class="mb-4 text-black signup-form">
             <?php echo $__env->make('partials.form', ['form' => $form], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
           </div>
-          <div class="lg:px-8 xl:px-12"><?php echo $consent; ?></div>
+          <div class="lg:px-8 xl:px-12 consent"><?php echo $consent; ?></div>
         </div>
       </div>
     </div>
