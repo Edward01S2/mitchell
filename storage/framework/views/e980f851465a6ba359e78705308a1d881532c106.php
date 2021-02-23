@@ -12,11 +12,11 @@
 
       <div class="items-stretch hidden nav-container md:flex">
         <?php $__currentLoopData = $navigation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-          
+
           <?php if($item->label !== 'Home'): ?>
             <div class="flex items-center" x-on:mouseenter="<?php echo strtolower($item->label); ?> = !<?php echo strtolower($item->label); ?>, open = true" x-on:mouseover.away="<?php echo strtolower($item->label); ?> = false, open = false">
               <?php if($item->label === "Issues"): ?>
-                <button class="z-30 flex items-center px-4 py-1 pr-2 transition duration-100 focus:outline-none bg-c-blue-100 group-hover:bg-c-blue-200" >
+                <button class="z-30 flex items-center px-4 py-1 pr-2 mx-3 transition duration-100 lg:mx-5 focus:outline-none bg-c-blue-100 group-hover:bg-c-blue-200" >
                   <div class="text-sm text-white nav-text font-whyte lg:text-base"><?php echo e($item->label); ?></div>
                   <svg class="w-6 h-6 ml-2 text-white transform fill-current" :class="{'rotate-180': issues }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -61,8 +61,6 @@
                 </div>
               
             </div>
-          <?php else: ?>
-          
           <?php endif; ?>
 
           
@@ -79,9 +77,7 @@
             <div class="container px-6 mx-auto lg:px-8">
         
               <div  class="relative flex items-center justify-center py-16">
-        
-                
-        
+
                 <div id="search-container" class="flex items-center w-full max-w-lg lg:max-w-xl xl:max-w-2xl">
                   <div class="mr-4 text-2xl font-bold text-white font-whyte xl:text-3xl">Search:</div>
                   <form action="<?php echo home_url();; ?>" role="search" method="post" id="searchform" class="relative flex-grow">
