@@ -209,6 +209,7 @@ add_action('init', function() {
         # Use radio buttons in the meta box for this taxonomy on the post editing screen:
         'meta_box' => 'simple',
         'hierarachical' => true,
+        'public' => false,
 
         # Show this taxonomy in the 'At a Glance' dashboard widget:
 

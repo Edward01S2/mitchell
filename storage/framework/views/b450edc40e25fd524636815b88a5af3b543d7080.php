@@ -30,7 +30,7 @@
           <div class="mb-3 footer-form lg:mb-4">
             <?php echo $__env->make('partials.form', ['form' => $form], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
           </div>
-          <div class="lg:pr-6"><?php echo $form_text; ?></div>
+          <div class="text-black lg:pr-6 opacity-40"><?php echo $form_text; ?></div>
         </div>
 
         <div class="flex flex-col space-y-4 md:col-span-2 md:col-start-1 md:row-start-1 md:space-y-8 xl:grid xl:grid-cols-3 xl:space-y-0 xl:col-span-3 xl:gap-8">
@@ -98,7 +98,7 @@
           </div>
           <div class="flex justify-center space-x-4 md:space-x-6">
             <?php $__currentLoopData = $links; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $link): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-              <a href="<?php echo $link['link']['url']; ?>" class="text-gray-600 hover:underline"><?php echo $link['link']['title']; ?></a>
+              <a href="<?php echo $link['link']['url']; ?>" class="text-c-gray-400 hover:underline"><?php echo $link['link']['title']; ?></a>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </div>
         </div>

@@ -1,8 +1,8 @@
 <article <?php post_class('py-6 xl:py-8') ?> x-data="{img: <?php echo $post['feat'] ?>}">
   <div class="flex flex-col p-6 border-container md:flex-row md:space-x-12 xl:p-8">
     <div class="md:w-1/3 lg:w-1/4">
-        <a href="<?php echo $post['link'] ?>" <?php echo $post['external'] ?>>
-          <img class="object-cover object-center w-full h-48 mb-6 md:mb-0" src="<?php echo $post['img'] ?>" alt="">
+        <a href="<?php echo $post['link'] ?>" <?php echo $post['external'] ?> class="block mb-6 overflow-hidden md:mb-0">
+          <img class="object-cover object-center w-full h-48 transition duration-300 transform hover:scale-110" src="<?php echo $post['img'] ?>" alt="">
         </a>
     </div>
     <div class="md:w-2/3 lg:w-3/4">

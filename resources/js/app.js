@@ -45,7 +45,7 @@ $(document).ready(() => {
     tribe_events_calendar_ajax_post();
   }
 
-  $('.query-filters .filters').on('change', 'input[type="checkbox"]', debounce(tagFilters, 1250));
+  $('.query-filters .filters').on('change', 'input[type="checkbox"]', debounce(tagFilters, 1000));
 
   function tagFilters() {
     var url = location.protocol + '//' + location.host + location.pathname,

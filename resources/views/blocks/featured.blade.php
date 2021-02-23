@@ -7,9 +7,9 @@
           {{-- @dump($post['term']) --}}
           @if($loop->first)
             <div class="pb-6 border-b border-gray-200 feat-item lg:row-span-3 lg:border-0 group">
-              <div>
-                <a href="{!! $post['url'] !!}" {{ $post['external'] ? 'target=_blank' : ''  }}>
-                  <img class="object-cover object-center w-full h-48 md:h-64 xl:h-72" src="{!! $post['image'] !!}" alt="">
+              <div class="overflow-hidden">
+                <a href="{!! $post['url'] !!}" {{ $post['external'] ? 'target=_blank' : ''  }} class="overflow-hidden">
+                  <img class="object-cover object-center w-full h-48 transition duration-300 transform md:h-64 xl:h-72 group-hover:scale-110" src="{!! $post['image'] !!}" alt="">
                 </a>
               </div>
               <div>
@@ -25,8 +25,8 @@
             </div>
           @else
             <div class="pb-6 border-b border-gray-200 feat-item md:flex md:space-x-6 group">
-              <div class="hidden md:block md:flex-shrink-0">
-                <a href="{!! $post['url'] !!}" {{ $post['external'] ? 'target=_blank' : ''  }}>
+              <div class="hidden overflow-hidden md:block md:flex-shrink-0">
+                <a href="{!! $post['url'] !!}" {{ $post['external'] ? 'target=_blank' : ''  }} class="block w-24 h-24 overflow-hidden">
                   <img class="object-cover object-center w-24 h-24" src="{!! ($post['image']) ? $post['image'] : $random !!}" alt="">
                 </a>
               </div>

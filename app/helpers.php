@@ -111,13 +111,40 @@ add_action('pre_get_posts', function($query) {
     $query->set('post_type', ['post', 'tribe_events']);
   }
 
-  // if(is_post_type_archive('tribe_events')) {
-  //   $query->set('post_type', 'tribe_events');
+  if(isset($_GET['time'])):
 
-  // }
+    $time = $_GET['time'];
+
+    //$query->set('eventDisplay', 'custom');
+
+    if($time === 'future') {
+      $query->set('meta_query', array(
+        array(
+          'key' => '_EventStartDate',
+          'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+          'compare' => '>'
+        )
+      ));
+    }
+    if($time === 'past') {
+      $query->set('meta_query', array(
+        array(
+          'key' => '_EventStartDate',
+          'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+          'compare' => '<'
+        )
+      ));
+    }
+
+  endif;
+
   //print_r($query);
-
+  
+  // }
+  
+  return $query;
 });
+
 
 function noImage() {
   $gallery = get_field('random feat', 'option');

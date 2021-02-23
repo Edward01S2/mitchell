@@ -120,7 +120,9 @@ class News extends Block
     {
         return [
             'title' => get_field('title'),
+            'link' => get_field('link'),
             'posts' => $this->getPosts(),
+
         ];
     }
 
@@ -134,7 +136,11 @@ class News extends Block
         $news = new FieldsBuilder('news');
 
         $news
-            ->addText('title');
+            ->addText('title')
+            ->addLink('link')
+            ->addTaxonomy('tax', [
+                'field_type' => 'radio',
+            ]);
 
         return $news->build();
     }
@@ -145,7 +151,7 @@ class News extends Block
             'post_status' => 'publish',
             'posts_per_page' => '8',
             'order' => 'DESC',
-            'category_name' => 'news',
+            'cat' => get_field('tax'),
         );
 
         $posts = new \WP_Query($args);

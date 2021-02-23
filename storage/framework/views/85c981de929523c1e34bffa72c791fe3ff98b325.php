@@ -43,7 +43,7 @@
       <div class="pt-8 pb-12 lg:pt-12 xl:pt-16">
 
         <div x-show="tab === 'mission'">
-          <div class="prose max-w-none lg:prose-lg lg:leading-snug">
+          <div class="prose max-w-none lg:prose-lg lg:leading-snug text-c-gray-400">
             <?php echo $content; ?>
 
           </div>
@@ -56,7 +56,7 @@
                 <div class="p-6 sm:w-3/5 sm:flex sm:items-center">
                   <div>
                     <h3 class="mb-2 text-2xl sm:text-3xl"><?php echo $item['title']; ?></h3>
-                    <p class="lg:text-lg"><?php echo $item['content']; ?></p>
+                    <p class="lg:text-lg text-c-gray-400"><?php echo $item['content']; ?></p>
                   </div>
                 </div>
               </div>
@@ -81,19 +81,23 @@
                   
                   <div class="flex space-x-4 lg:space-x-8">
                     <div>
+                      <?php if($item['email']): ?>
                       <a href="mailto:<?php echo $item['email']; ?>" class="inline-flex items-center mb-2 text-c-blue-100">
                         <span class="mr-1 font-whyte">Email</span>
                         <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                           <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                         </svg>
                       </a>
+                      <?php endif; ?>
                     
                       <div class="flex space-x-4">
-                        <div>
-                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
+                        <div class="text-c-gray-600">
+                          <?php if($item['bio']): ?>
+                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
                             <?php echo $item['bio']; ?>
 
                           </div>
+                          <?php endif; ?>
                           <?php if($dl = $item['download']): ?>
                             <a href="<?php echo $dl['url']; ?>" class="inline-block px-6 py-2 mt-4 text-sm text-white rounded-md bg-c-gray-300 font-whyte">Download Bio</a>
                           <?php endif; ?>
@@ -108,6 +112,7 @@
                         </div>
                       </div>
                     </div>
+                    <?php if($item['bio']): ?>
                     <div class="hidden text-center sm:block">
                       <button x-on:click="drop = !drop" class="p-1 focus:outline-none" :class="{'bg-c-blue-100': drop, 'bg-c-blue-200': !drop }">
                         <svg class="w-8 h-8 text-white fill-current"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -116,6 +121,7 @@
                         </svg>
                       </button>
                     </div>
+                    <?php endif; ?>
 
                   </div>
                 </div>
@@ -128,55 +134,61 @@
           <div class="flex flex-col space-y-12">
             <?php if($fellows): ?>
               <?php $__currentLoopData = $fellows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <div class="flex flex-col sm:flex-row sm:space-x-6 md:space-x-8 xl:space-x-12" x-data="{ drop: false }">
-                  <div class="mb-4 sm:w-1/3 xl:w-1/4">
-                    <img class="object-cover w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="<?php echo $item['image']['url']; ?>" alt="">
-                  </div>
-                  <div class="sm:w-2/3 xl:w-3/4">
-                    <h3 class="text-xl md:text-2xl"><?php echo $item['name']; ?></h3>
-                    <div class="mb-4 text-lg font-whyte"><?php echo $item['title']; ?></div>
+              <div class="flex flex-col sm:flex-row sm:space-x-6 md:space-x-8 xl:space-x-12" x-data="{ drop: false }">
+                <div class="mb-4 sm:w-1/3 xl:w-1/4">
+                  <img class="object-cover w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="<?php echo $item['image']['url']; ?>" alt="">
+                </div>
+                <div class="sm:w-2/3 xl:w-3/4">
+                  <h3 class="text-xl md:text-2xl"><?php echo $item['name']; ?></h3>
+                  <div class="mb-4 text-lg font-whyte"><?php echo $item['title']; ?></div>
+                  
+                  <div class="flex space-x-4 lg:space-x-8">
+                    <div>
+                      <?php if($item['email']): ?>
+                      <a href="mailto:<?php echo $item['email']; ?>" class="inline-flex items-center mb-2 text-c-blue-100">
+                        <span class="mr-1 font-whyte">Email</span>
+                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                      <?php endif; ?>
                     
-                    <div class="flex space-x-4 lg:space-x-8">
-                      <div>
-                        <a href="mailto:<?php echo $item['email']; ?>" class="inline-flex items-center mb-2 text-c-blue-100">
-                          <span class="mr-1 font-whyte">Email</span>
-                          <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                          </svg>
-                        </a>
-                      
-                        <div class="flex space-x-4">
-                          <div>
-                            <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
-                              <?php echo $item['bio']; ?>
+                      <div class="flex space-x-4">
+                        <div class="text-c-gray-600">
+                          <?php if($item['bio']): ?>
+                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
+                            <?php echo $item['bio']; ?>
 
-                            </div>
-                            <?php if($dl = $item['download']): ?>
-                              <a href="<?php echo $dl['url']; ?>" class="inline-block px-6 py-2 mt-4 text-sm text-white rounded-md bg-c-gray-300 font-whyte">Download Bio</a>
-                            <?php endif; ?>
                           </div>
-                          <div class="mt-6 text-center sm:hidden">
-                            <button x-on:click="drop = !drop" class="p-1 focus:outline-none" :class="{'bg-c-blue-100': drop, 'bg-c-blue-200': !drop }">
-                              <svg class="w-5 h-5 text-white fill-current"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" :class="{'hidden': drop, 'block': !drop }"/>
-                                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" :class="{'hidden': !drop, 'block': drop }" />
-                              </svg>
-                            </button>
-                          </div>
+                          <?php endif; ?>
+                          <?php if($dl = $item['download']): ?>
+                            <a href="<?php echo $dl['url']; ?>" class="inline-block px-6 py-2 mt-4 text-sm text-white rounded-md bg-c-gray-300 font-whyte">Download Bio</a>
+                          <?php endif; ?>
+                        </div>
+                        <div class="mt-6 text-center sm:hidden">
+                          <button x-on:click="drop = !drop" class="p-1 focus:outline-none" :class="{'bg-c-blue-100': drop, 'bg-c-blue-200': !drop }">
+                            <svg class="w-5 h-5 text-white fill-current"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" :class="{'hidden': drop, 'block': !drop }"/>
+                              <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" :class="{'hidden': !drop, 'block': drop }" />
+                            </svg>
+                          </button>
                         </div>
                       </div>
-                      <div class="hidden text-center sm:block">
-                        <button x-on:click="drop = !drop" class="p-1 focus:outline-none" :class="{'bg-c-blue-100': drop, 'bg-c-blue-200': !drop }">
-                          <svg class="w-8 h-8 text-white fill-current"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" :class="{'hidden': drop, 'block': !drop }"/>
-                            <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" :class="{'hidden': !drop, 'block': drop }" />
-                          </svg>
-                        </button>
-                      </div>
-
                     </div>
+                    <?php if($item['bio']): ?>
+                    <div class="hidden text-center sm:block">
+                      <button x-on:click="drop = !drop" class="p-1 focus:outline-none" :class="{'bg-c-blue-100': drop, 'bg-c-blue-200': !drop }">
+                        <svg class="w-8 h-8 text-white fill-current"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" :class="{'hidden': drop, 'block': !drop }"/>
+                          <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" :class="{'hidden': !drop, 'block': drop }" />
+                        </svg>
+                      </button>
+                    </div>
+                    <?php endif; ?>
+
                   </div>
                 </div>
+              </div>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
           </div>
@@ -191,12 +203,13 @@
                     <div>
                       <h3 class="text-xl md:text-2xl"><?php echo $item['title']; ?></h3>
                       <div class="mb-4 font-whyte">Posted: <?php echo $item['date']; ?></div>
-                      <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
+                      <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
                         <?php echo $item['description']; ?>
 
                       </div>
                     </div>
                     <div>
+                      <?php if($item['description']): ?>
                       <div class="mt-4">
                         <button x-on:click="drop = !drop" class="p-1 focus:outline-none" :class="{'bg-c-blue-100': drop, 'bg-c-blue-200': !drop }">
                           <svg class="w-5 h-5 text-white fill-current sm:h-8 sm:w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -205,6 +218,7 @@
                           </svg>
                         </button>
                       </div>
+                      <?php endif; ?>
                     </div>
                   </div>
                 </div>

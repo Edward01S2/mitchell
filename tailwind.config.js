@@ -23,10 +23,13 @@ module.exports = {
           400: '#124159',
         },
         'c-gray': {
+          25: '#CCCCCC',
           50: '#F1F1F1',
+          75: '#D1D1D1',
           100: '#F3F5F8',
           200: '#939598',
           300: '#999999',
+          400: '#666666',
         },
         'c-black': {
           100: '#07202D',
@@ -62,6 +65,7 @@ module.exports = {
   variants: {
     borderWidth: ({after}) => after(['group-hover']),
     borderColor: ({after}) => after(['group-hover']),
+    scale: ({after}) => after(['group-hover']),
   },
   plugins: [
     require('@tailwindcss/typography'),

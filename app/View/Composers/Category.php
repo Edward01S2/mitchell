@@ -40,6 +40,8 @@ class Category extends Composer
           'more_tax' => $cat,
           'top' => $this->getTopTags(),
           'tag_filters' => $this->tagFilters(),
+          'resource_filters' => $this->resourceFilters(),
+          'cat' => $cat,
       ];
     }
 
@@ -149,6 +151,22 @@ class Category extends Composer
         
         return $tag_filters;
       }
+    }
+
+      public function resourceFilters() {
+        $resources = get_terms('category', [
+            'hide_empty' => false,
+        ]);
+          
+        $resource_filters = [];
+        foreach($resources as $tax) {
+            if($tax->name !== 'Uncategorized') {
+                $resource_filters[$tax->slug] = $tax->name;
+            }
+        };
+          
+        return $resource_filters;
+      }
 
 
       // $tags = get_terms([
@@ -161,7 +179,7 @@ class Category extends Composer
       //return $tags;
       
     
-  }
+  
     
 
 

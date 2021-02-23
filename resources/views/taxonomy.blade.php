@@ -26,7 +26,7 @@
       {!! $pagi !!}
     </div>
   @endif
-
+  
   @if($terms)
     <div class="overflow-hidden bg-gray-800 bg-center bg-cover" style="background-image:url({!! $more_bg['url'] !!});">
       <div class="">

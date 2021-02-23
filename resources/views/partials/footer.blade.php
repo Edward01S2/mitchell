@@ -30,7 +30,7 @@
           <div class="mb-3 footer-form lg:mb-4">
             @include('partials.form', ['form' => $form])
           </div>
-          <div class="lg:pr-6">{!! $form_text !!}</div>
+          <div class="text-black lg:pr-6 opacity-40">{!! $form_text !!}</div>
         </div>
 
         <div class="flex flex-col space-y-4 md:col-span-2 md:col-start-1 md:row-start-1 md:space-y-8 xl:grid xl:grid-cols-3 xl:space-y-0 xl:col-span-3 xl:gap-8">
@@ -97,7 +97,7 @@
           </div>
           <div class="flex justify-center space-x-4 md:space-x-6">
             @foreach($links as $link)
-              <a href="{!! $link['link']['url'] !!}" class="text-gray-600 hover:underline">{!! $link['link']['title'] !!}</a>
+              <a href="{!! $link['link']['url'] !!}" class="text-c-gray-400 hover:underline">{!! $link['link']['title'] !!}</a>
             @endforeach
           </div>
         </div>
