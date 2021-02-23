@@ -43,7 +43,7 @@ module.exports = {
       },
       fontFamily: {
         'whyte' : ['Whyte', 'sans-serif'],
-        'antiza' : ['Antiza', 'serif'],
+        'atiza' : ['Atiza', 'serif'],
       },
       boxShadow: {
         article: '0 10px 50px 0 rgba(0, 0, 0, 0.08)',

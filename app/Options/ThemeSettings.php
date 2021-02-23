@@ -50,6 +50,8 @@ class ThemeSettings extends Field
             ->addImage('event nav')
             ->addImage('donate nav')
             ->addImage('contact nav')
+            ->addImage('resources nav')
+            ->addImage('issues nav')
         ->addTab('Post')
             ->addImage('default bg')
             ->addGallery('random feat')

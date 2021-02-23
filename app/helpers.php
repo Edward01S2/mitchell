@@ -24,10 +24,41 @@ add_action('pre_get_posts', function($query) {
 	// bail early if not main query
 	// - allows custom code / plugins to continue working
   if( !$query->is_main_query() ) return;
-  
-  $tax_query = array();
 
-  $tax_query = $query->get('tax_query');
+  if(is_post_type_archive( 'tribe_events' )) {
+    if(isset($_GET['time'])):
+
+      $time = $_GET['time'];
+      //$meta_query = $query->get('meta_query');
+      //$query->query['eventDisplay'] = 'custom';
+
+      if($time === 'future') {
+        $query->set('meta_query', array(
+          array(
+            'key' => '_EventStartDate',
+            'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+            'compare' => '>'
+          )
+        ));
+      }
+      if($time === 'past') {
+        $query->set('hide_upcoming', true);
+        $query->set('meta_query', array(
+          array(
+            'key' => '_EventStartDate',
+            'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
+            'compare' => '<'
+          )
+        ));
+      }
+
+    endif;
+    //echo 'got here';
+  } 
+  
+  //$tax_query = array();
+
+  //$tax_query = $query->get('tax_query');
 
   //print_r($tax_query);
 
@@ -111,39 +142,14 @@ add_action('pre_get_posts', function($query) {
     $query->set('post_type', ['post', 'tribe_events']);
   }
 
-  if(isset($_GET['time'])):
-
-    $time = $_GET['time'];
-
-    //$query->set('eventDisplay', 'custom');
-
-    if($time === 'future') {
-      $query->set('meta_query', array(
-        array(
-          'key' => '_EventStartDate',
-          'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
-          'compare' => '>'
-        )
-      ));
-    }
-    if($time === 'past') {
-      $query->set('meta_query', array(
-        array(
-          'key' => '_EventStartDate',
-          'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
-          'compare' => '<'
-        )
-      ));
-    }
-
-  endif;
-
-  //print_r($query);
+  // echo "<pre>";
+  // print_r($query);
+  // echo "</pre>";
   
   // }
   
   return $query;
-});
+}, 99);
 
 
 function noImage() {

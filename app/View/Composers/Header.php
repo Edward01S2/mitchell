@@ -29,9 +29,11 @@ class Header extends Composer
             'issues' => $this->getIssues(),
             'resources' => $this->getResources(),
             'about_img' => get_field('about nav', 'options'),
-            'event_img' => get_field('event nav', 'options'),
+            'events_img' => get_field('event nav', 'options'),
             'donate_img' => get_field('donate nav', 'options'),
             'contact_img' => get_field('contact nav', 'options'),
+            'resources_img' => get_field('resources nav', 'options'),
+            'issues_img' => get_field('issues nav', 'options'),
         ];
     }
 
