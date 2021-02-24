@@ -10,10 +10,17 @@
           if(isset($_GET['issue'])) {
             $issue_get = explode(',', $_GET[ 'issue' ]);
           }
+          if(!is_search()) {
+            $issue = (isset($_GET['issue']) ? 'true' : 'false');
+          }
+          else {
+            $issue = 'false';
+          }
+          
         @endphp
 
-        @if(!is_tax('issue'))
-        <div class="relative" x-data="{ open: false, search: {!! $search !!} }">
+        @if(!is_tax('issue') || is_search())
+        <div class="relative" x-data="{ open: {!! $issue !!}, search: {!! $search !!} }">
           <div>
             <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
               <div class="pl-6">Issue</div>
@@ -51,15 +58,22 @@
         </div>
         @endif
 
-        @if(is_tax('issue'))
+        @if(is_tax('issue') || is_search())
         @php
           $resource_get = [];
           if(isset($_GET['resource'])) {
             $resource_get = explode(',', $_GET[ 'resource' ]);
           }
+          //$resource = (isset($_GET['resource']) ? 'true' : 'false');
+          if(!is_search()) {
+            $resource = (isset($_GET['resource']) ? 'true' : 'false');
+          }
+          else {
+            $resource = 'false';
+          }
         @endphp
 
-        <div class="relative" x-data="{ open: false, search: {!! $search !!} }">
+        <div class="relative" x-data="{ open: {!! $resource !!}, search: {!! $search !!} }">
           <div>
             <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
               <div class="pl-6">Resource</div>
@@ -102,12 +116,19 @@
           if(isset($_GET['label'])) {
             $tag_get = explode(',', $_GET[ 'label' ]);
           }
+          //$label = (isset($_GET['label']) ? 'true' : 'false');
+          if(!is_search()) {
+            $label = (isset($_GET['label']) ? 'true' : 'false');
+          }
+          else {
+            $label = 'false';
+          }
         @endphp
 
         {{-- @dump($) --}}
         {{-- @dump($tag_filters) --}}
         @if($tag_filters)
-          <div class="relative tag-filter-container" x-data="{ open: false, search: {!! $search !!} }">
+          <div class="relative tag-filter-container" x-data="{ open: {!! $label !!}, search: {!! $search !!} }">
             <div>
               <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
                 <div class="pl-6">Tags</div>
@@ -172,14 +193,15 @@
         @if(is_search())
         
         {{-- RESOURCE FILTER --}}
-        @php
+        {{-- @php
           $resource_get = [];
           if(isset($_GET['resource'])) {
             $resource_get = explode(',', $_GET[ 'resource' ]);
           }
+          $sresource = (isset($_GET['resource']) ? 'true' : 'false');
         @endphp
 
-        <div class="relative" x-data="{ open: false, search: {!! $search !!} }">
+        <div class="relative" x-data="{ open: {!! $sresource !!}, search: {!! $search !!} }">
           <div>
             <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
               <div class="pl-6">Resource</div>
@@ -214,7 +236,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
 
         {{-- AUTHOR FILTERS --}}
         @php
@@ -222,6 +244,7 @@
           if(isset($_GET['author'])) {
             $author_get = explode(',', $_GET[ 'author' ]);
           }
+          //$author = (isset($_GET['author']) ? 'true' : 'false');
         @endphp
         {{-- @dump($author_filters) --}}
         <div class="relative" x-data="{ open: false, search: {!! $search !!} }">

@@ -10,9 +10,10 @@
           if(isset($_GET['evissue'])) {
             $issue_get = explode(',', $_GET[ 'evissue' ]);
           }
+          $evissue = (isset($_GET['evissue']) ? 'true' : 'false');
         @endphp
 
-        <div class="relative" x-data="{ open: false, search: {!! $search !!} }">
+        <div class="relative" x-data="{ open: {!! $evissue !!}, search: {!! $search !!} }">
           <div>
             <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
               <div class="pl-6">Issue</div>
@@ -54,12 +55,13 @@
           if(isset($_GET['evlabel'])) {
             $tag_get = explode(',', $_GET[ 'evlabel' ]);
           }
+          $evlabel = (isset($_GET['evlabel']) ? 'true' : 'false');
         @endphp
 
         {{-- @dump($) --}}
         {{-- @dump($tag_filters) --}}
         @if($tag_filters)
-          <div class="relative tag-filter-container" x-data="{ open: false, search: {!! $search !!} }">
+          <div class="relative tag-filter-container" x-data="{ open: {!! $evlabel !!}, search: {!! $search !!} }">
             <div>
               <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
                 <div class="pl-6">Tags</div>

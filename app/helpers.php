@@ -15,6 +15,12 @@ $GLOBALS['query_filters'] = array(
   'resource' => 'resource',
 );
 
+// add_action('pre_get_posts', function($query) {
+//   echo "<pre>";
+//   print_r($query);
+//   echo "</pre>";
+// }, 99);
+
 add_action('pre_get_posts', function($query) {
 
   // bail early if is in admin
@@ -26,6 +32,17 @@ add_action('pre_get_posts', function($query) {
   if( !$query->is_main_query() ) return;
 
   if(is_post_type_archive( 'tribe_events' )) {
+    $query->set( 'suppress_filters', false );
+    $query->set( 'tribe_suppress_query_filters', false );
+    $query->set( 'hide_upcoming', true );
+    // $query->set('tax_query', array(
+    //   array(
+    //     'taxonomy'		=> 'label',
+    //     'field'		=> 'slug',
+    //     'terms'	=> 'aerospace-nation',
+    //   )
+    // ));
+
     if(isset($_GET['time'])):
 
       $time = $_GET['time'];
@@ -33,13 +50,13 @@ add_action('pre_get_posts', function($query) {
       //$query->query['eventDisplay'] = 'custom';
 
       if($time === 'future') {
-        $query->set('meta_query', array(
-          array(
+        $query->set('meta_query', [
+          [
             'key' => '_EventStartDate',
             'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
             'compare' => '>'
-          )
-        ));
+          ]
+        ]);
       }
       if($time === 'past') {
         $query->set('hide_upcoming', true);
@@ -148,8 +165,8 @@ add_action('pre_get_posts', function($query) {
   
   // }
   
-  return $query;
-}, 99);
+  
+});
 
 
 function noImage() {

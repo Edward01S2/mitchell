@@ -12,21 +12,21 @@ class EventSettings extends Field
      *
      * @var string
      */
-    public $name = 'Archive Settings';
+    public $name = 'Event Page Content';
 
     /**
      * The option page menu slug.
      *
      * @var string
      */
-    public $slug = 'event-archive-settings';
+    public $slug = 'event-page-settings';
 
     /**
      * The option page document title.
      *
      * @var string
      */
-    public $title = 'Event Archive Settings';
+    public $title = 'Event Page Content';
 
     /**
      * The option page permission capability.

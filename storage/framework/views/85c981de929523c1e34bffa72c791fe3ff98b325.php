@@ -62,7 +62,7 @@
               </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           </div>
-          <div class="prose max-w-none lg:prose-lg lg:leading-snug">
+          <div class="prose max-w-none lg:prose-lg lg:leading-snug text-c-gray-400">
             <?php echo $content2; ?>
 
           </div>

@@ -296,4 +296,20 @@
       }
     }
   }
+  .wp-block-hero {
+    .hero-pretitle {
+      @apply mb-8 text-center md:text-left md:mb-4;
+    }
+    .hero-bg {
+    }
+    .hero-title {
+      @apply mb-8 md:mb-4 text-center md:text-left;
+    }
+    .hero-video {
+      @apply mb-12 justify-center md:justify-start;
+    }
+    .hero-content {
+      @apply leading-loose text-center md:text-left;
+    }
+  }
 }

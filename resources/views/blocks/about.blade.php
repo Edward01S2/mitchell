@@ -61,7 +61,7 @@
               </div>
             @endforeach
           </div>
-          <div class="prose max-w-none lg:prose-lg lg:leading-snug">
+          <div class="prose max-w-none lg:prose-lg lg:leading-snug text-c-gray-400">
             {!! $content2 !!}
           </div>
         </div>

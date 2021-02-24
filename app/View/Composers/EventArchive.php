@@ -15,7 +15,7 @@ class EventArchive extends Composer
      */
     protected static $views = [
         'archive-tribe_events',
-        'template-events',
+        'template-events-test',
     ];
 
     /**
