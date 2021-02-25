@@ -195,11 +195,11 @@
             @if($careers)
               @foreach($careers as $item)
                 <div class="py-8 career-item" x-data="{ drop: false }">
-                  <div class="flex sm:space-x-4 lg:space-x-12">
+                  <div class="flex justify-between sm:space-x-4 lg:space-x-12">
                     <div>
                       <h3 class="text-xl md:text-2xl">{!! $item['title'] !!}</h3>
                       <div class="mb-4 font-whyte">Posted: {!! $item['date'] !!}</div>
-                      <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
+                      <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" x-show="drop" x-cloak> <!-- :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }" -->
                         {!! $item['description'] !!}
                       </div>
                     </div>
