@@ -14,6 +14,8 @@ class GForm extends Partial
      */
     public function fields()
     {
+        $choices = [];
+
         if(class_exists('gfapi')) {
             $forms = \GFAPI::get_forms();
             $choices= [];
@@ -23,6 +25,7 @@ class GForm extends Partial
                 ];
             }
         }
+        
 
         $gForm = new FieldsBuilder('g_form');
 

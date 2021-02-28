@@ -29,20 +29,51 @@ class EventArchive extends Composer
             'bg' => get_field('event bg', 'options')['url'],
             'title' => get_field('event title', 'options'),
             'content' => get_field('event content', 'options'),
-            //'pagi' => $this->pagination(),
+            'pagi' => $this->pagination(),
             'posts' => $this->getPosts(),
             //'top' => $this->getTopTags(),
             'tag_filters' => $this->tagFilters(),
             'events_title' => $this->getTitle(),
+            'shortcode' => $this->calendarEvents(),
             //'calendar' => $this->calendar(),
         ];
     }
 
-    // public function pagination() {
-    //   $pagination = Pagi::build();
+    public function pagination() {
+      $pagination = Pagi::build();
 
-    //   return $pagination->links('components.pagination');
-    // }
+      return $pagination->links('components.pagination');
+    }
+
+    public function calendarEvents() {
+      $shortcode = '[ecs-list-events design="calendar"';
+      if(isset($_GET['time'])):
+        $time = $_GET['time'];
+        if($time === 'future') {
+          $shortcode .= ' futureonly="true"';
+        }
+        if($time === 'past') {
+          $shortcode .= ' past="yes"';
+        }
+
+      endif;
+
+      if(isset($_GET['evlabel'])):
+        $shortcode .= ' tag="'. $_GET['evlabel'] .'"';
+      endif;
+  
+      if(isset($_GET['evissue'])):
+        $shortcode .= ' issue="'. $_GET['evissue'] .'"';
+      endif;
+
+      // if(isset($_GET['evissue']) && isset($_GET['evlabel'])):
+      //   $shortcode .= ' tag_cat_operator="AND"';
+      // endif;
+
+      $shortcode .= ']';
+
+      return $shortcode;
+    }
 
     public function getPosts() {
 
@@ -63,15 +94,17 @@ class EventArchive extends Composer
           if($time === 'future') {
             $args['meta_query'] = [
               'key' => '_EventStartDate',
-              'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
-              'compare' => '>'
+              'value' => date( 'Y-m-d' ),
+              'compare' => '>=',
+              'type' => 'DATETIME'
             ];
           }
           if($time === 'past') {
             $args['meta_query'] = [
               'key' => '_EventStartDate',
-              'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
-              'compare' => '<'
+              'value' => date( 'Y-m-d' ),
+              'compare' => '<',
+              'type' => 'DATETIME'
             ];
           }
 

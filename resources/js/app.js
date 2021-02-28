@@ -133,7 +133,22 @@ $(document).ready(() => {
     //if(args[ filter ] !== "") {
       // update url
 
-      url += '?';
+    var time = getUrlParameter('time');
+    //console.log(time);
+
+    url += '?';
+
+    if(time) {
+      //console.log('got here')
+      url += 'time=' + time + '&';
+
+      $.each(args, function( name, value ){
+        if(value) {
+          url += name + '=' + value + '&';
+        }
+      });
+    }
+    else {
 
       // loop over args
       $.each(args, function( name, value ){
@@ -143,9 +158,12 @@ $(document).ready(() => {
       });
 
       // remove last &
-      url = url.slice(0, -1);
-    
+      
+    }
 
+    url = url.slice(0, -1);
+    
+    //console.log(url);
     //console.log(url)
     // reload page
     window.location.replace( url );
@@ -240,7 +258,7 @@ $(document).ready(() => {
 
   $(document).on( 'click', '.event-filters .event-time-btn', function( event ) {
 		event.preventDefault();
-		console.log( 'Clicked event-time' );
+		//console.log( 'Clicked event-time' );
 
     var filter = $(this).attr("data-filter");
     var searchParams = new URLSearchParams(window.location.search);

@@ -15,11 +15,6 @@ $GLOBALS['query_filters'] = array(
   'resource' => 'resource',
 );
 
-// add_action('pre_get_posts', function($query) {
-//   echo "<pre>";
-//   print_r($query);
-//   echo "</pre>";
-// }, 99);
 
 add_action('pre_get_posts', function($query) {
 

@@ -6,14 +6,15 @@
   @include('partials.event-filters', ['bg' => 'bg-c-gray-50', 'search' => 'false'])
 
 
-  <div class="relative pb-6 event-calendar lg:pt-12">
+  <div class="relative px-6 pt-6 pb-6 event-calendar lg:pt-12 lg:px-8 xl:pt-16">
     <div class="xl:max-w-6xl xl:mx-auto 2xl:max-w-7xl">
     <?php 
       //echo do_shortcode('[tribe_events]')
-      //echo do_shortcode('[ecs-list-events design="calendar"]')
       
-      use Tribe\Events\Views\V2\Template_Bootstrap;
-      echo tribe( Template_Bootstrap::class )->get_view_html();
+      echo do_shortcode($shortcode)
+      
+      // use Tribe\Events\Views\V2\Template_Bootstrap;
+      // echo tribe( Template_Bootstrap::class )->get_view_html();
 
     ?>
     </div>
@@ -57,7 +58,6 @@
       </button>
     </div>
     
-    {{-- {!! $pagi !!} --}}
   </div>
   {{-- @dump($pagi) --}}
 

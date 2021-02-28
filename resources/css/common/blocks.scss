@@ -312,3 +312,99 @@
     }
   }
 }
+
+.event-calendar {
+  .calendar {
+    @apply relative font-whyte;
+  }
+  .fc-toolbar {
+    @apply bg-c-black-100 text-white flex items-center justify-between pl-3 py-3 mb-0 md:grid md:grid-cols-12 md:px-6 md:py-4 lg:py-8 #{!important};
+    .fc-left {
+      @apply text-xl uppercase md:col-start-4 md:text-center md:text-2xl md:col-span-6 lg:text-3xl xl:text-4xl;
+    }
+    .fc-center, .fc-clear {
+      @apply hidden;
+    }
+    .fc-right {
+      @apply md:flex md:justify-end md:col-span-3 2xl:absolute 2xl:w-full 2xl:left-0 2xl:right-0 2xl:z-30;
+      @screen 2xl {
+        top: 50%;
+      }
+      .fc-button-group {
+        @apply ml-0 block 2xl:flex 2xl:justify-between 2xl:w-full;
+        .fc-button {
+          @apply bg-transparent border-none shadow-none px-2 2xl:rounded-full 2xl:border 2xl:border-c-blue-100 2xl:border-solid 2xl:h-10 2xl:w-10 2xl:mt-11 focus:outline-none;
+          background-image: none;
+          .fc-icon {
+            @apply text-white 2xl:text-c-black-100;
+          }
+          &.fc-state-hover {
+            @apply 2xl:bg-c-blue-100;
+            .fc-icon {
+              @apply 2xl:text-white;
+            }
+          }
+        }
+        .fc-prev-button {
+          @apply 2xl:-ml-16;
+          .fc-icon {
+            @apply 2xl:ml-0;
+          }
+        }
+        .fc-next-button {
+          @apply 2xl:-mr-16;
+          .fc-icon {
+            @apply 2xl:mr-0;
+          }
+        }
+      }
+    }
+    .fc-today-button {
+      @apply hidden;
+    }
+    >*>* {
+      @apply float-none #{!important};
+    }
+  }
+  .fc-view-container {
+    .fc-list-item-time {
+      @apply hidden;
+    }
+    .fc-month-view {
+      .fc-day-header {
+        @apply border-r-0 border-l-0;
+      }
+      table {
+        @apply bg-c-gray-100;
+      }
+      .fc-day-top {
+        @apply float-none pl-1 pt-1;
+        .fc-day-number {
+          @apply text-xl text-c-black-100 float-none #{!important};
+        }
+      }
+      .fc-day-grid-event {
+        @apply text-c-black-100 bg-transparent border-none hover:text-c-blue-150 #{!important};
+        .fc-title {
+          @apply underline;
+        }
+      }
+      .fc-today {
+        @apply border bg-transparent;
+        border-color: #DDD;
+        .fc-day-number {
+          @apply text-c-blue-150 #{!important};
+        }
+      }
+      .fc-has-event {
+        @apply bg-c-blue-50 border #{!important};
+        border-color: #DDD;
+      }
+    }
+    .fc-event-container {
+      @apply md:pl-2 xl:pl-3;
+    }
+  }
+
+
+}
