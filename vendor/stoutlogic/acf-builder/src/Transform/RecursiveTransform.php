@@ -31,17 +31,29 @@ abstract class RecursiveTransform extends Transform
      */
     public function transform($config)
     {
-        array_walk($config, function(&$value, $key) {
-            if (in_array($key, $this->getKeys(), true)) {
-                $value = $this->transformValue($value);
+        foreach ($config as $key => $value ) {
+            if ($this->shouldTransformValue($key, $config)) {
+                $config = $this->transformConfig($config);
+                $config[$key] = $this->transformValue($value);
             } else {
                 if ($this->shouldRecurse($value, $key)) {
-                    $value = $this->transform($value);
+                    $config[$key] = $this->transform($value);
                 }
             }
-        });
+        }
 
         return $config;
+    }
+
+
+    /**
+     * @param string $key
+     * @param array $config
+     * @return bool
+     */
+    public function shouldTransformValue($key, $config)
+    {
+        return in_array($key, $this->getKeys(), true);
     }
 
     /**
@@ -62,4 +74,14 @@ abstract class RecursiveTransform extends Transform
      * @return mixed output value
      */
     abstract public function transformValue($value);
+
+
+    /**
+     * @param array $config
+     * @return array
+     */
+    public function transformConfig($config)
+    {
+        return $config;
+    }
 }

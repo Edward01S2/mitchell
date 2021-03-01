@@ -26,64 +26,12 @@ add_action('pre_get_posts', function($query) {
 	// - allows custom code / plugins to continue working
   if( !$query->is_main_query() ) return;
 
-  if(is_post_type_archive( 'tribe_events' )) {
-    $query->set( 'suppress_filters', false );
-    $query->set( 'tribe_suppress_query_filters', false );
-    $query->set( 'hide_upcoming', true );
-    // $query->set('tax_query', array(
-    //   array(
-    //     'taxonomy'		=> 'label',
-    //     'field'		=> 'slug',
-    //     'terms'	=> 'aerospace-nation',
-    //   )
-    // ));
-
-    if(isset($_GET['time'])):
-
-      $time = $_GET['time'];
-      //$meta_query = $query->get('meta_query');
-      //$query->query['eventDisplay'] = 'custom';
-
-      if($time === 'future') {
-        $query->set('meta_query', [
-          [
-            'key' => '_EventStartDate',
-            'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
-            'compare' => '>'
-          ]
-        ]);
-      }
-      if($time === 'past') {
-        $query->set('hide_upcoming', true);
-        $query->set('meta_query', array(
-          array(
-            'key' => '_EventStartDate',
-            'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),
-            'compare' => '<'
-          )
-        ));
-      }
-
-    endif;
-    //echo 'got here';
-  } 
   
-  //$tax_query = array();
-
-  //$tax_query = $query->get('tax_query');
-
-  //print_r($tax_query);
 
   $tags = get_terms('label', [
       'hide_empty' => false,
   ]);
 
-  // $tag_filters = [];
-  // foreach($tags as $tax) {
-  //   $tag_filters[$tax->slug] = $tax->name;
-  // };
-
-  //var_dump($tag_filters);
 
   	// loop over filters
 	foreach( $GLOBALS['query_filters'] as $key => $name ) {

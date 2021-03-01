@@ -5,7 +5,7 @@
  *
  * @license http://opensource.org/licenses/MIT
  * @link https://github.com/caseyamcl/toc
- * @version 2
+ * @version 3
  * @package caseyamcl/toc
  * @author Casey McLaughlin <caseyamcl@gmail.com>
  *
@@ -53,7 +53,7 @@ class MarkupFixer
     public function __construct(?HTML5 $htmlParser = null, ?SlugifyInterface $slugify = null)
     {
         $this->htmlParser = $htmlParser ?? new HTML5();
-        $this->sluggifier = $slugify ?? new UniqueSluggifier();
+        $this->sluggifier = $slugify ?? new UniqueSlugify();
     }
 
     /**
@@ -76,7 +76,7 @@ class MarkupFixer
         $domDocument->preserveWhiteSpace = true; // do not clobber whitespace
 
         // If using the default slugifier, ensure that a unique instance of the class
-        $slugger = $this->sluggifier instanceof UniqueSluggifier ? new UniqueSluggifier() : $this->sluggifier;
+        $slugger = $this->sluggifier instanceof UniqueSlugify ? new UniqueSlugify() : $this->sluggifier;
 
         /** @var DOMElement $node */
         foreach ($this->traverseHeaderTags($domDocument, $topLevel, $depth) as $node) {

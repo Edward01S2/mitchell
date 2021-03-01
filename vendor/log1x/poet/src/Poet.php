@@ -39,7 +39,7 @@ class Poet
             $this->config->has('categories') && $this->registerCategories();
             $this->config->has('palette') && $this->registerPalette();
             $this->config->has('menu') && $this->registerMenu();
-        }, 20);
+        });
     }
 
     /**
@@ -65,12 +65,8 @@ class Poet
                     return register_extended_post_type(...Arr::wrap($value));
                 }
 
-                if ($this->exists($key)) {
-                    if ($value === false) {
-                        return $this->remove($key);
-                    }
-
-                    return $this->modify($key, $value);
+                if ($this->exists($key) && $value === false) {
+                    return $this->remove($key);
                 }
 
                 return register_extended_post_type(
@@ -106,7 +102,7 @@ class Poet
                 ->collapse()
                 ->each(function ($value, $key) {
                     if (
-                        ! $anchors = Arr::get($value, 'anchors') ||
+                        ! ($anchors = Arr::get($value, 'anchors')) ||
                         ! (Str::is($key, get_post_type()) && is_singular())
                     ) {
                         return;

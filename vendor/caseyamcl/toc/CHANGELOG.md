@@ -4,6 +4,18 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2020-12-07
+### Added
+- PHP >=8.0 support in `composer.json` (fixes #13)
+- GitHub Actions build status badge in `README.md`
+- PHPStan in dev dependencies
+- Additional build checks (PHPStan and PHP-CS)
+- Automatic SVG badge generation for code coverage
+
+### Removed
+- `.travis.yml` build support (switched to Github Actions)
+- Build dependency on scrutinizer.org service
+
 ## [3.0] - 2020-08-20
 ### Changed
 - BREAKING: Renamed internal class `UniqueSluggifier` to `UniqueSlugify`
@@ -15,17 +27,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed bug from v2.3: If default slugifier is used (UniqueSlugify.php), then ensure unique instance each time `MarkupFixer::fix()` is run
   This will prevent it from continuing to generate unique slugs if used more than once.
 
-## [2.3.1] - 2020-08-20
-### Fixed
-- Backport: Fixed bug from v2.3: If default slugifier is used (UniqueSluggifier.php), then ensure unique instance each time `MarkupFixer::fix()` is run
-  This will prevent it from continuing to generate unique slugs if used more than once.
-
 ## [2.3] - 2020-07-16
 ### Added
 - Ability to inject the slugify class (#26) (thanks @yaquawa)
 
 ### Changed
-- ~~Renamed internal class `UniqueSluggifier` to `UniqueSlugify`~~
+- Renamed internal class `UniqueSluggifier` to `UniqueSlugify`
 
 ## [2.2] - 2020-04-12
 ### Changed

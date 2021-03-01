@@ -7,7 +7,6 @@ use InvalidArgumentException;
 use Roots\Acorn\Application;
 
 use function Roots\add_filters;
-use function Roots\env;
 use function apply_filters;
 use function did_action;
 use function doing_action;
@@ -16,11 +15,18 @@ use function locate_template;
 class Bootloader
 {
     /**
+     * Application instance
+     *
+     * @var \Illuminate\Contracts\Foundation\Application
+     */
+    protected $app;
+
+    /**
      * Application to be instantiated at boot time
      *
      * @var string
      */
-    protected $app;
+    protected $appClassName;
 
     /**
      * WordPress hooks that will boot application
@@ -54,25 +60,36 @@ class Bootloader
      * Create a new bootloader instance
      *
      * @param  string[] $hooks WordPress hooks to boot application
-     * @param  string   $app Application class
-     * @return $this
+     * @param  string   $appClassName Application class
      */
     public function __construct(
         $hooks = ['after_setup_theme', 'rest_api_init'],
-        string $app = Application::class
+        string $appClassName = Application::class
     ) {
-        if (! in_array(ApplicationContract::class, class_implements($app, true) ?? [])) {
+        if (! in_array(ApplicationContract::class, class_implements($appClassName, true) ?? [])) {
             throw new InvalidArgumentException(
                 sprintf('Second parameter must be class name of type [%s]', ApplicationContract::class)
             );
         }
 
-        $this->app = $app;
+        $this->appClassName = $appClassName;
         $this->hooks = (array) $hooks;
 
         add_filters($this->hooks, $this, 5);
+    }
 
-        return $app;
+    /**
+     * Register a service provider with the application.
+     *
+     * @param  \Illuminate\Support\ServiceProvider|string  $provider
+     * @param  bool  $force
+     * @return \Roots\Acorn\Bootloader
+     */
+    public function register($provider, $force = false): Bootloader
+    {
+        return $this->call(function ($app) use ($provider, $force) {
+            $app->register($provider, $force);
+        });
     }
 
     /**
@@ -121,16 +138,14 @@ class Bootloader
      */
     public function __invoke()
     {
-        static $app;
-
         if (! $this->ready()) {
             return;
         }
 
-        $app = $this->app();
+        $this->app = $this->app();
 
         foreach ($this->queue as $callback) {
-            $app->call($callback);
+            $this->app->call($callback);
         }
 
         $this->queue = [];
@@ -143,20 +158,18 @@ class Bootloader
      */
     protected function app(): ApplicationContract
     {
-        static $app;
-
-        if ($app) {
-            return $app;
+        if ($this->app) {
+            return $this->app;
         }
 
         $bootstrap = $this->bootstrap();
         $basePath = $this->basePath();
 
-        $app = new $this->app($basePath, $this->usePaths());
+        $app = new $this->appClassName($basePath, $this->usePaths());
 
         $app->bootstrapWith($bootstrap);
 
-        return $app;
+        return $this->app = $app;
     }
 
     /**
@@ -172,7 +185,9 @@ class Bootloader
 
         $basePath = dirname(locate_template('config') ?: __DIR__ . '/../');
 
-        $basePath = defined('ACORN_BASEPATH') ? \ACORN_BASEPATH : env('ACORN_BASEPATH', $basePath);
+        if (defined('ACORN_BASEPATH')) {
+            $basePath = constant('ACORN_BASEPATH');
+        }
 
         $basePath = apply_filters('acorn/paths.base', $basePath);
 
@@ -186,7 +201,7 @@ class Bootloader
      */
     protected function usePaths(): array
     {
-        $searchPaths = ['app', 'config', 'storage', 'resources'];
+        $searchPaths = ['app', 'config', 'storage', 'resources', 'bootstrap'];
         $paths = [];
 
         foreach ($searchPaths as $path) {
@@ -220,7 +235,7 @@ class Bootloader
             })
             ->filter()
             ->unique()
-            ->get(0);
+            ->first();
     }
 
     /**
@@ -231,6 +246,7 @@ class Bootloader
     protected function bootstrap(): array
     {
         $bootstrap = [
+            \Roots\Acorn\Bootstrap\CaptureRequest::class,
             \Roots\Acorn\Bootstrap\SageFeatures::class,
             \Roots\Acorn\Bootstrap\LoadConfiguration::class,
             \Roots\Acorn\Bootstrap\HandleExceptions::class,
