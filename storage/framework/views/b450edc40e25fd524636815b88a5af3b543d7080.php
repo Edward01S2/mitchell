@@ -65,20 +65,18 @@
         <div class="flex flex-col space-y-4 md:col-span-2 md:col-start-3 md:row-start-1 md:space-y-8 xl:grid xl:grid-cols-2 xl:space-y-0 xl:col-span-2 xl:gap-8">
           <div class="flex flex-col space-y-1">
             <a href="<?php echo $navigation[3]->url; ?>" class="mb-2 nav-head"><?php echo $navigation[3]->label; ?></a>
-            <?php if($resources): ?>
-              <?php $__currentLoopData = $resources; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <?php if($item->name !== 'Uncategorized'): ?>
-                  <a href="/category/<?php echo $item->slug; ?>" class="nav-sub"><?php echo $item->name; ?></a>
-                <?php endif; ?>
+            <?php if($items = $navigation[3]->children): ?>
+              <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <a href="<?php echo $item->url; ?>" class="nav-sub"><?php echo $item->label; ?></a>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
           </div>
 
           <div class="flex flex-col space-y-1">
             <a href="<?php echo $navigation[4]->url; ?>" class="mb-2 nav-head"><?php echo $navigation[4]->label; ?></a>
-            <?php if($issues): ?>
-              <?php $__currentLoopData = $issues; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <a href="/issue/<?php echo $item->slug; ?>" class="nav-sub"><?php echo $item->name; ?></a>
+            <?php if($items = $navigation[4]->children): ?>
+              <?php $__currentLoopData = $items; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                <a href="<?php echo $item->url; ?>" class="nav-sub"><?php echo $item->label; ?></a>
               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <?php endif; ?>
           </div>

@@ -16,14 +16,14 @@
           <?php if($item->label !== 'Home'): ?>
             <div class="flex items-center" x-on:mouseenter="<?php echo strtolower($item->label); ?> = !<?php echo strtolower($item->label); ?>, open = true" x-on:mouseover.away="<?php echo strtolower($item->label); ?> = false, open = false">
               <?php if($item->label === "Issues"): ?>
-                <button class="z-30 flex items-center px-4 py-1 pr-2 mx-3 transition duration-100 lg:mx-5 focus:outline-none bg-c-blue-100 group-hover:bg-c-blue-200" >
+                <button class="z-30 flex items-center px-4 py-1 pr-2 mx-3 transition duration-100 cursor-default lg:mx-5 focus:outline-none bg-c-blue-100 group-hover:bg-c-blue-200" >
                   <div class="text-sm text-white nav-text font-whyte lg:text-base"><?php echo e($item->label); ?></div>
                   <svg class="w-6 h-6 ml-2 text-white transform fill-current" :class="{'rotate-180': issues }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
                 </button>
               <?php else: ?>
-                <button class="px-3 lg:px-5 focus:outline-none group" >
+                <button class="px-3 cursor-default lg:px-5 focus:outline-none group" >
                   <div class="text-sm tracking-widest text-white nav-text font-whyte lg:text-base group-hover:text-c-blue-100" :class="{'text-black': search || issues || resources || events || about || donate || contact, 'text-white': !open, 'text-white' : !issues && !search && !resources && !events && !about && !donate && !contact}"><?php echo e($item->label); ?></div>
                 </button>
               <?php endif; ?>

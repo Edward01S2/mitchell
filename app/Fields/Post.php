@@ -14,19 +14,19 @@ class Post extends Field
      */
     public function fields()
     {
-        $post = new FieldsBuilder('post', [
-            'position' => 'side',
-            'style' => 'seamless',
-        ]);
+        // $post = new FieldsBuilder('post', [
+        //     'position' => 'side',
+        //     'style' => 'seamless',
+        // ]);
 
-        $post
-            ->setLocation('post_type', '==', 'post');
+        // $post
+        //     ->setLocation('post_type', '==', 'post');
 
-        $post
-            ->addTrueFalse('show_author', [
-                'label' => 'Show Author?'
-            ]);
+        // $post
+        //     ->addTrueFalse('show_author', [
+        //         'label' => 'Show Author?'
+        //     ]);
 
-        return $post->build();
+        // return $post->build();
     }
 }

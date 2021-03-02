@@ -108,7 +108,7 @@ class PostLinks extends Block
     public function with()
     {
         return [
-            'links' => get_field('links'),
+            'links' => $this->links(),
         ];
     }
 
@@ -152,5 +152,10 @@ class PostLinks extends Block
     public function enqueue()
     {
         //
+    }
+
+    public function links()
+    {
+        return get_field('links') ?: [];
     }
 }

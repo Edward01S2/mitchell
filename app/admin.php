@@ -51,6 +51,7 @@ add_action( 'wp_dashboard_setup', function () {
     remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'side' );
 });
 
+
 add_action( 'init', function() {
 
     register_extended_post_type( 'post', array(
@@ -73,6 +74,25 @@ add_action( 'init', function() {
         ],
     ) );
 
+    register_extended_taxonomy( 'category', ['post', 'tribe_events'], array(
+    'meta_box' => 'simple',
+    'public' => true,
+    ), array (
+        'slug' => 'category',
+        'singular' => 'Resource Type',
+        'plural' => 'Resource Types',
+    ) );
+
+    //Default post template
+    $post_type_object = get_post_type_object( 'post' );
+    if(class_exists('acf')) {
+        $post_type_object->template = array(
+            [ 'core/image' ],
+            [ 'core/paragraph' ],
+            [ 'acf/post-links' ],
+        );
+    }
+
 } );
 
 add_filter( 'tribe_events_editor_default_template', function( $template ) {
@@ -80,10 +100,13 @@ add_filter( 'tribe_events_editor_default_template', function( $template ) {
         $template = [
             [ 'tribe/event-datetime' ],
             [ 'acf/speaker' ],
+            [ 'core/image' ],
+            [ 'core/video' ],
             [ 'core/paragraph', [
                 'placeholder' => __( 'Add Description...', 'the-events-calendar' ),
                 ], 
             ],
+            [ 'acf/post-links' ],
         ];
     }
     return $template;

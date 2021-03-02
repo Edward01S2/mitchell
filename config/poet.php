@@ -63,9 +63,17 @@ return [
             'links' => ['post', 'tribe_events'],
             'meta_box' => 'simple',
             'labels' => [
-                'slug' => 'issue'
+                'slug' => 'issue',
+                'plural' => 'Issues',
+                'singular' => 'Issue',
             ],
         ],
+        // 'category' => [
+        //     'labels' => [
+        //         // 'singular' => 'ResourceType',
+        //         // 'plural' => 'ResourceTypes',
+        //     ]
+        // ],
         // 'post_tag' => false,
         // 'post_tag' => [
         //     'links' => ['post', 'tribe_events'],

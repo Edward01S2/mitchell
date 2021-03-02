@@ -12,7 +12,7 @@
       </div>
 
       <div class="px-6 py-4 text-sm bg-white border-b border-gray-100 md:flex md:justify-end md:items-center md:space-x-6 md:px-8 xl:py-6 lg:space-x-8 xl:px-12">
-        @if($show_author)      
+        @if(get_the_author() !== 'admin')      
           <p class="text-gray-600 byline author vcard font-whyte">
             <span>{{ __('Author:', 'sage') }}</span>
             <span class="uppercase">{{ get_the_author() }}</span>

@@ -65,20 +65,18 @@
         <div class="flex flex-col space-y-4 md:col-span-2 md:col-start-3 md:row-start-1 md:space-y-8 xl:grid xl:grid-cols-2 xl:space-y-0 xl:col-span-2 xl:gap-8">
           <div class="flex flex-col space-y-1">
             <a href="{!! $navigation[3]->url !!}" class="mb-2 nav-head">{!! $navigation[3]->label !!}</a>
-            @if($resources)
-              @foreach($resources as $item)
-                @if($item->name !== 'Uncategorized')
-                  <a href="/category/{!! $item->slug !!}" class="nav-sub">{!! $item->name !!}</a>
-                @endif
+            @if($items = $navigation[3]->children)
+              @foreach($items as $item)
+                <a href="{!! $item->url !!}" class="nav-sub">{!! $item->label !!}</a>
               @endforeach
             @endif
           </div>
 
           <div class="flex flex-col space-y-1">
             <a href="{!! $navigation[4]->url !!}" class="mb-2 nav-head">{!! $navigation[4]->label !!}</a>
-            @if($issues)
-              @foreach($issues as $item)
-                <a href="/issue/{!! $item->slug !!}" class="nav-sub">{!! $item->name !!}</a>
+            @if($items = $navigation[4]->children)
+              @foreach($items as $item)
+                <a href="{!! $item->url !!}" class="nav-sub">{!! $item->label !!}</a>
               @endforeach
             @endif
           </div>

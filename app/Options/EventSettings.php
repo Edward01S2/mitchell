@@ -114,7 +114,7 @@ class EventSettings extends Field
                 'label' => 'Content'
             ])
             ->addImage('event bg', [
-                'label' => 'Background Image'
+                'label' => 'BG Image'
             ])
             ->addTaxonomy('event tax', [
                 'label' => 'Top Tags',

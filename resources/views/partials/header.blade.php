@@ -16,14 +16,14 @@
           @if($item->label !== 'Home')
             <div class="flex items-center" x-on:mouseenter="{!! strtolower($item->label) !!} = !{!! strtolower($item->label)!!}, open = true" x-on:mouseover.away="{!! strtolower($item->label) !!} = false, open = false">
               @if($item->label === "Issues")
-                <button class="z-30 flex items-center px-4 py-1 pr-2 mx-3 transition duration-100 lg:mx-5 focus:outline-none bg-c-blue-100 group-hover:bg-c-blue-200" >
+                <button class="z-30 flex items-center px-4 py-1 pr-2 mx-3 transition duration-100 cursor-default lg:mx-5 focus:outline-none bg-c-blue-100 group-hover:bg-c-blue-200" >
                   <div class="text-sm text-white nav-text font-whyte lg:text-base">{{ $item->label }}</div>
                   <svg class="w-6 h-6 ml-2 text-white transform fill-current" :class="{'rotate-180': issues }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
                 </button>
               @else
-                <button class="px-3 lg:px-5 focus:outline-none group" >
+                <button class="px-3 cursor-default lg:px-5 focus:outline-none group" >
                   <div class="text-sm tracking-widest text-white nav-text font-whyte lg:text-base group-hover:text-c-blue-100" :class="{'text-black': search || issues || resources || events || about || donate || contact, 'text-white': !open, 'text-white' : !issues && !search && !resources && !events && !about && !donate && !contact}">{{ $item->label }}</div>
                 </button>
               @endif
@@ -67,7 +67,7 @@
         @endforeach 
         @if(!is_search())
         <div class="flex pl-3 item-center group lg:pl-5" x-on:mouseenter="search = !search, open = true" x-on:mouseleave="search = false, open = false">
-          <button class="z-30 focus:outline-none" >
+          <button class="z-30 cursor-default focus:outline-none" >
             <svg class="w-5 h-5 fill-current group-hover:text-c-blue-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{'text-black': search || issues || resources || events || about || donate || contact, 'text-white': !open, 'text-white' : !issues && !search && !resources && !events && !about && !donate && !contact}">
               <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
             </svg>
