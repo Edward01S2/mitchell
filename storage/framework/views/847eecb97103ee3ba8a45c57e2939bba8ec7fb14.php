@@ -5,7 +5,7 @@
 
 
   <div class="relative px-6 pt-6 pb-6 event-calendar lg:pt-12 lg:px-8 xl:pt-16">
-    <div class="xl:max-w-6xl xl:mx-auto 2xl:max-w-7xl">
+    <div class="md:max-w-3xl md:mx-auto">
     <?php 
       //echo do_shortcode('[tribe_events]')
       

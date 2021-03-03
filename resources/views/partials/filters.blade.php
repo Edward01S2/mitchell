@@ -131,7 +131,7 @@
           <div class="relative tag-filter-container" x-data="{ open: {!! $label !!}, search: {!! $search !!} }">
             <div>
               <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
-                <div class="pl-6">Tags</div>
+                <div class="pl-6">{{ $tag_input ? $tag_input : 'Tags' }}</div>
                 <!-- Heroicon name: solid/chevron-down -->
                 <div class="px-3 py-1" :class="{ 'bg-c-blue-150' : search, 'bg-c-blue-300' : !search }">
                   <svg class="w-10 h-10 text-white transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" :class="{ 'rotate-180' : open }">
@@ -153,7 +153,7 @@
                 <div class="flex flex-col mt-2 space-y-6 filters font-whyte" data-filter="label" :class="{ 'text-c-blue-300' : search, 'text-white' : !search }">
                   @isset($tag_filters['top'])
                     <div>
-                      <div class="mb-4 text-lg font-bold">Top Tags</div>
+                      <div class="mb-4 text-lg font-bold">{{ $tag_top ? $tag_top : 'Top Tags' }}</div>
                       <div class="flex flex-col space-y-4 md:grid md:grid-cols-2 md:space-y-0 md:gap-6 md:gap-x-12 xl:grid-cols-3">
                         @foreach($tag_filters['top'] as $key => $value)
                           <div class="border filter md:flex md:items-center md:w-full md:h-full border-c-blue-200 bg-c-blue-400">

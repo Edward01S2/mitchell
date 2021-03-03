@@ -39,7 +39,11 @@ class ArchiveSettings extends Field
                 'multiple' => 1,
                 'add_term' => 0,
                 'return_format' => 'object',
-            ]);
+            ])
+            ->addText('tag title')
+                ->setWidth('50')
+            ->addText('top tags label')
+                ->setWidth('50');
 
         return $categoryArchive->build();
     }

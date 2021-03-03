@@ -89,6 +89,9 @@ add_action( 'init', function() {
         $post_type_object->template = array(
             [ 'core/image' ],
             [ 'core/paragraph' ],
+            [ 'core/html' ],
+            [ 'core/image' ],
+            [ 'core/video' ],
             [ 'acf/post-links' ],
         );
     }
@@ -100,10 +103,11 @@ add_filter( 'tribe_events_editor_default_template', function( $template ) {
         $template = [
             [ 'tribe/event-datetime' ],
             [ 'acf/speaker' ],
+            [ 'core/html' ],
             [ 'core/image' ],
             [ 'core/video' ],
             [ 'core/paragraph', [
-                'placeholder' => __( 'Add Description...', 'the-events-calendar' ),
+                'placeholder' => __( 'Add Text...', 'the-events-calendar' ),
                 ], 
             ],
             [ 'acf/post-links' ],

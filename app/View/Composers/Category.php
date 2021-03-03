@@ -42,6 +42,8 @@ class Category extends Composer
           'tag_filters' => $this->tagFilters(),
           'resource_filters' => $this->resourceFilters(),
           'cat' => $cat,
+          'tag_input' => get_field('tag title', $cat),
+          'tag_top' => get_field('top tags label', $cat),
       ];
     }
 

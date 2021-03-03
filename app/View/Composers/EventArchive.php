@@ -35,6 +35,8 @@ class EventArchive extends Composer
             'tag_filters' => $this->tagFilters(),
             'events_title' => $this->getTitle(),
             'shortcode' => $this->calendarEvents(),
+            'tag_input' => get_field('tag title', 'options'),
+            'tag_top' => get_field('top tags label', 'options'),
             //'calendar' => $this->calendar(),
         ];
     }
@@ -46,7 +48,7 @@ class EventArchive extends Composer
     }
 
     public function calendarEvents() {
-      $shortcode = '[ecs-list-events design="calendar"';
+      $shortcode = '[ecs-list-events design="calendar" hide_extra_days="true"';
       if(isset($_GET['time'])):
         $time = $_GET['time'];
         if($time === 'future') {
