@@ -90,7 +90,6 @@ add_action( 'init', function() {
             [ 'core/image' ],
             [ 'core/paragraph' ],
             [ 'core/html' ],
-            [ 'core/image' ],
             [ 'core/video' ],
             [ 'acf/post-links' ],
         );
@@ -104,7 +103,6 @@ add_filter( 'tribe_events_editor_default_template', function( $template ) {
             [ 'tribe/event-datetime' ],
             [ 'acf/speaker' ],
             [ 'core/html' ],
-            [ 'core/image' ],
             [ 'core/video' ],
             [ 'core/paragraph', [
                 'placeholder' => __( 'Add Text...', 'the-events-calendar' ),
