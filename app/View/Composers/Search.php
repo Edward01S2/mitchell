@@ -150,6 +150,7 @@ class Search extends Composer
                   $tag_filters['tags'][$tax->slug] = $tax->name;
               }
           };
+          asort($tag_filters['tags']);
         endif;
         
         return $tag_filters;
