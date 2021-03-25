@@ -10,7 +10,9 @@
             </svg>
           </a>
         @else
-          <a href="{!! $link['link']['url'] !!}" target="_blank" class="w-3/4 px-4 py-2 font-medium text-center no-underline font-whyte md:w-2/5 md:mr-6 lg:py-3 md:mb-6 lg:m-0 lg:w-full lg:text-sm xl:text-base">{!! $link['link']['title'] !!}</a>
+          @if($link['link'])
+            <a href="{!! $link['link']['url'] !!}" target="_blank" class="w-3/4 px-4 py-2 font-medium text-center no-underline font-whyte md:w-2/5 md:mr-6 lg:py-3 md:mb-6 lg:m-0 lg:w-full lg:text-sm xl:text-base">{!! $link['link']['title'] !!}</a>
+          @endif
         @endif
       @endforeach
     </div>
