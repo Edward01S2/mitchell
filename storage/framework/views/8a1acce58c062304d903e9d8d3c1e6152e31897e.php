@@ -101,7 +101,7 @@
                   <div class="resource-filter">
                     <label class="inline-flex items-center">
                       <input type="checkbox" value="<?php echo $key; ?>" class="w-5 h-5 border rounded-sm bg-c-blue-400 border-c-blue-200" <?php echo e(in_array($key, $resource_get) ? 'checked' : ""); ?> />
-                      <span class="ml-8 text-lg"><?php echo e($value); ?></span>
+                      <span class="ml-8 text-lg"><?php echo e(html_entity_decode($value)); ?></span>
                     </label>
                   </div>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -141,7 +141,7 @@
               </button>
             </div>
           
-            <div class="absolute left-0 z-30 w-full origin-top-left shadow-lg md:w-200% md:origin-top-right md:right-0 md:left-auto lg:left-0 lg:right-auto xl:w-300%" x-show="open" x-on:click.away="open = false" :class="{ 'bg-c-gray-50' : search, 'bg-c-blue-300' : !search }"
+            <div class="absolute left-0 z-30 w-full origin-top-left shadow-lg md:w-200% md:origin-top-right md:right-0 md:left-auto lg:left-0 lg:right-auto xl:w-250%" x-show="open" x-on:click.away="open = false" :class="{ 'bg-c-gray-50' : search, 'bg-c-blue-300' : !search }"
               x-transition:enter="transition ease-out duration-100"
               x-transition:enter-start="transform opacity-0 scale-95"
               x-transition:enter-end="transform opacity-100 scale-100"
@@ -151,15 +151,15 @@
               x-cloak>
               <div class="p-6 lg:p-8" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <div class="flex flex-col mt-2 space-y-6 filters font-whyte" data-filter="label" :class="{ 'text-c-blue-300' : search, 'text-white' : !search }">
-                  <?php if(isset($tag_filters['top'])): ?>
+                  <?php if(isset($top)): ?>
                     <div>
                       <div class="mb-4 text-lg font-bold"><?php echo e($tag_top ? $tag_top : 'Top Tags'); ?></div>
                       <div class="flex flex-col space-y-4 md:grid md:grid-cols-2 md:space-y-0 md:gap-6 md:gap-x-12 xl:grid-cols-3">
-                        <?php $__currentLoopData = $tag_filters['top']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php $__currentLoopData = $top; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                           <div class="border filter md:flex md:items-center md:w-full md:h-full border-c-blue-200 bg-c-blue-400">
                             <label class="md:w-full md:h-full md:flex md:items-center">
-                              <input type="checkbox" value="<?php echo $key; ?>" class="hidden w-5 h-5 border rounded-sm top-tag bg-c-blue-400 border-c-blue-200" <?php echo e(in_array($key, $tag_get) ? 'checked' : ""); ?>/>
-                              <div class="px-6 py-3 text-lg text-center cursor-pointer md:w-full md:py-4 md:leading-tight md:flex md:items-center md:h-full md:justify-center"><?php echo $value; ?></div>
+                              <input type="checkbox" value="<?php echo $item->slug; ?>" class="hidden w-5 h-5 border rounded-sm top-tag bg-c-blue-400 border-c-blue-200" <?php echo e(in_array($item->slug, $tag_get) ? 'checked' : ""); ?>/>
+                              <div class="px-6 py-3 text-lg text-center cursor-pointer md:w-full md:py-4 md:leading-tight md:flex md:items-center md:h-full md:justify-center"><?php echo $item->name; ?></div>
                             </label>
                           </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

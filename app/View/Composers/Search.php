@@ -41,6 +41,7 @@ class Search extends Composer
           'resource_filters' => $this->resourceFilters(),
           'author_filters' => $this->authorFilters(),
           'tag_filters' => $this->tagFilters(),
+          'tag_input' => 'Tags',
       ];
     }
 

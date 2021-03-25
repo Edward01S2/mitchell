@@ -114,7 +114,8 @@ add_filter( 'tribe_events_editor_default_template', function( $template ) {
     return $template;
 }, 11, 1 );
 
-add_action( 'admin_init', function() {
-    wp_deregister_script( 'autosave' );
+add_filter( 'block_editor_settings', function($editor_settings) {
+    $editor_settings['autosaveInterval'] = 86400;
+    return $editor_settings;
 });
   

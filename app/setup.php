@@ -202,6 +202,8 @@ add_action('widgets_init', function () {
 });
 
 add_action('init', function() {
+    wp_deregister_script( 'autosave' );
+    
     register_taxonomy('post_tag', array());
 
     register_extended_taxonomy( 'label', ['post', 'tribe_events'], array(

@@ -32,7 +32,7 @@ class Header extends Composer
             'events_img' => get_field('event nav', 'options'),
             'donate_img' => get_field('donate nav', 'options'),
             'contact_img' => get_field('contact nav', 'options'),
-            'resources_img' => get_field('resources nav', 'options'),
+            'analysis_img' => get_field('resources nav', 'options'),
             'issues_img' => get_field('issues nav', 'options'),
         ];
     }

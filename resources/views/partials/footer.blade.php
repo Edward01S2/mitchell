@@ -25,7 +25,7 @@
 
       <div class="grid grid-cols-2 gap-6 py-6 md:grid-cols-7 md:gap-8 lg:py-8 xl:py-16">
 
-        <div class="col-span-2 font-whyte md:col-span-3 md:col-start-5 xl:col-span-2">
+        <div id="subscribe" class="col-span-2 font-whyte md:col-span-3 md:col-start-5 xl:col-span-2">
           <div class="mb-3 nav-head lg:mb-6">Subscribe</div>
           <div class="mb-3 footer-form lg:mb-4">
             @include('partials.form', ['form' => $form])
