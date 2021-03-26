@@ -99,8 +99,13 @@
                     
                       <div class="flex space-x-4">
                         <div class="text-c-gray-600">
+
                           <?php if($item['bio']): ?>
-                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
+                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'hidden' : drop }">
+                            <?php echo $item['excerpt']; ?>
+
+                          </div>
+                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'hidden' : !drop, 'block' : drop }">
                             <?php echo $item['bio']; ?>
 
                           </div>
@@ -163,7 +168,11 @@
                       <div class="flex space-x-4">
                         <div class="text-c-gray-600">
                           <?php if($item['bio']): ?>
-                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
+                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'hidden' : drop }">
+                            <?php echo $item['excerpt']; ?>
+
+                          </div>
+                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'hidden' : !drop, 'block' : drop }">
                             <?php echo $item['bio']; ?>
 
                           </div>
@@ -227,7 +236,11 @@
                       <div class="flex space-x-4">
                         <div class="text-c-gray-600">
                           <?php if($item['bio']): ?>
-                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'line-clamp-4' : !drop, 'line-clamp-none block overflow-visible' : drop }">
+                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'hidden' : drop }">
+                            <?php echo $item['excerpt']; ?>
+
+                          </div>
+                          <div class="leading-tight prose max-w-none lg:prose-lg lg:leading-tight text-c-gray-400" :class="{ 'hidden' : !drop, 'block' : drop }">
                             <?php echo $item['bio']; ?>
 
                           </div>
