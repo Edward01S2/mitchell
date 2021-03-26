@@ -5,7 +5,7 @@
       <div class="relative z-30 md:flex-shrink-0">
         <div class="flex items-stretch flex-shrink-0 md:justify-center">
           <a href="<?php echo home_url('/'); ?>" class="hover:opacity-50 sm:py-2">
-            <img id="logo-main" class="w-auto h-24 xl:h-28" src="<?php echo $logo['url']; ?>" alt="<?php echo e($siteName); ?>" />
+            <img id="logo-main" class="w-auto h-28 lg:h-32" src="<?php echo $logo['url']; ?>" alt="<?php echo e($siteName); ?>" />
           </a>
         </div>
       </div>
@@ -28,7 +28,7 @@
               <?php endif; ?>
 
               
-                <div :class="{'block': <?php echo strtolower($item->label); ?>, 'hidden': !<?php echo strtolower($item->label); ?> }" class="absolute top-0 left-0 right-0 z-20 w-full mt-24 bg-white border-b border-gray-200" x-cloak>
+                <div :class="{'block': <?php echo strtolower($item->label); ?>, 'hidden': !<?php echo strtolower($item->label); ?> }" class="absolute top-0 left-0 right-0 z-20 w-full bg-white border-b border-gray-200 mt-28 lg:mt-32" x-cloak>
                   <div class="container px-6 mx-auto lg:px-8">
                     <div class="relative grid grid-cols-2 gap-8 px-10 py-8 lg:gap-12 xl:px-16 xl:py-12 xl:gap-24">
             
@@ -80,7 +80,7 @@
             </svg>
           </button>
 
-          <div :class="{'block': search, 'hidden': !search }" class="absolute top-0 left-0 right-0 w-full mt-24 bg-c-black-100" x-cloak>
+          <div :class="{'block': search, 'hidden': !search }" class="absolute top-0 left-0 right-0 w-full mt-32 bg-c-black-100 lg:mt-36" x-cloak>
             <div class="container px-6 mx-auto lg:px-8">
         
               <div  class="relative flex items-center justify-center py-16">

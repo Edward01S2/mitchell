@@ -124,7 +124,9 @@ class About extends Block
             'content2' => get_field('content 2'),
             'staff' => get_field('staff'),
             'fellows' => get_field('fellows'),
+            'af_fellows' => get_field('af fellows'),
             'careers' => get_field('careers'),
+            'career_content' => get_field('career content'),
             'issues' => $this->getIssues(),
             'issues_bg' => get_field('issues bg'),
         ];
@@ -168,7 +170,7 @@ class About extends Block
                     ->addImage('image')
                     ->addFile('download')
                 ->endRepeater()
-            ->addTab('Fellows')
+            ->addTab('Non-Resident Fellows')
                 ->addRepeater('fellows', [
                     'collapsed' => 'name'
                 ])
@@ -181,7 +183,21 @@ class About extends Block
                     ->addImage('image')
                     ->addFile('download')
                 ->endRepeater()
+            ->addTab('AF Fellows')
+                ->addRepeater('af fellows', [
+                    'collapsed' => 'name'
+                ])
+                    ->addText('name')
+                    ->addText('title')
+                        ->setWidth('50')
+                    ->addText('email')
+                        ->setWidth('50')
+                    ->addWysiwyg('bio')
+                    ->addImage('image')
+                    ->addFile('download')
+                ->endRepeater()
             ->addTab('Careers')
+                ->addWysiwyg('career content')
                 ->addRepeater('careers', [
                     'collapsed' => 'title'
                 ])
