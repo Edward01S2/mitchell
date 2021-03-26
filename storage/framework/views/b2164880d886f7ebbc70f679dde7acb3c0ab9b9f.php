@@ -1,6 +1,6 @@
 <div class="<?php echo e($block->classes ?? ''); ?>">
   <div class="relative bg-center bg-cover bg-c-gray-200 md:min-h-20 lg:min-h-24 xl:min-h-30 hero-bg" style="background-image: url('<?php echo ($bg) ? $bg : '';; ?>')">
-    <div class="absolute inset-0 z-10 w-full h-full bg-black opacity-10"></div>
+    <div class="absolute inset-0 z-10 w-full h-full hero-gradient"></div>
     <div class="container relative z-20 px-6 pt-40 pb-16 mx-auto lg:px-8 lg:pt-48 lg:pb-20">
       <div class="text-white md:w-3/5 lg:w-1/2">
         <?php if(isset($pretitle) && $pretitle): ?>
