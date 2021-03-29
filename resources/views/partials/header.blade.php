@@ -149,7 +149,7 @@
               <div :class="{'block': drop, 'hidden': !drop }" class="w-full" x-cloak>
                 <ul class="flex flex-col pt-3 pl-4 space-y-3">
                   @foreach($item->children as $child)
-                    <a class="text-lg text-white font-whyte" href="/issue/{!! $child->slug !!}">{!! html_entity_decode($child->label) !!}</a>
+                    <a class="text-lg text-white font-whyte" href="{!! $child->slug !!}">{!! html_entity_decode($child->label) !!}</a>
                   @endforeach
                 </ul>
               </div>
