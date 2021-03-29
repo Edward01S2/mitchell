@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'a3482c4f93c073f150cdc661de03511268d9da47',
+    'reference' => 'f4df6a6d9b0c382f8f57897108edb37173da44b1',
     'name' => 'roots/sage',
   ),
   'versions' => 
@@ -308,6 +308,15 @@
       ),
       'reference' => '9227822783c75406cfe400984b2f095cdf03d417',
     ),
+    'mobiledetect/mobiledetectlib' => 
+    array (
+      'pretty_version' => '2.8.37',
+      'version' => '2.8.37.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9841e3c46f5bd0739b53aed8ac677fa712943df7',
+    ),
     'monolog/monolog' => 
     array (
       'pretty_version' => '2.2.0',
@@ -435,7 +444,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'a3482c4f93c073f150cdc661de03511268d9da47',
+      'reference' => 'f4df6a6d9b0c382f8f57897108edb37173da44b1',
     ),
     'roots/support' => 
     array (

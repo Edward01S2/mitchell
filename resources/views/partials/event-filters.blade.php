@@ -10,7 +10,13 @@
           if(isset($_GET['evissue'])) {
             $issue_get = explode(',', $_GET[ 'evissue' ]);
           }
-          $evissue = (isset($_GET['evissue']) ? 'true' : 'false');
+          if(isset($_GET['evissue']) && !$mobile) {
+            $evissue = 'true';
+          }
+          else {
+            $evissue = 'false';
+          }
+          //$evissue = (isset($_GET['evissue']) ? 'true' : 'false');
         @endphp
 
         <div class="relative" x-data="{ open: {!! $evissue !!}, search: {!! $search !!} }">
@@ -55,7 +61,13 @@
           if(isset($_GET['evlabel'])) {
             $tag_get = explode(',', $_GET[ 'evlabel' ]);
           }
-          $evlabel = (isset($_GET['evlabel']) ? 'true' : 'false');
+          if(isset($_GET['evlabel']) && !$mobile) {
+            $evlabel = 'true';
+          }
+          else {
+            $evlabel = 'false';
+          }
+          // $evlabel = (isset($_GET['evlabel']) ? 'true' : 'false');
         @endphp
 
         {{-- @dump($) --}}

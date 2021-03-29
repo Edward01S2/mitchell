@@ -6,6 +6,8 @@ use Roots\Acorn\View\Composer;
 
 use Log1x\Pagi\PagiFacade as Pagi;
 
+use Detection\MobileDetect;
+
 class EventArchive extends Composer
 {
     /**
@@ -37,6 +39,7 @@ class EventArchive extends Composer
             'shortcode' => $this->calendarEvents(),
             'tag_input' => get_field('tag title', 'options'),
             'tag_top' => get_field('top tags label', 'options'),
+            'mobile' => $this->mobile(),
             //'calendar' => $this->calendar(),
         ];
     }
@@ -45,6 +48,12 @@ class EventArchive extends Composer
       $pagination = Pagi::build();
 
       return $pagination->links('components.pagination');
+    }
+
+    public function mobile() {
+      $detect = new MobileDetect;
+
+      return $detect->isMobile();
     }
 
     public function calendarEvents() {

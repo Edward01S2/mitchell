@@ -6,6 +6,8 @@ use Roots\Acorn\View\Composer;
 
 use Log1x\Pagi\PagiFacade as Pagi;
 
+use Detection\MobileDetect;
+
 class Category extends Composer
 {
     /**
@@ -44,7 +46,14 @@ class Category extends Composer
           'cat' => $cat,
           'tag_input' => get_field('tag title', $cat),
           'tag_top' => get_field('top tags label', $cat),
+          'mobile' => $this->mobile(),
       ];
+    }
+
+    public function mobile() {
+      $detect = new MobileDetect;
+
+      return $detect->isMobile();
     }
 
     public function pagination() {

@@ -11,7 +11,12 @@
             $issue_get = explode(',', $_GET[ 'issue' ]);
           }
           if(!is_search()) {
-            $issue = (isset($_GET['issue']) ? 'true' : 'false');
+            if(isset($_GET['issue']) && !$mobile) {
+              $issue = 'true';
+            }
+            else {
+              $issue = 'false';
+            }
           }
           else {
             $issue = 'false';
@@ -66,7 +71,13 @@
           }
           //$resource = (isset($_GET['resource']) ? 'true' : 'false');
           if(!is_search()) {
-            $resource = (isset($_GET['resource']) ? 'true' : 'false');
+            if(isset($_GET['resource']) && !$mobile) {
+              $resource = 'true';
+            }
+            else {
+              $resource = 'false';
+            }
+            // $resource = (isset($_GET['resource']) ? 'true' : 'false');
           }
           else {
             $resource = 'false';
@@ -118,7 +129,12 @@
           }
           //$label = (isset($_GET['label']) ? 'true' : 'false');
           if(!is_search()) {
-            $label = (isset($_GET['label']) ? 'true' : 'false');
+            if(isset($_GET['label']) && !$mobile) {
+              $label = 'true';
+            }
+            else {
+              $label = 'false';
+            }
           }
           else {
             $label = 'false';

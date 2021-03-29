@@ -42,9 +42,10 @@
     "php": "^7.3|^8.0",
     "log1x/acf-composer": "^1.5",
     "log1x/navi": "^1.0",
-    "log1x/poet": "^1.1",
     "log1x/pagi": "^1.0.4",
+    "log1x/poet": "^1.1",
     "log1x/sage-svg": "^1.0",
+    "mobiledetect/mobiledetectlib": "^2.8",
     "roots/acorn": "dev-main"
   },
   "require-dev": {

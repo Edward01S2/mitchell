@@ -1,4 +1,4 @@
-<nav id="nav" x-data="{open: false, issues: false, search: false, analysis: false, events: false, about: false, contact: false, donate: false}" class="absolute top-0 left-0 right-0 z-50 w-full bg-transparent" :class="{'bg-transparent': !open, 'bg-white': search || issues || analysis || events || about || donate || contact || open}">
+<nav id="nav" x-data="{open: false, issues: false, search: false, analysis: false, events: false, about: false, contact: false, donate: false}" class="absolute top-0 left-0 right-0 z-50 w-full" :class="{'bg-white': search || issues || analysis || events || about || donate || contact || open}">
   <div class="container z-40 px-6 py-2 mx-auto sm:py-0 lg:px-8">
     <div class="flex items-stretch justify-between">
 
@@ -13,9 +13,9 @@
       <div class="items-stretch hidden nav-container md:flex">
         @foreach ($navigation as $item)
           @if(!in_array($item->label, $filter))
-            <div class="flex items-center" x-on:mouseenter="{!! strtolower($item->label) !!} = !{!! strtolower($item->label)!!}, open = true" x-on:mouseover.away="{!! strtolower($item->label) !!} = false, open = false">
+            <div class="flex items-center" @mouseover="{!! strtolower($item->label) !!} = true" x-on:mouseleave="{!! strtolower($item->label) !!} = false">
               @if($item->label === "Issues")
-                <a class="z-30 flex items-center px-3 py-1 mx-3 transition duration-100 cursor-pointer lg:pr-2 lg:pl-4 lg:mx-4 focus:outline-none bg-c-blue-100 group-hover:bg-c-blue-200" href="{!! $item->url !!}">
+                <a class="z-30 flex items-center px-3 py-1 mx-3 transition duration-100 cursor-pointer lg:pr-2 lg:pl-4 lg:mx-4 focus:outline-none bg-c-blue-100 group-hover:bg-c-blue-200" href="{!! $item->url !!}" >
                   <div class="text-sm text-white nav-text font-whyte lg:text-base">{{ $item->label }}</div>
                   <svg class="w-6 h-6 ml-2 text-white transform fill-current md:hidden lg:block" :class="{'rotate-180': issues }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -65,7 +65,7 @@
           @endif
 
           @if($item->label === 'Subscribe')
-            <a class="flex items-center px-3 cursor-pointer lg:px-5 focus:outline-none group" href="{!! $item->url !!}" :class="{'text-black': search || issues || analysis || events || about || donate || contact, 'text-white': !open, 'text-white' : !issues && !search && !analysis && !events && !about && !donate && !contact}">
+            <a class="flex items-center px-3 cursor-pointer lg:px-5 focus:outline-none group" href="{!! $item->url !!}" :class="{'text-black': search || issues || analysis || events || about || donate || contact, 'text-white': !open, 'text-white' : !issues && !search && !analysis && !events && !about && !donate && !contact}" x-on:mouseenter="open = false" x-on:mouseover.away="open = false">
               <div class="text-sm tracking-widest nav-text font-whyte lg:text-base group-hover:text-c-blue-100">{{ $item->label }}</div>
             </a>
           @endif
@@ -73,7 +73,7 @@
           
         @endforeach 
         @if(!is_search())
-        <div class="flex pl-3 item-center group lg:pl-4" x-on:mouseenter="search = !search, open = true" x-on:mouseleave="search = false, open = false">
+        <div class="flex pl-3 item-center group lg:pl-4" @mouseover="search = true, open = true" x-on:mouseleave="search = false, open = false">
           <button class="z-30 cursor-default focus:outline-none" >
             <svg class="w-5 h-5 fill-current group-hover:text-c-blue-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{'text-black': search || issues || analysis || events || about || donate || contact, 'text-white': !open, 'text-white' : !issues && !search && !analysis && !events && !about && !donate && !contact}">
               <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
@@ -136,7 +136,7 @@
     <div @click.away="open = false" class="py-8 md:px-2">
       <ul class="flex flex-col space-y-6">
         @foreach ($navigation as $item)
-          @if($item->classes === 'nav-issues')
+          @if($item->children)
             <li class="group relative px-6 transition duration-150 ease-in-out flex items-center flex-wrap {{ $item->classes ?? '' }} {{ $item->active ? 'active' : '' }}" x-data="{drop: false}">
               <a @click="open = false" class="inline-block text-lg font-medium tracking-wider text-white transition duration-300 ease-in-out border-transparent font-whyte border-b-3 hover:font-bold hover:border-white focus:outline-none md:text-base" href="{{ $item->url }}">
                 {{ $item->label }}
@@ -148,8 +148,8 @@
               </button>
               <div :class="{'block': drop, 'hidden': !drop }" class="w-full" x-cloak>
                 <ul class="flex flex-col pt-3 pl-4 space-y-3">
-                  @foreach($issues as $item)
-                    <a class="text-lg text-white font-whyte" href="/issue/{!! $item['slug'] !!}">{!! html_entity_decode($item['name']) !!}</a>
+                  @foreach($item->children as $child)
+                    <a class="text-lg text-white font-whyte" href="/issue/{!! $child->slug !!}">{!! html_entity_decode($child->label) !!}</a>
                   @endforeach
                 </ul>
               </div>

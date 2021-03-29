@@ -411,3 +411,9 @@
 .hero-gradient {
   background: linear-gradient(180.37deg, #041429 0.32%, rgba(19, 42, 70, 0) 34.66%), rgba(7, 32, 45, 0.35);
 }
+
+.search {
+  #app {
+    @apply min-h-screen;
+  }
+}
