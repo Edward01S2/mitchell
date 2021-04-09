@@ -317,45 +317,45 @@
     @apply relative font-whyte;
   }
   .fc-toolbar {
-    @apply bg-c-black-100 text-white flex items-center justify-between pl-3 py-3 mb-0 md:grid md:grid-cols-12 md:px-6 md:py-4 #{!important};
+    @apply bg-c-black-100 text-white flex items-center justify-between pl-3 py-3 mb-0 md:px-6 md:pr-3 md:py-4 #{!important};
     .fc-left {
-      @apply text-xl uppercase md:col-start-4 md:text-center md:text-2xl md:col-span-6 lg:text-3xl;
+      @apply text-lg uppercase md:text-xl md:col-span-6;
     }
     .fc-center, .fc-clear {
       @apply hidden;
     }
     .fc-right {
-      @apply md:flex md:justify-end md:col-span-3 lg:absolute lg:w-full lg:left-0 lg:right-0 lg:z-30;
+      @apply md:flex md:justify-end;
       @screen lg {
         top: 50%;
       }
       .fc-button-group {
-        @apply ml-0 block lg:flex lg:justify-between lg:w-full;
+        @apply ml-0 block;
         .fc-button {
-          @apply bg-transparent border-none shadow-none px-2 lg:rounded-full lg:border lg:border-c-blue-100 lg:border-solid lg:h-10 lg:w-10 focus:outline-none;
+          @apply bg-transparent border-none shadow-none px-2 focus:outline-none;
           background-image: none;
           .fc-icon {
-            @apply text-white lg:text-c-black-100;
+            @apply text-white;
           }
-          &.fc-state-hover {
-            @apply lg:bg-c-blue-100;
-            .fc-icon {
-              @apply lg:text-white;
-            }
-          }
+          // &.fc-state-hover {
+          //   @apply lg:bg-c-blue-100;
+          //   .fc-icon {
+          //     @apply lg:text-white;
+          //   }
+          // }
         }
-        .fc-prev-button {
-          @apply lg:-ml-16;
-          .fc-icon {
-            @apply lg:ml-0;
-          }
-        }
-        .fc-next-button {
-          @apply lg:-mr-16;
-          .fc-icon {
-            @apply lg:mr-0;
-          }
-        }
+        // .fc-prev-button {
+        //   @apply lg:-ml-16;
+        //   .fc-icon {
+        //     @apply lg:ml-0;
+        //   }
+        // }
+        // .fc-next-button {
+        //   @apply lg:-mr-16;
+        //   .fc-icon {
+        //     @apply lg:mr-0;
+        //   }
+        // }
       }
     }
     .fc-today-button {
@@ -379,7 +379,7 @@
       .fc-day-top {
         @apply float-none pl-1 pt-1;
         .fc-day-number {
-          @apply text-xl text-c-black-100 float-none #{!important};
+          @apply text-xl text-c-black-100 float-none md:text-lg #{!important};
         }
       }
       .fc-day-grid-event {
@@ -402,6 +402,19 @@
     }
     .fc-event-container {
       @apply md:pl-2 xl:pl-3;
+    }
+    .fc-list-empty-wrap2 {
+      @apply block;
+      .fc-list-empty {
+        @apply py-4;
+      }
+    }
+    .fc-basic-view {
+      .fc-body {
+        .fc-row {
+          min-height: 3rem;
+        }
+      }
     }
   }
 

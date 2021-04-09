@@ -5,7 +5,7 @@
       <div class="relative z-30 md:flex-shrink-0">
         <div class="flex items-stretch flex-shrink-0 md:justify-center">
           <a href="<?php echo home_url('/'); ?>" class="hover:opacity-50 sm:py-2">
-            <img id="logo-main" class="w-auto h-28 lg:h-32" src="<?php echo $logo['url']; ?>" alt="<?php echo e($siteName); ?>" />
+            <img id="logo-main" class="w-auto h-28 lg:h-36 xl:h-48" src="<?php echo $logo['url']; ?>" alt="<?php echo e($siteName); ?>" />
           </a>
         </div>
       </div>
@@ -14,21 +14,14 @@
         <?php $__currentLoopData = $navigation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <?php if(!in_array($item->label, $filter)): ?>
             <div class="flex items-center" @mouseover="<?php echo strtolower($item->label); ?> = true" x-on:mouseleave="<?php echo strtolower($item->label); ?> = false">
-              <?php if($item->label === "Issues"): ?>
-                <a class="z-30 flex items-center px-3 py-1 mx-3 transition duration-100 cursor-pointer lg:pr-2 lg:pl-4 lg:mx-4 focus:outline-none bg-c-blue-100 group-hover:bg-c-blue-200" href="<?php echo $item->url; ?>" >
-                  <div class="text-sm text-white nav-text font-whyte lg:text-base"><?php echo e($item->label); ?></div>
-                  <svg class="w-6 h-6 ml-2 text-white transform fill-current md:hidden lg:block" :class="{'rotate-180': issues }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
-                </a>
-              <?php else: ?>
+              
                 <a class="px-2.5 cursor-pointer lg:px-4 focus:outline-none group" href="<?php echo $item->url; ?>">
                   <div class="text-sm tracking-widest text-white nav-text font-whyte lg:text-base group-hover:text-c-blue-100" :class="{'text-black': search || issues || analysis || events || about || donate || contact, 'text-white': !open, 'text-white' : !issues && !search && !analysis && !events && !about && !donate && !contact}"><?php echo e($item->label); ?></div>
                 </a>
-              <?php endif; ?>
+              
 
               
-                <div :class="{'block': <?php echo strtolower($item->label); ?>, 'hidden': !<?php echo strtolower($item->label); ?> }" class="absolute top-0 left-0 right-0 z-20 w-full bg-white border-b border-gray-200 mt-28 lg:mt-32" x-cloak>
+                <div :class="{'block': <?php echo strtolower($item->label); ?>, 'hidden': !<?php echo strtolower($item->label); ?> }" class="absolute top-0 left-0 right-0 z-20 w-full bg-white border-b border-gray-200 mt-28 lg:mt-32 xl:mt-44" x-cloak>
                   <div class="container px-6 mx-auto lg:px-8">
                     <div class="relative grid grid-cols-2 gap-8 px-10 py-8 lg:gap-12 xl:px-16 xl:py-12 xl:gap-24">
             
@@ -150,7 +143,7 @@
               <div :class="{'block': drop, 'hidden': !drop }" class="w-full" x-cloak>
                 <ul class="flex flex-col pt-3 pl-4 space-y-3">
                   <?php $__currentLoopData = $item->children; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <a class="text-lg text-white font-whyte" href="/issue/<?php echo $child->slug; ?>"><?php echo html_entity_decode($child->label); ?></a>
+                    <a class="text-lg text-white font-whyte" href="<?php echo $child->url; ?>"><?php echo html_entity_decode($child->label); ?></a>
                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </ul>
               </div>

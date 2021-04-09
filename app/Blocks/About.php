@@ -124,6 +124,7 @@ class About extends Block
             'content2' => get_field('content 2'),
             'staff' => get_field('staff'),
             'fellows' => get_field('fellows'),
+            'af_content' => get_field('af content'),
             'af_fellows' => get_field('af fellows'),
             'careers' => get_field('careers'),
             'career_content' => get_field('career content'),
@@ -186,6 +187,7 @@ class About extends Block
                     ->addFile('download')
                 ->endRepeater()
             ->addTab('AF Fellows')
+                ->addWysiwyg('af content')
                 ->addRepeater('af fellows', [
                     'collapsed' => 'name'
                 ])

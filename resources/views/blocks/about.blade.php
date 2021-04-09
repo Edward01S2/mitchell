@@ -78,7 +78,7 @@
             @foreach($staff as $item)
               <div class="flex flex-col sm:flex-row sm:space-x-6 md:space-x-8 xl:space-x-12" x-data="{ drop: false }">
                 <div class="mb-4 sm:w-1/3 xl:w-1/4">
-                  <img class="object-cover w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="{!! $item['image']['url'] !!}" alt="">
+                  <img class="object-cover object-top w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="{!! $item['image']['url'] !!}" alt="">
                 </div>
                 <div class="sm:w-2/3 xl:w-3/4">
                   <h3 class="text-xl md:text-2xl">{!! $item['name'] !!}</h3>
@@ -139,12 +139,17 @@
         </div>
 
         <div x-show="tab === 'af-fellows'" x-cloak>
+          @if($af_content)
+            <div class="mb-8 prose max-w-none lg:prose-lg lg:leading-snug text-c-gray-400 lg:mb-12">
+              {!! $af_content !!}
+            </div>
+          @endif
           <div class="flex flex-col space-y-12">
             @if($af_fellows)
               @foreach($af_fellows as $item)
               <div class="flex flex-col sm:flex-row sm:space-x-6 md:space-x-8 xl:space-x-12" x-data="{ drop: false }">
                 <div class="mb-4 sm:w-1/3 xl:w-1/4">
-                  <img class="object-cover w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="{!! $item['image']['url'] !!}" alt="">
+                  <img class="object-cover object-top w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="{!! $item['image']['url'] !!}" alt="">
                 </div>
                 <div class="sm:w-2/3 xl:w-3/4">
                   <h3 class="text-xl md:text-2xl">{!! $item['name'] !!}</h3>
@@ -210,7 +215,7 @@
               @foreach($fellows as $item)
               <div class="flex flex-col sm:flex-row sm:space-x-6 md:space-x-8 xl:space-x-12" x-data="{ drop: false }">
                 <div class="mb-4 sm:w-1/3 xl:w-1/4">
-                  <img class="object-cover w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="{!! $item['image']['url'] !!}" alt="">
+                  <img class="object-cover object-top w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="{!! $item['image']['url'] !!}" alt="">
                 </div>
                 <div class="sm:w-2/3 xl:w-3/4">
                   <h3 class="text-xl md:text-2xl">{!! $item['name'] !!}</h3>
