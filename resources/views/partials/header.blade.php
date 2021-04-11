@@ -9,7 +9,7 @@
           </a>
         </div>
       </div>
-      <?php $filter = ['Home', 'Subscribe']; ?>
+      <?php $filter = ['Home', 'Follow']; ?>
       <div class="items-stretch hidden nav-container md:flex">
         @foreach ($navigation as $item)
           @if(!in_array($item->label, $filter))
