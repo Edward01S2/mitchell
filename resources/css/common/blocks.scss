@@ -163,7 +163,7 @@
 }
 
 .wp-block-button {
-  @apply py-4 md:py-8;
+  @apply pt-4 md:pt-8;
   .button {
     @apply bg-c-blue-300 text-white px-12 py-3 no-underline font-whyte border-2 border-c-blue-300;
   }
@@ -401,7 +401,7 @@
       }
     }
     .fc-event-container {
-      @apply md:pl-2 xl:pl-3;
+      // @apply md:pl-2 xl:pl-3;
     }
     .fc-list-empty-wrap2 {
       @apply block;
@@ -429,4 +429,14 @@
   #app {
     @apply min-h-screen;
   }
+}
+
+.tribe-events-page-template {
+  .cal-event-dot {
+    @apply hidden sm:block h-3 w-3 lg:h-2 lg:w-2 bg-c-blue-150 rounded-full mb-1 ml-4 hover:opacity-25;
+  }
+  .cal-event-title {
+    @apply sm:hidden;
+  }
+
 }

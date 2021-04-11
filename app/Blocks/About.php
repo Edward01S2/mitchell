@@ -126,6 +126,7 @@ class About extends Block
             'fellows' => get_field('fellows'),
             'af_content' => get_field('af content'),
             'af_fellows' => get_field('af fellows'),
+            'alumini' => get_field('alumini'),
             'careers' => get_field('careers'),
             'career_content' => get_field('career content'),
             'issues' => $this->getIssues(),
@@ -174,6 +175,20 @@ class About extends Block
                 ->endRepeater()
             ->addTab('Non-Resident Fellows')
                 ->addRepeater('fellows', [
+                    'collapsed' => 'name'
+                ])
+                    ->addText('name')
+                    ->addText('title')
+                        ->setWidth('50')
+                    ->addText('email')
+                        ->setWidth('50')
+                    ->addWysiwyg('excerpt')
+                    ->addWysiwyg('bio')
+                    ->addImage('image')
+                    ->addFile('download')
+                ->endRepeater()
+            ->addTab('Air Force Fellows Alumni')
+                ->addRepeater('alumini', [
                     'collapsed' => 'name'
                 ])
                     ->addText('name')

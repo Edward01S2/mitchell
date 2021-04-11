@@ -9,7 +9,7 @@
     <div class="lg:flex">
       <div class="mb-6 lg:flex-shrink-0">
         <div class="relative event-calendar lg:pr-8 xl:pr-12 lg:sticky lg:top-[32px]">
-          <div class="mx-auto md:max-w-xs">
+          <div class="mx-auto lg:max-w-xs">
           <?php 
             //echo do_shortcode('[tribe_events]')
             

@@ -25,7 +25,7 @@
         @endphp
 
         @if(!is_tax('issue') || is_search())
-        <div class="relative" x-data="{ open: {!! $issue !!}, search: {!! $search !!} }">
+        <div class="relative" x-data="{ open: false', search: {!! $search !!} }">
           <div>
             <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
               <div class="pl-6">Issue</div>
@@ -84,7 +84,7 @@
           }
         @endphp
 
-        <div class="relative" x-data="{ open: {!! $resource !!}, search: {!! $search !!} }">
+        <div class="relative" x-data="{ open: false, search: {!! $search !!} }">
           <div>
             <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
               <div class="pl-6">Resource</div>
@@ -144,7 +144,7 @@
         {{-- @dump($) --}}
         {{-- @dump($tag_filters) --}}
         @if($tag_filters)
-          <div class="relative tag-filter-container" x-data="{ open: {!! $label !!}, search: {!! $search !!} }">
+          <div class="relative tag-filter-container" x-data="{ open: false, search: {!! $search !!} }">
             <div>
               <button x-on:click="open = !open" type="button" class="inline-flex items-center justify-between w-full text-base font-medium text-gray-400 bg-white font-whyte focus:outline-none" id="options-menu" aria-haspopup="true" aria-expanded="true">
                 <div class="pl-6">{{ $tag_input ? $tag_input : 'Tags' }}</div>

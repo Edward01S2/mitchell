@@ -57,7 +57,7 @@
             </div>
           <?php endif; ?>
 
-          <?php if($item->label === 'Subscribe'): ?>
+          <?php if($item->label === 'Follow'): ?>
             <a class="flex items-center px-3 cursor-pointer lg:px-5 focus:outline-none group" href="<?php echo $item->url; ?>" :class="{'text-black': search || issues || analysis || events || about || donate || contact, 'text-white': !open, 'text-white' : !issues && !search && !analysis && !events && !about && !donate && !contact}" x-on:mouseenter="open = false" x-on:mouseover.away="open = false">
               <div class="text-sm tracking-widest nav-text font-whyte lg:text-base group-hover:text-c-blue-100"><?php echo e($item->label); ?></div>
             </a>
@@ -73,7 +73,7 @@
             </svg>
           </button>
 
-          <div :class="{'block': search, 'hidden': !search }" class="absolute top-0 left-0 right-0 w-full mt-32 bg-c-black-100 lg:mt-36" x-cloak>
+          <div :class="{'block': search, 'hidden': !search }" class="absolute top-0 left-0 right-0 w-full mt-32 bg-c-black-100 lg:mt-40 xl:mt-[13rem]" x-cloak>
             <div class="container px-6 mx-auto lg:px-8">
         
               <div  class="relative flex items-center justify-center py-16">
