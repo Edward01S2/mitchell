@@ -135,7 +135,9 @@ class ContentSection extends Block
 
         $content
             ->addText('title')
-            ->addRepeater('items')
+            ->addRepeater('items', [
+                'collapsed' => 'title',
+            ])
                 ->addText('title')
                 ->addTextarea('description')
                 ->addText('link')
