@@ -283,15 +283,9 @@
         </div>
 
         <div x-show="tab === 'alumini'" x-cloak>
-          {{-- @if($af_content)
-            <div class="mb-8 prose max-w-none lg:prose-lg lg:leading-snug text-c-gray-400 lg:mb-12">
-              {!! $af_content !!}
-            </div>
-          @endif --}}
-          {{-- @dump($alumini) --}}
           <div class="flex flex-col space-y-12">
             @if($alumini)
-              @foreach($alumini as $item)
+              {{-- @foreach($alumini as $item)
               <div class="flex flex-col sm:flex-row sm:space-x-6 md:space-x-8 xl:space-x-12" x-data="{ drop: false }">
                 <div class="mb-4 sm:w-1/3 xl:w-1/4">
                   @isset($item['image'])
@@ -351,7 +345,7 @@
                   </div>
                 </div>
               </div>
-              @endforeach
+              @endforeach --}}
             @endif
           </div>
         </div>
