@@ -294,7 +294,9 @@
               @foreach($alumini as $item)
               <div class="flex flex-col sm:flex-row sm:space-x-6 md:space-x-8 xl:space-x-12" x-data="{ drop: false }">
                 <div class="mb-4 sm:w-1/3 xl:w-1/4">
-                  <img class="object-cover object-top w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="{!! $item['image']['url'] !!}" alt="">
+                  @if($item['image'])
+                    <img class="object-cover object-top w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="{!! $item['image']['url'] !!}" alt="">
+                  @endif
                 </div>
                 <div class="sm:w-2/3 xl:w-3/4">
                   <h3 class="text-xl md:text-2xl">{!! $item['name'] !!}</h3>
