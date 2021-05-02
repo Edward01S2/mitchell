@@ -7,7 +7,7 @@
           <option value="staff">Staff</option>
           <option value="af-fellows">Air Force Fellows</option>
           <option value="fellows">Non-Resident Fellows</option>
-          <option value="alumini">Air Force Fellows Alumni</option>
+          <option value="alumni">Air Force Fellows Alumni</option>
           <option value="careers">Careers</option>
         </select>
       </div>
@@ -37,8 +37,8 @@
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>
           </button>
-          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none hover:bg-white hover:text-c-blue-300 hover:bg-opacity-75" x-on:click="tab = 'alumini'" :class="{ 'bg-white text-c-blue-300 hover:bg-opacity-100': tab === 'alumini' }">
-            <span>Air Force Fellows Alumini</span>
+          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none hover:bg-white hover:text-c-blue-300 hover:bg-opacity-75" x-on:click="tab = 'alumni'" :class="{ 'bg-white text-c-blue-300 hover:bg-opacity-100': tab === 'alumini' }">
+            <span>Air Force Fellows Alumni</span>
             <svg class="w-5 h-5 transform fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{ 'rotate-90': tab === 'alumini' }">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>
@@ -217,6 +217,11 @@
         </div>
 
         <div x-show="tab === 'fellows'" x-cloak>
+          @if($fellows_content)
+            <div class="mb-8 prose max-w-none lg:prose-lg lg:leading-snug text-c-gray-400">
+              {!! $fellows_content !!}
+            </div>
+          @endif
           <div class="flex flex-col space-y-12">
             @if($fellows)
               @foreach($fellows as $item)
@@ -282,7 +287,12 @@
           </div>
         </div>
 
-        <div x-show="tab === 'alumini'" x-cloak>
+        <div x-show="tab === 'alumni'" x-cloak>
+          @if($aff_content)
+            <div class="mb-8 prose max-w-none lg:prose-lg lg:leading-snug text-c-gray-400">
+              {!! $aff_content !!}
+            </div>
+          @endif
           <div class="flex flex-col space-y-12">
             @if($alumini)
               @foreach($alumini as $item)

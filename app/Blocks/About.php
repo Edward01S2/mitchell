@@ -124,8 +124,10 @@ class About extends Block
             'content2' => get_field('content 2'),
             'staff' => get_field('staff'),
             'fellows' => get_field('fellows'),
+            'fellows_content' => get_field('nr content'),
             'af_content' => get_field('af content'),
             'af_fellows' => get_field('af fellows'),
+            'aff_content' => get_field('aff content'),
             'alumini' => get_field('alumini'),
             'careers' => get_field('careers'),
             'career_content' => get_field('career content'),
@@ -174,6 +176,7 @@ class About extends Block
                     ->addFile('download')
                 ->endRepeater()
             ->addTab('Non-Resident Fellows')
+                ->addWysiwyg('nr content')
                 ->addRepeater('fellows', [
                     'collapsed' => 'name'
                 ])
@@ -188,6 +191,7 @@ class About extends Block
                     ->addFile('download')
                 ->endRepeater()
             ->addTab('Air Force Fellows Alumni')
+                ->addWysiwyg('aff content')
                 ->addRepeater('alumini', [
                     'collapsed' => 'name'
                 ])

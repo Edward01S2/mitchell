@@ -301,18 +301,18 @@ $(document).ready(() => {
     duration: 2,
   });
 
-  gsap.fromTo(".fade-up-contrib", {
-    autoAlpha: 0,
-      y: 25,
-    }, {
-    scrollTrigger: {
-      trigger: '.fade-up-contrib',
-      start: "0 50%",
-      //markers: true,
-    },
-    autoAlpha: 1,
-    y: 0,
-    duration: 2,
-  });
+  // gsap.fromTo(".fade-up-contrib", {
+  //   autoAlpha: 0,
+  //     y: 25,
+  //   }, {
+  //   scrollTrigger: {
+  //     trigger: '.fade-up-contrib',
+  //     start: "0 50%",
+  //     //markers: true,
+  //   },
+  //   autoAlpha: 1,
+  //   y: 0,
+  //   duration: 2,
+  // });
 
 });

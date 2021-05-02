@@ -7,7 +7,7 @@
           <option value="staff">Staff</option>
           <option value="af-fellows">Air Force Fellows</option>
           <option value="fellows">Non-Resident Fellows</option>
-          <option value="alumini">Air Force Fellows Alumni</option>
+          <option value="alumni">Air Force Fellows Alumni</option>
           <option value="careers">Careers</option>
         </select>
       </div>
@@ -37,8 +37,8 @@
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>
           </button>
-          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none hover:bg-white hover:text-c-blue-300 hover:bg-opacity-75" x-on:click="tab = 'alumini'" :class="{ 'bg-white text-c-blue-300 hover:bg-opacity-100': tab === 'alumini' }">
-            <span>Air Force Fellows Alumini</span>
+          <button class="flex items-center justify-between w-full py-3 pl-8 pr-12 xl:pr-16 rounded-l-md focus:outline-none hover:bg-white hover:text-c-blue-300 hover:bg-opacity-75" x-on:click="tab = 'alumni'" :class="{ 'bg-white text-c-blue-300 hover:bg-opacity-100': tab === 'alumini' }">
+            <span>Air Force Fellows Alumni</span>
             <svg class="w-5 h-5 transform fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" :class="{ 'rotate-90': tab === 'alumini' }">
               <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
             </svg>
@@ -224,6 +224,12 @@
         </div>
 
         <div x-show="tab === 'fellows'" x-cloak>
+          <?php if($fellows_content): ?>
+            <div class="mb-8 prose max-w-none lg:prose-lg lg:leading-snug text-c-gray-400">
+              <?php echo $fellows_content; ?>
+
+            </div>
+          <?php endif; ?>
           <div class="flex flex-col space-y-12">
             <?php if($fellows): ?>
               <?php $__currentLoopData = $fellows; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -291,15 +297,21 @@
           </div>
         </div>
 
-        <div x-show="tab === 'alumini'" x-cloak>
-          
-          
+        <div x-show="tab === 'alumni'" x-cloak>
+          <?php if($aff_content): ?>
+            <div class="mb-8 prose max-w-none lg:prose-lg lg:leading-snug text-c-gray-400">
+              <?php echo $aff_content; ?>
+
+            </div>
+          <?php endif; ?>
           <div class="flex flex-col space-y-12">
             <?php if($alumini): ?>
               <?php $__currentLoopData = $alumini; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
               <div class="flex flex-col sm:flex-row sm:space-x-6 md:space-x-8 xl:space-x-12" x-data="{ drop: false }">
                 <div class="mb-4 sm:w-1/3 xl:w-1/4">
-                  <img class="object-cover object-top w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="<?php echo $item['image']['url']; ?>" alt="">
+                  <?php if($item['image']): ?>
+                    <img class="object-cover object-top w-64 mx-auto h-72 sm:w-full sm:h-56 md:h-72 lg:h-64 xl:h-72" src="<?php echo $item['image']['url']; ?>" alt="">
+                  <?php endif; ?>
                 </div>
                 <div class="sm:w-2/3 xl:w-3/4">
                   <h3 class="text-xl md:text-2xl"><?php echo $item['name']; ?></h3>
