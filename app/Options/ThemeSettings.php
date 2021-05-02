@@ -57,6 +57,8 @@ class ThemeSettings extends Field
             ->addGallery('random feat')
         ->addTab('Footer')
             ->addText('footer text')
+            ->addText('footer text 2')
+            ->addImage('afa logo')
             ->addText('form text')
             ->addFields($this->get(GForm::class))
             ->addText('copyright')

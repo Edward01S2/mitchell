@@ -27,6 +27,8 @@ class Footer extends Composer
             'navigation' => array_values($this->navigation('footer_navigation')),
             'logo' => get_field('Logo', 'options'),
             'logo_text' => get_field('footer text', 'options'),
+            'footer_text_2' => get_field('footer text 2', 'options'),
+            'afa_logo' => get_field('afa logo', 'options'),
             // 'issues' => $this->getIssues(),
             // 'resources' => $this->getResources(),
             'social' => get_field('Social', 'options'),

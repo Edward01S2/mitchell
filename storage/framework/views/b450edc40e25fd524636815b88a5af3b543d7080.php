@@ -3,10 +3,16 @@
   <div class="py-6 pb-8 bg-c-blue-300 md:py-4">
     <div class="container px-6 mx-auto lg:px-8">
       <div class="md:flex md:justify-between md:items-center">
-        <a href="<?php echo home_url('/'); ?>" class="flex items-center justify-center hover:opacity-50" target="_blank">
-          <img id="logo-main" class="w-auto h-16 md:h-20" src="<?php echo $logo['url']; ?>" alt="<?php echo e($siteName); ?>" />
-          <span class="ml-4 font-medium leading-5 tracking-wide text-white uppercase font-whyte md:text-lg md:leading-snug lg:ml-8"><?php echo $logo_text; ?></span>
-        </a>
+        <div class="flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-16">
+          <a href="<?php echo home_url('/'); ?>" class="flex items-center justify-center hover:opacity-50" target="_blank">
+            <img id="logo-main" class="w-auto h-16 md:h-20" src="<?php echo $logo['url']; ?>" alt="<?php echo e($siteName); ?>" />
+            <span class="ml-4 font-medium leading-5 tracking-wide text-white uppercase font-whyte md:text-lg md:leading-snug lg:ml-8"><?php echo $logo_text; ?></span>
+          </a>
+          <div class="flex items-center justify-center">
+            <img class="w-auto h-14 md:order-2 lg:h-16" src="<?php echo $afa_logo['url']; ?>" />
+            <span class="ml-4 font-medium leading-5 tracking-wide text-white uppercase font-whyte md:text-lg md:leading-snug sm:ml-6 md:order-1 md:ml-0 md:mr-6"><?php echo $footer_text_2; ?></span>
+          </div>
+        </div>
         <?php if($social): ?>
           <div class="flex items-center justify-center mt-6 space-x-4 md:mt-0">
             <?php $__currentLoopData = $social; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
