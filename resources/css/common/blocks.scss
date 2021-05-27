@@ -387,6 +387,9 @@
         .fc-title {
           @apply underline;
         }
+        .fc-time {
+          @apply hidden;
+        }
       }
       .fc-today {
         @apply border bg-transparent;

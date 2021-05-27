@@ -9,7 +9,7 @@
           </a>
         </div>
       </div>
-      <?php $filter = ['Home', 'Subscribe']; ?>
+      <?php $filter = ['Home', 'Follow']; ?>
       <div class="items-stretch hidden nav-container md:flex">
         <?php $__currentLoopData = $navigation; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
           <?php if(!in_array($item->label, $filter)): ?>

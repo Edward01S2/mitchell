@@ -139,6 +139,7 @@ function load_events() {
   if(isset($_POST['time'])):
     $time = $_POST['time'];
     if($time == 'future') {
+      $args['order'] = 'ASC';
       $args['meta_query'] = [
         'key' => '_EventStartDate',
         'value' => date( 'Y-m-d H:i:s', current_time( 'timestamp' ) ),

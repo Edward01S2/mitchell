@@ -103,6 +103,7 @@ class EventArchive extends Composer
         if(isset($_GET['time'])):
           $time = $_GET['time'];
           if($time === 'future') {
+            $args['order'] = 'ASC';
             $args['meta_query'] = [
               'key' => '_EventStartDate',
               'value' => date( 'Y-m-d' ),
